@@ -26,5 +26,9 @@ Things you may want to cover:
 enjoy
 enjoy
 enjoy
+<<<<<<< HEAD
 
 hello
+=======
+rails
+>>>>>>> master
