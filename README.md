@@ -23,11 +23,7 @@ Things you may want to cover:
 
 * ...
 
-enjoy
-enjoy
-enjoy
 
-rails
-hello
 hey
+
 
