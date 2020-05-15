@@ -62,3 +62,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise"
+gem "jquery-rails"
+gem "bootstrap-sass"
+gem "jp_prefecture"
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem "ransack"
+gem "kaminari"
