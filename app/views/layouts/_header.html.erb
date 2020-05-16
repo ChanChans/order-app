@@ -1,0 +1,35 @@
+<header>
+  <div class="container">
+    <nav class="nav navbar-nav navbar-left">
+      <span>NaganoCAKE</span>
+    </nav>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if customer_signed_in? %>
+          <li>
+            <%= link_to "マイページ", "#" %>
+          </li>
+          <li>
+            <%= link_to "商品一覧", "#" %>
+          </li>
+          <li>
+            <%= link_to "カート", "#" %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", "#" %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "商品一覧", "#" %>
+          </li>
+          <li>
+            <%= link_to "新規登録", "#" %>
+          </li>
+          <li>
+            <%= link_to "ログイン", "#" %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
