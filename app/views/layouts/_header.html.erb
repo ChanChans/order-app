@@ -15,7 +15,7 @@
             <%= link_to "マイページ", customers_path(current_customer) %>
           </li>
           <li>
-            <%= link_to "商品一覧", customers_products_path %>
+            <%= link_to "商品一覧", products_path %>
           </li>
           <li>
             <%= link_to "カート", customers_cart_items_path %>
@@ -47,7 +47,7 @@
 
           <!-- ログインしていない時 -->
           <li>
-            <%= link_to "商品一覧", customers_products_path %>
+            <%= link_to "商品一覧", products_path %>
           </li>
           <li>
             <%= link_to "新規登録", new_customer_registration_path %>
