@@ -1,16 +1,19 @@
 <h2>新規会員登録</h2>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render “devise/shared/error_messages”, resource: resource %>
-  <div class=“field”>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
     <%= f.label :neme %>
     <%= f.text_field :first_name, autofocus: true %>
     <%= f.text_field :last_name, autofocus: true %>
   </div>
-  <div class=“field”>
+  <div class="field">
+
   </div>
-  <div class=“field”>
-    <%= f.label :“メールアドレス” %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: “email” %>
+  <div class="field">
+    <%= f.label :"メールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
   <div class=“field”>
     <%= f.label :password %>
