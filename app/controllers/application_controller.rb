@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     if admin_signed_in?
       authenticate_admin!
     else
-      authenticate_user!
+      authenticate_customer!
     end
   end
 end
