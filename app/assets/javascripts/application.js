@@ -13,6 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require bootstrap-sprockets
-//= require jquery.jpostel
+//= require jquery
 //= require turbolinks
 //= require_tree .
