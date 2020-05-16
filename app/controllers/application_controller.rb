@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
 
-
   protected
 
     # ログイン時のパスを変更してる
@@ -29,13 +28,23 @@ class ApplicationController < ActionController::Base
 
   private
 
-  
+  # before_action作成
+
+  # 管理者がログインしてる時は管理者だけ、カスタマーがログインしてる時はカスタマーだけ
   def authenticate!
     if admin_signed_in?
       authenticate_admin!
     else
       authenticate_customer!
     end
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def set_customer
+    @customer = Customer.find(params[:id])
   end
 
 end
