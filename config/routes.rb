@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  # devise
   devise_for :admins
   devise_for :customers
+
+  # admin
   namespace :admin do
-  	resources :customers,only: [:index,:show,:edit,:update]
+    resources :customers,only: [:index,:show,:edit,:update]
   	resources :products,only: [:index,:new,:create,:show,:edit,:update,]
   	get 'top'=>'products#top'
   	resources :genres,only: [:index,:create,:edit,:update]
@@ -13,28 +16,33 @@ Rails.application.routes.draw do
     end
   end
 
+   # customer
    scope module: :customer do
+    resources :products,only: [:index,:show]
   	resource :customers,only: [:show,:edit,:update] do
   		collection do
-  	        get 'quit'
-  	        patch 'out'
-  	    end
+  	     get 'quit'
+  	     patch 'out'
+  	  end
 
-        resources :products,only: [:index,:show]
-        resources :cart_items,only: [:index,:update,:create,:destroy] do
-              collection do
-                 delete '/' => 'cart_items#all_destroy'
-              end
+      resources :cart_items,only: [:index,:update,:create,:destroy] do
+        collection do
+          delete '/' => 'cart_items#all_destroy'
         end
-        resources :orders,only: [:new,:index,:show,:create] do
-               collection do
-                  get 'log'
-                  get 'thanx'
-               end
+      end
+
+      resources :orders,only: [:new,:index,:show,:create] do
+        collection do
+          get 'log'
+          get 'thanx'
         end
-        resources :shipping_address,only: [:index,:create,:edit,:update,:destroy]
+      end
+
+      resources :shipping_address,only: [:index,:create,:edit,:update,:destroy]
     end
    end
-get  'about' => 'customer/products#about'
-root 'customer/products#top'
+
+   get  'about' => 'customer/products#about'
+   root 'customer/products#top'
+
 end
