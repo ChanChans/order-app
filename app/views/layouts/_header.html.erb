@@ -6,6 +6,8 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if customer_signed_in? %>
+
+          <!--カスタマーがログインしている時 -->
           <li>
             ようこそ、<%= current_customer.first_name %>さん！
           </li>
@@ -21,7 +23,10 @@
           <li>
             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
           </li>
+
         <% elsif admin_signed_in? %>
+
+          <!-- 管理者がログインしている時 -->
           <li>
             <%= link_to "商品一覧", admin_products_path %>
           </li>
@@ -37,7 +42,10 @@
           <li>
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
           </li>
+
         <% else %>
+
+          <!-- ログインしていない時 -->
           <li>
             <%= link_to "商品一覧", customers_products_path %>
           </li>
@@ -47,6 +55,7 @@
           <li>
             <%= link_to "ログイン", new_customer_session_path %>
           </li>
+
           <!-- 最後の消す -->
           <li>
             <%= link_to "adminログイン", new_admin_session_path %>

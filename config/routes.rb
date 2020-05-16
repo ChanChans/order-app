@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :customers
   namespace :admin do
   	resources :customers,only: [:index,:show,:edit,:update]
-  	resources :products,only: [:index,:new,:create,:show,:edit,:update,] 
-  	get 'top'=>'admin/products#top'
+  	resources :products,only: [:index,:new,:create,:show,:edit,:update,]
+  	get 'top'=>'products#top'
   	resources :genres,only: [:index,:create,:edit,:update]
   	resources :orders,only: [:index,:show,:update] do
   	  member do
@@ -16,11 +16,11 @@ Rails.application.routes.draw do
    scope module: :customer do
   	resource :customers,only: [:show,:edit,:update] do
   		collection do
-  	        get 'quit' 
-  	        patch 'out' 
+  	        get 'quit'
+  	        patch 'out'
   	    end
-  	
-        resources :products,only: [:index,:show] 
+
+        resources :products,only: [:index,:show]
         resources :cart_items,only: [:index,:update,:create,:destroy] do
               collection do
                  delete '/' => 'cart_items#all_destroy'
@@ -35,6 +35,6 @@ Rails.application.routes.draw do
         resources :shipping_address,only: [:index,:create,:edit,:update,:destroy]
     end
    end
-get  'about' => 'customer/products#about' 
-root 'customer/products#top'  
+get  'about' => 'customer/products#about'
+root 'customer/products#top'
 end
