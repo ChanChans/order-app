@@ -3,7 +3,7 @@
    DMM WEBCAMPのチーム開発で作成するアプリ
 
   ## 説明
-   発開トイサCEのめたるす販通を品商の」EKACのがな「店子菓洋なさ小るあに県野⻑
+   
 
   ## ER図
   ![ER図](https://user-images.githubusercontent.com/61017515/82131446-37b92280-9810-11ea-8ad0-6c579a815056.png)
