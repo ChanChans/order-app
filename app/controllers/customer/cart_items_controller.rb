@@ -9,7 +9,7 @@ class Customer::CartItemsController < ApplicationController
 	def create
 	end
 
-	def one_destroy
+	def all_destroy
 	end
 
 	def destroy
