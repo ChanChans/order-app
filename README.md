@@ -9,10 +9,10 @@
   ![ER図](https://user-images.githubusercontent.com/61017515/82131446-37b92280-9810-11ea-8ad0-6c579a815056.png)
 
   ## アプリケーション詳細設計図
-    顧客
+    顧客  
    ![アプリケーション詳細設計書(顧客)](https://user-images.githubusercontent.com/61017515/82131492-a72f1200-9810-11ea-9de1-d90062491e1d.png)
 
-    管理者
+    管理者  
    ![アプリケーション詳細設計書(管理者)](https://user-images.githubusercontent.com/61017515/82131510-be6dff80-9810-11ea-9c1c-c7296c30d538.png)
 
   ## 機能
