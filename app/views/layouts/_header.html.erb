@@ -1,32 +1,51 @@
 <header>
   <div class="container">
     <nav class="nav navbar-nav navbar-left">
-      <span>NaganoCAKE</span>
+      <%= link_to "NaganoCAKE", root_path %>
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if customer_signed_in? %>
           <li>
-            <%= link_to "マイページ", "#" %>
+            ようこそ、<%= current_customer.first_name %>さん！
           </li>
           <li>
-            <%= link_to "商品一覧", "#" %>
+            <%= link_to "マイページ", customer_path(current_customer) %>
           </li>
           <li>
-            <%= link_to "カート", "#" %>
+            <%= link_to "商品一覧", customers_products_path %>
           </li>
           <li>
-            <%= link_to "ログアウト", "#" %>
+            <%= link_to "カート", customers_cart_items_path %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li>
+            <%= link_to "商品一覧", admin_products_path %>
+          </li>
+          <li>
+            <%= link_to "会員一覧", admin_customers_path %>
+          </li>
+          <li>
+            <%= link_to "注文履歴一覧", admin_orders_path %>
+          </li>
+          <li>
+            <%= link_to "ジャンル一覧", admin_genres %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
           </li>
         <% else %>
           <li>
-            <%= link_to "商品一覧", "#" %>
+            <%= link_to "商品一覧", customers_products_path %>
           </li>
           <li>
-            <%= link_to "新規登録", "#" %>
+            <%= link_to "新規登録", new_registration_path(self.resource) %>
           </li>
           <li>
-            <%= link_to "ログイン", "#" %>
+            <%= link_to "ログイン", new_session_path(self.resource) %>
           </li>
         <% end %>
       </ul>
