@@ -10,7 +10,7 @@
             ようこそ、<%= current_customer.first_name %>さん！
           </li>
           <li>
-            <%= link_to "マイページ", customer_path(current_customer) %>
+            <%= link_to "マイページ", customers_path(current_customer) %>
           </li>
           <li>
             <%= link_to "商品一覧", customers_products_path %>
@@ -32,7 +32,7 @@
             <%= link_to "注文履歴一覧", admin_orders_path %>
           </li>
           <li>
-            <%= link_to "ジャンル一覧", admin_genres %>
+            <%= link_to "ジャンル一覧", admin_genres_path %>
           </li>
           <li>
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
@@ -42,10 +42,14 @@
             <%= link_to "商品一覧", customers_products_path %>
           </li>
           <li>
-            <%= link_to "新規登録", new_registration_path(self.resource) %>
+            <%= link_to "新規登録", new_customer_registration_path %>
           </li>
           <li>
-            <%= link_to "ログイン", new_session_path(self.resource) %>
+            <%= link_to "ログイン", new_customer_session_path %>
+          </li>
+          <!-- 最後の消す -->
+          <li>
+            <%= link_to "adminログイン", new_admin_session_path %>
           </li>
         <% end %>
       </ul>
