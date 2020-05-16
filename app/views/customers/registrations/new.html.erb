@@ -22,14 +22,17 @@
 
   <div class=“field”>
     <%= f.label :"郵便番号(ハイフンなし)" %>
+    <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
   </div>
 
   <div class=“field”>
     <%= f.label :"住所" %>
+    <%= f.text_field :residence, autofocus: true, autocomplete: "residence", id:"residence" %>
   </div>
 
   <div class=“field”>
     <%= f.label :"電話番号(ハイフンなし)" %>
+    <%= f.text_field :phone_number, autofocus: true %>
   </div>
 
   <div class=“field”>
@@ -37,12 +40,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %>
-    <%= f.password_field :password, autocomplete: “new-password” %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class=“field”>
     <%= f.label :"パスワード(確認用)" %>
-    <%= f.password_field :password_confirmation, autocomplete: “new-password” %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class=“actions”>
@@ -50,4 +53,4 @@
   </div>
 <% end %>
 <h2>既に登録済みの方</h2>
-<%= render “customers/shared/links” %>からログインしてください。
+<p><%= render "customers/shared/links" %>からログインしてください。</p>
