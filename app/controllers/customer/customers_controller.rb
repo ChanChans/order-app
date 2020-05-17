@@ -19,7 +19,7 @@ class Customer::CustomersController < ApplicationController
 	end
 
 	def edit
-    @cusotmer = current_customer
+    @customer = current_customer
 		redirect_to customers_path
 	end
 
