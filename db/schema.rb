@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_072219) do
     t.integer "order_id"
     t.integer "quantity"
     t.integer "subprice"
-    t.integer "produciton_status"
+    t.integer "produciton_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(version: 2020_05_17_072219) do
     t.string "name"
     t.integer "postage"
     t.integer "total_price"
-    t.integer "payment_method"
-    t.integer "order_status"
+    t.integer "payment_method", default: 0
+    t.integer "order_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,15 +94,6 @@ ActiveRecord::Schema.define(version: 2020_05_17_072219) do
   end
 
   create_table "shipping_addresses", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "name"
-    t.string "postal_code"
-    t.string "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "shipping_adresses", force: :cascade do |t|
     t.integer "customer_id"
     t.string "name"
     t.string "postal_code"
