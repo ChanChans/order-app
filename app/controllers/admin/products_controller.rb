@@ -6,6 +6,8 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def new
+    @product = Product.new
+    @genre = Genre.all
 	end
 
 	def create
