@@ -2,7 +2,7 @@ class Customer::CustomersController < ApplicationController
 
 
   def show
-    @cusotmer = current_customer
+    @customer = current_customer
 	end
 
 	def quit
@@ -18,6 +18,7 @@ class Customer::CustomersController < ApplicationController
 	end
 
 	def edit
+    @customer = current_customer
 		redirect_to customers_path
 	end
 

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  # devise
-  devise_for :admins
-  devise_for :customers
-
   # admin
   namespace :admin do
     resources :customers,only: [:index,:show,:edit,:update]
@@ -44,5 +40,7 @@ Rails.application.routes.draw do
 
    get  'about' => 'customer/products#about'
    root 'customer/products#top'
-
+  # devise
+  devise_for :admins
+  devise_for :customers
 end
