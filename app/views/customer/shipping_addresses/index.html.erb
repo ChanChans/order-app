@@ -1,0 +1,57 @@
+<h2>配送先登録/一覧</h2>
+
+<%= form_with(model: @shipping_address, :url => {:controller => "customer/shipping_addresses"}, local: true) do |f| %>
+
+<div class="field row">
+<%= f.label :postal_code %>
+<%= f.text_field :postal_code, class: "col-xs-12" %>
+</div>
+
+<div class="field row">
+<%= f.label :address %> 
+<%= f.text_field :address, class: "col-xs-12" %>
+</div>
+
+<div class="field row">
+<%= f.label :郵便番号 %>
+<%= f.text_field :name, class: "col-xs-12" %>
+
+<div class="actions row">
+<%= f.submit class: "btn btn-primary col-xs-12" %>
+</div>
+
+<% end %>
+
+
+<table class="table table-hover table-inverse">
+<thead>
+<tr>
+<th>郵便番号</th>
+<th>住所</th>
+<th>宛名</th>
+<th colspan="2"></th>
+</tr>
+</thead>
+
+<tbody>
+<% @shipping_addresses.each do |shipping_address| %>
+<tr>
+<td>
+shipping_address.postal_code
+</td>
+<td>
+shipping_address.address
+</td>
+<td>
+shipping_address.name
+</td>
+<td>
+<% if shipping_address.customer == current_customer %>
+<%= link_to "Edit",edit_customers_shipping_address_path(shipping_address), class: "btn-sm btn-success edit_shipping_addres_#{shipping_address.id}" %>
+<% end %>
+</td>
+<td>
+	destory
+</td>
+</tr>
+<% end %>

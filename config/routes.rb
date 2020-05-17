@@ -38,7 +38,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :shipping_address,only: [:index,:create,:edit,:update,:destroy]
+      resources :shipping_addresses,only: [:index,:create,:edit,:update,:destroy]
     end
    end
 
