@@ -3,7 +3,7 @@ class Customer::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
   def show
-    @cusotmer = current_customer
+    @customer = current_customer
 	end
 
 	def quit
@@ -19,6 +19,7 @@ class Customer::CustomersController < ApplicationController
 	end
 
 	def edit
+    @customer = current_customer
 		redirect_to customers_path
 	end
 
