@@ -15,7 +15,7 @@ Rails.application.routes.draw do
    # customer
    scope module: :customer do
     resources :products,only: [:index,:show]
-  	resource :customers,only: [:show,:edit,:update] do
+  	resource :customers,only: [:show, :edit, :update] do
   		collection do
   	     get 'quit'
   	     patch 'out'
@@ -42,5 +42,9 @@ Rails.application.routes.draw do
    root 'customer/products#top'
   # devise
   devise_for :admins
-  devise_for :customers
+  devise_for :customers, :controllers => {
+    :sessions => 'customers/sessions'
+  }
+
+
 end
