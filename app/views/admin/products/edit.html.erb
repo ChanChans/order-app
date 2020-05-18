@@ -1,9 +1,9 @@
 <h2>商品編集</h2>
 <div class="row">
-  <%= form_for @product do |f| %>
+  <%= form_for(@product, url: admin_product_path, method: :patch) do |f| %>
 	  <div class="col-xs-4">
-      <div id="img_field">
-          <%# <%= attachment_image_tag(@product, :image, size: "250x180", fallback: "no-image.jpg") %>
+      <div class="img_field">
+        <%= attachment_image_tag(@product, :image, size: "250x180") %>
       </div>
 	      <%= f.attachment_field :image, class: "image" %>
     </div>

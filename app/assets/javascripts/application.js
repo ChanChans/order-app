@@ -11,8 +11,14 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require activestorage
-//= require bootstrap-sprockets
+//= require refile
 //= require jquery
 //= require turbolinks
+//= require activestorage
+//= require bootstrap-sprockets
 //= require_tree .
+
+$(function() {
+  // jQuery Upload Thumbs
+      $('form input:file').uploadThumbs();
+});

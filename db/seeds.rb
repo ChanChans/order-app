@@ -8,8 +8,8 @@
 5.times do |n|
     Customer.create!(
       email: "test#{n + 1}@test.com",
-      first_name: "姓#{n + 1}",
-      last_name: "名#{n + 1}",
+      first_name: "名#{n + 1}",
+      last_name: "姓#{n + 1}",
       kana_first_name: "セイ",
       kana_last_name: "メイ",
       password: "123456",
@@ -36,7 +36,8 @@
         explanation: "甘くて美味しい#{n + 1}",
         tax_out_price: "#{n + 1000}",
         genre_id: n + 1,
-        is_sale: [['販売中', true], ['販売停止', false]]
+        is_sale: [['販売中', true], ['販売停止', false]],
+        image: "no_image.jpg"
       )
   end
 
