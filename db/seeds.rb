@@ -8,8 +8,8 @@
 5.times do |n|
     Customer.create!(
       email: "test#{n + 1}@test.com",
-      first_name: "姓#{n + 1}",
-      last_name: "名#{n + 1}",
+      first_name: "名#{n + 1}",
+      last_name: "姓#{n + 1}",
       kana_first_name: "セイ",
       kana_last_name: "メイ",
       password: "123456",
