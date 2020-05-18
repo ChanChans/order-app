@@ -1,22 +1,22 @@
 class Admin::ProductsController < ApplicationController
 
   before_action :set_product, only: [:show, :edit, :update]
-  before_action :set_genres, only: [:new, :edit, :index]
+  before_action :set_genres, only: [:new, :edit, :index, :create, :update]
 
   def top
 	end
 
 	def new
     @product = Product.new
-    @genres = Genre.all
 	end
 
 	def create
     @product = Product.new(product_params)
+    # binding.pry
     if @product.save
-      redirect_to @product
+      redirect_to admin_product_path(@product)
     else
-      render "admin/product"
+      render("admin/products/new")
     end
 	end
 
@@ -32,9 +32,9 @@ class Admin::ProductsController < ApplicationController
 
 	def update
     if @product.update(product_params)
-      redirect_to @product
+      redirect_to admin_product_path(@product)
     else
-      render "admin/edit"
+      render("admin/products/edit")
     end
 	end
 

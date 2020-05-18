@@ -1,9 +1,8 @@
 <h2>商品新規登録</h2>
 <div class="row">
-  <%= form_for @product do |f| %>
+  <%= form_for(@product, url: admin_products_path, method: :post) do |f| %>
 	  <div class="col-xs-4">
-      <div id="img_field">
-          <%# <%= attachment_image_tag(@product, :image, size: "250x180") %>
+      <div class="img_field">
       </div>
 	      <%= f.attachment_field :image, class: "image" %>
     </div>
@@ -18,7 +17,8 @@
       </div>
       <div class="field">
         <%= f.label :"ジャンル" %>
-        <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "-- 選択してください --"}, {class: "genre"}) %>
+        <%= f.collection_select(:genre_id, @genres, :id, :name) %>
+        <%# <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "-- 選択してください --"}, {class: "genre"}) %>
       </div>
       <div class="field">
         <%= f.label :"税抜価格" %>
@@ -36,3 +36,6 @@
     </div>
   <% end %>
 </div>
+<% content_for(:body_attributes) do %>
+    data-turbolinks="false"
+<% end %>
