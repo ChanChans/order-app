@@ -39,3 +39,12 @@
         is_sale: [['販売中', true], ['販売停止', false]]
       )
   end
+
+3.times do |n|
+  ShippingAddress.create!(
+    name: "test#{n + 1}",
+    postal_code: "123456#{n + 1}",
+    address: "大阪#{n + 1}",
+    customer_id: n + 1
+  )
+end
