@@ -3,7 +3,7 @@
   <%= form_for @product do |f| %>
 	  <div class="col-xs-4">
       <div id="img_field">
-          <%= attachment_image_tag(@product.image, size: "200x200", fallback: "no-image.jpg") %>
+          <%# <%= attachment_image_tag(@product, :image, size: "250x180") %>
       </div>
 	      <%= f.attachment_field :image, class: "image" %>
     </div>
@@ -18,7 +18,7 @@
       </div>
       <div class="field">
         <%= f.label :"ジャンル" %>
-        <%= f.select :genre_id, [@genre], {}, class: "genre" %>
+        <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "-- 選択してください --"}, {class: "genre"}) %>
       </div>
       <div class="field">
         <%= f.label :"税抜価格" %>
@@ -26,7 +26,8 @@
       </div>
       <div class="field">
         <%= f.label :"販売ステータス" %>
-        <%= f.select :is_sale, [['販売中', true], ['販売停止', false]], {}, class: "is_sale" %>
+        <!-- booleanのformの書き方 -->
+        <%= f.select :is_sale, [['販売中', true], ['販売停止', false]], prompt: "-- 選択してください --", class: "is_sale" %>
       </div>
       <div class="actions">
 	      <%= f.submit "新規登録" %>
