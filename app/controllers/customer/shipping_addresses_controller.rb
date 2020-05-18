@@ -3,17 +3,17 @@ class Customer::ShippingAddressesController < ApplicationController
     def index
     	@shipping_addresses = ShippingAddress.all
     	@shipping_address = ShippingAddress.new
-    	@customer = current_customer
+    	#@customer = current_customer
 	end
 
 	def create
-		@shipping_address = ShippingAddress.new(shipping_address_params)
-		@shipping_address.customer_id = current_customer.id
+		@shipping_address = current_customer.shipping_address.new(shipping_address_params)
+        #@shipping_address.customer_id = current_customer.id
 		if @shipping_address.save
 		   redirect_to customers_shipping_addresses_path
 		else
 		   @shipping_addresses = ShippingAddress.all
-		   @customer = current_customer
+		   #@customer = current_customer
 		   render 'index'
 	    end
 	end
@@ -32,12 +32,15 @@ class Customer::ShippingAddressesController < ApplicationController
 	end
 
 	def destroy
+		@shipping_address = ShippingAddress.find(params[:id])
+		@shipping_address.destroy
+		redirect_to customers_shipping_addresses_path
 	end
 
 	private
 
 	def shipping_address_params
-  	    params.require(:shipping_address).permit(:postal_code, :address, :name, :customer_id)
+  	    params.require(:shipping_address).permit(:postal_code, :address, :name)
     end
 
 end
