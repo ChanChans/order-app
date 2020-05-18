@@ -8,7 +8,7 @@
 </div>
 
 <div class="field row">
-<%= f.label :住所 %> 
+<%= f.label :住所 %>
 <%= f.text_field :address, class: "col-xs-8" %>
 </div>
 
@@ -38,13 +38,13 @@
 <% @shipping_addresses.each do |shipping_address| %>
 <tr>
 <td>
-shipping_address.postal_code
+<%= shipping_address.postal_code %>
 </td>
 <td>
-shipping_address.address
+<%= shipping_address.address %>
 </td>
 <td>
-shipping_address.name
+<%= shipping_address.name %>
 </td>
 <td>
 <%= link_to "Edit",edit_customers_shipping_address_path(shipping_address), class: "btn-sm btn-success edit_shipping_addres_#{shipping_address.id}" %>
