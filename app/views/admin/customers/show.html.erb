@@ -1,3 +1,53 @@
 <h2>
-  さんの会員詳細
+<%= @customer.first_name %>
+<%= @customer.last_name %>さんの会員詳細
 </h2>
+
+<table class="table table-hover table-inverse">
+<thead>
+<tr>
+<th>顧客ID</th>
+<th>氏名</th>
+<th>フリガナ</th>
+<th>郵便番号</th>
+<th>住所</th>
+<th>電話番号</th>
+<th>メールアドレス</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>
+<%= @customer.id %>
+<%= @customer.is_valid %>
+</td>
+<td>
+<%= @customer.first_name %>
+<%= @customer.last_name %>
+</td>
+<td>
+<%= @customer.kana_first_name %>
+<%= @customer.kana_last_name %>
+</td>
+<td>
+<%= @customer.postal_code %>
+</td>
+<td>
+<%= @customer.residence %>
+</td>
+<td>
+<%= @customer.phone_number %>
+</td>
+<td>
+<%= @customer.email%>
+</td>
+<td>
+<%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn-sm btn-success edit_shipping_addres_#{@customer.id}" %>
+</td>
+<td>
+注文履歴一覧を見る
+</td>
+</tr>
+</tbody>
+</table>

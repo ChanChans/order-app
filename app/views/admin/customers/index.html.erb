@@ -14,10 +14,13 @@
 <%= @customers.each do |customer| %>
 <tr>
 <td>
-<%= customer.customer_id %>
+<%= customer.id %>
 </td>
 <td>
-<%= customer.name %>	
+<%= link_to admin_customer_path(customer)  do %>
+<%= customer.first_name %>	
+<%= customer.last_name %>
+<% end %>
 </td>
 <td>
 <%= customer.email %>
