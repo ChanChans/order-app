@@ -20,7 +20,7 @@
   end
 
   Admin.create!(
-    email: "admin@ademin.com",
+    email: "admin@admin.com",
     password: "123456"
   )
   5.times do |n|
