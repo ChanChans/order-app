@@ -47,10 +47,10 @@
 <%= shipping_address.name %>
 </td>
 <td>
-<%= link_to "Edit",edit_customers_shipping_address_path(shipping_address), class: "btn-sm btn-success edit_shipping_addres_#{shipping_address.id}" %>
+<%= link_to "編集する",edit_customers_shipping_address_path(shipping_address), class: "btn-sm btn-success edit_shipping_addres_#{shipping_address.id}" %>
 </td>
 <td>
-	destory
+<%= link_to "削除する",customers_shipping_address_path(shipping_address), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{shipping_address.id}" %>
 </td>
 </tr>
 <% end %>

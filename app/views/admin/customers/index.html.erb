@@ -1,1 +1,35 @@
 <h2>会員一覧</h2>
+
+<table class="table">
+<thead>
+<tr>
+<th>会員ID</th>
+<th>氏名</th>
+<th>メールアドレス</th>
+<th>ステータス</th>
+</tr>
+</thead>
+
+<tbody>
+<% @customers.each do |customer| %>
+<tr>
+<td>
+<%= customer.id %>
+</td>
+<td>
+<%= link_to admin_customer_path(customer)  do %>
+<%= customer.first_name %>	
+<%= customer.last_name %>
+<% end %>
+</td>
+<td>
+<%= customer.email %>
+</td>
+<td>
+<%= customer.is_valid %>	
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
