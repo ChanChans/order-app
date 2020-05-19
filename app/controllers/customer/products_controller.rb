@@ -9,14 +9,16 @@ class Customer::ProductsController < ApplicationController
 	end
 
 	def index
-		@products = Product.all
+		@products = Product.all.page(params[:page]).per(5)
 	end
 
 	def show
         @product = Product.find(params[:id])
+        @cart_item = CartItem.new
 	end
 
 	private
 	def product_params
 		parmas.require(:product).permit(:image ,:name, :explanation, :tax_out_price, :is_sale)
+	end
 end

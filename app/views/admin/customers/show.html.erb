@@ -50,7 +50,7 @@
 <%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn-sm btn-success edit_shipping_addres_#{@customer.id}" %>
 </td>
 <td>
-注文履歴一覧を見る
+<%= link_to "注文履歴一覧を見る", customers_orders_path, class: "btn btn-info" %>
 </td>
 </tr>
 </tbody>
