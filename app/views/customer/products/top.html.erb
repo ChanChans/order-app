@@ -17,11 +17,13 @@
 		<div class="product-container">
 		  　<p id="img_field" class="product">
 		  	    <%= attachment_image_tag(product, :image, size: "180x120", fallback: "no_image.jpg") %>
-	      　</p>
-	        <p>
+	      </p>
+	      <p>
 		  	    <%= product.name %>
 		    </p>
 		    <p>
-		    	¥<%= product.tax_out_price.to_s(:delimited) %></p>
+		    	　¥<%= product.tax_out_price.to_s(:delimited) %>
+		    </p>
 		</div>
 <% end %>
+<p><%= link_to "もっと見る", products_path %></p>
