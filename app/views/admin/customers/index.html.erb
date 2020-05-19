@@ -26,7 +26,11 @@
 <%= customer.email %>
 </td>
 <td>
-<%= customer.is_valid %>	
+<% if customer.is_valid == true %>
+<p>退会済</p>
+<% elsif customer.is_valid == false %>
+<p>有効</p>
+<% end %>
 </td>
 </tr>
 <% end %>

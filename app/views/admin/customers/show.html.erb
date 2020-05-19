@@ -20,7 +20,11 @@
 <tr>
 <td>
 <%= @customer.id %>
-<%= @customer.is_valid %>
+<% if @customer.is_valid == true %>
+<p>退会済</p>
+<% elsif @customer.is_valid == false %>
+<p>有効会員</p>
+<% end %>
 </td>
 <td>
 <%= @customer.first_name %>
