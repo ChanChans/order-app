@@ -45,7 +45,7 @@
 <%= f.text_field :email%>
 </td>
 <td>
-<%= f.text_field :is_valid %>
+<%= f.select :is_valid, [['退会済', true], ['有効', false]]  %>
 </td>
 <td>
 <%= f.submit '変更を保存する' ,class: "btn btn-primary col-xs-1" %>
