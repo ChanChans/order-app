@@ -17,7 +17,7 @@
       </div>
       <div class="field">
         <%= f.label :"ジャンル" %>
-        <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --", class: "genre_id") %>
+        <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --", class: "classic") %>
       </div>
       <div class="field">
         <%= f.label :"税抜価格" %>
@@ -26,7 +26,7 @@
       <div class="field">
         <%= f.label :"販売ステータス" %>
         <!-- booleanのformの書き方 -->
-        <%= f.select :is_sale, [['販売中', true], ['販売停止', false]], prompt: "-- 選択してください --", class: "is_sale" %>
+        <%= f.select :is_sale, [['販売中', true], ['販売停止', false]], prompt: "-- 選択してください --", class: "classic" %>
       </div>
       <div class="actions">
 	      <%= f.submit "新規登録" %>
