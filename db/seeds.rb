@@ -37,7 +37,7 @@
         tax_out_price: "#{n + 1000}",
         genre_id: n + 1,
         is_sale: [['販売中', true], ['販売停止', false]],
-        image: "no_image.jpg"
+        image: open("./app/assets/images/no_image.jpg")
       )
   end
 
