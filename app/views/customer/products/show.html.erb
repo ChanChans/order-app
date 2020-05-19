@@ -1,33 +1,25 @@
-<table class= "table">
-<tr>
-<td>
-<%= attachment_image_tag(@product, :image, size: "180x120", fallback: "no_image.jpg" ) %>
-</td>
-<td>
-<%= @product.name %>
-</td>
-<td>
-<%= @product.explanation %>
-</td>
-<td>
-¥
-<% tax_price = @product.tax_out_price * 1.1 %>
-<%= tax_price.floor.to_s(:delimited) %>
-(税込)
-</td>
-<td>
-<%= form_for @cart_item , url: customers_cart_items_path do |f| %>
-<%= f.hidden_field :product_id, value: @product.id %>
-<%= f.select :quantity, options_for_select((1..20).to_a), include_blank: "個数選択" %>
-<%= f.submit "カートに入れる" %>
-<% end %>
-</td>
-<td>
-
-</td>
-<td>
-カートに入れる
-</td>
-</tr>
-</table>
-
+<div class="row">
+  <div class="col-xs-4">
+    <%= attachment_image_tag(@product, :image, size: "250x180", fallback: "no_image.jpg" ) %>
+  </div>
+  <div class="col-xs-4">
+    <div class="field">
+      <h3><%= @product.name %></h3>
+    </div>
+    <div class="field">
+      <%= @product.explanation %>
+    </div>
+    <div class="field">
+      <% tax_price = @product.tax_out_price * 1.1 %>
+      <h3>¥ <%= tax_price.floor.to_s(:delimited) %></h3>
+      <p>(税込)</p>
+    </div>
+    <div class="field">
+    <%= form_for(@cart_item , url: customers_cart_items_path, method: :post) do |f| %>
+      <%= f.hidden_field :product_id, value: @product.id %>
+      <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+      <%= f.submit "カートに入れる" %>
+    <% end %>
+    </div>
+  </div>
+</div>
