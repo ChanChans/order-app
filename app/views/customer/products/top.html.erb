@@ -1,10 +1,27 @@
+<div class = "example">
+<img src="assets/4dbc7e0f.jpg">
 <p>
   ようこそ、NaganoCakeへ！<br>
   このサイトは、ケーキ販売のECサイトになります。<br>
   会員でない方も商品の閲覧はできますが、<br>
   購入には会員登録が必要になります。<br>
 </p>
+</div>
 
+<p><%= link_to "このサイトについての詳細", about_path %>
 <h2><%= flash[:notice] %></h2>
 
-<h1>オススメ商品</h1>
+<h2>オススメ商品</h2>
+<!-- ランダムに4つ表示されるようになっています -->
+<% @products.shuffle.first(4). each do |product| %>
+		<div class="product-container">
+		  　<p id="img_field" class="product">
+		  	    <%= attachment_image_tag(product, :image, size: "180x120", fallback: "no_image.jpg") %>
+	      　</p>
+	        <p>
+		  	    <%= product.name %>
+		    </p>
+		    <p>
+		    	¥<%= product.tax_out_price.to_s(:delimited) %></p>
+		</div>
+<% end %>
