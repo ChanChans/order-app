@@ -3,17 +3,17 @@
 <%= form_with(model: @shipping_address, url:customers_shipping_address_path, local: true ,method: :patch) do |f| %>
 
     <div class="field row">
-        <%= f.label :郵便番号 %>
+        <%= f.label :"郵便番号(ハイフンなし)" %>
         <%= f.text_field :postal_code, class: "col-xs-3" %>
     </div>
 
     <div class="field row">
-        <%= f.label :住所 %>
+        <%= f.label :"住所" %>
         <%= f.text_field :address, class: "col-xs-8" %>
     </div>
 
     <div class="field row">
-        <%= f.label :宛名 %>
+        <%= f.label :"宛名" %>
         <%= f.text_field :name, class: "col-xs-3" %>
     </div>
 
