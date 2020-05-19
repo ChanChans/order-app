@@ -1,17 +1,18 @@
 class Customer::CartItemsController < ApplicationController
 
-  # before_action :set_cart_item, only: [:update]
-
   def index
-    @cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items
   end
 
 	def update
-    @cart_item.update(quantity: params[:quantity].to_i)
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(quantity: params[:cart_item][:quantity].to_i)
+    redirect_to customers_cart_items_path
 	end
 
 	def create
-    @cart_item = CartItem.new(params_cart_item)
+    @cart_item = current_customer.cart_items.new(params_cart_item)
+    @cart_item.customer_id = current_customer.id
     @cart_item.save
     redirect_to customers_cart_items_path
     # else
@@ -27,10 +28,6 @@ class Customer::CartItemsController < ApplicationController
 	end
 
   private
-
-  # def set_cart_item
-  #   @cart_item = current_customer.cart_items.fins_by(product_id: params[:product_id])
-  # end
 
   def params_cart_item
     params.require(:cart_item).permit(:quantity, :product_id)
