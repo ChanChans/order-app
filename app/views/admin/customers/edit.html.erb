@@ -1,57 +1,57 @@
 <h2>
-<%= @customer.first_name %>
-<%= @customer.last_name %>さんの会員情報編集
+    <%= @customer.first_name %>
+    <%= @customer.last_name %>さんの会員情報編集
 </h2>
 
 <%= form_with(model: @customer, url:admin_customer_path, local: true ,method: :patch) do |f| %>
 
-<table class="table table-hover table-inverse">
-<thead>
-<tr>
-<th>顧客ID</th>
-<th>氏名</th>
-<th>フリガナ</th>
-<th>郵便番号</th>
-<th>住所</th>
-<th>電話番号</th>
-<th>メールアドレス</th>
-<th>会員ステータス</th>
-</tr>
-</thead>
+    <table class="table table-hover table-inverse">
+        <thead>
+            <tr>
+                <th>顧客ID</th>
+                <th>氏名</th>
+                <th>フリガナ</th>
+                <th>郵便番号</th>
+                <th>住所</th>
+                <th>電話番号</th>
+                <th>メールアドレス</th>
+                <th>会員ステータス</th>
+            </tr>
+        </thead>
 
-<tbody>
-<tr>
-<td>
-<%= f.text_field :id %>
-</td>
-<td>
-<%= f.text_field :first_name %>
-<%= f.text_field :last_name %>
-</td>
-<td>
-<%= f.text_field :kana_first_name %>
-<%= f.text_field :kana_last_name %>
-</td>
-<td>
-<%= f.text_field :postal_code %>
-</td>
-<td>
-<%= f.text_field :residence %>
-</td>
-<td>
-<%= f.text_field :phone_number %>
-</td>
-<td>
-<%= f.text_field :email%>
-</td>
-<td>
-<%= f.select :is_valid, [['退会済', true], ['有効', false]]  %>
-</td>
-<td>
-<%= f.submit '変更を保存する' ,class: "btn btn-primary col-xs-1" %>
-</td>
-</tr>
-</tbody>
-</table>
+        <tbody>
+            <tr>
+                <td>
+                    <%= f.text_field :id %>
+                </td>
+                <td>
+                    <%= f.text_field :first_name %>
+                    <%= f.text_field :last_name %>
+                </td>
+                <td>
+                    <%= f.text_field :kana_first_name %>
+                    <%= f.text_field :kana_last_name %>
+                </td>
+                <td>
+                    <%= f.text_field :postal_code %>
+                </td>
+                <td>
+                    <%= f.text_field :residence %>
+                </td>
+                <td>
+                    <%= f.text_field :phone_number %>
+                </td>
+                <td>
+                    <%= f.text_field :email%>
+                </td>
+                <td>
+                    <%= f.select :is_valid, [['退会済', true], ['有効', false]]  %>
+                </td>
+                <td>
+                    <%= f.submit '変更を保存する' ,class: "btn btn-primary col-xs-1" %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 <% end %>
