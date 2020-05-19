@@ -1,5 +1,5 @@
 <h2>ジャンル一覧・追加</h2>
-  <%= form_for(@genre, url: admin_genres_path) do |f| %>
+  <%= form_for(@genre, url: admin_genres_path, html: {method: 'POST'}) do |f| %>
 　　<div>
     ジャンル
       <%= f.text_field :name  %>
