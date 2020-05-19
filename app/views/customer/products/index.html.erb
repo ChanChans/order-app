@@ -4,23 +4,28 @@
 		</div>
 
 		<div class="col-xs-9">
+			<!--ジャンル検索一覧表示まだしていない-->
 				<h2>商品一覧</h2>
-				<p class="products-count">(全<%= @products.count %>件)</p>
+				<p class="products-count">(全<%= @products.total_count %>件中　<%= @products.count %>件)</p>
 
-				<div class="">
+				<div class="clearfix">
 					<% @products. each do |product| %>
-					  <div id="img_field">
+					<div class="product-container">
+					  <p id="img_field" class="product">
 					  	<%= link_to product_path(product.id) do %>
 				          <%= attachment_image_tag(product, :image, size: "180x120", fallback: "no_image.jpg") %>
 				        <% end %>
-				      </div>
-					  <div>
+				      </p>
+				      <p>
 					  	<%= link_to product_path(product.id) do %>
-					  	<%= product.name %></div>
+					  	<%= product.name %>
 					  	<% end %>
-					  <div>¥<%= product.tax_out_price.to_s(:delimited) %></div>
+					  </p>
+					  <p>¥<%= product.tax_out_price.to_s(:delimited) %></p>
+					</div>
 					<% end %>
 				</div>
+				<%= paginate(@products) %>
 		</div>
 
 	</div>
