@@ -1,23 +1,23 @@
 
 	<div class="row">
-		
+
 		<div class="col-xs-8">
 			<h2>マイページ</h2>
 
 				<strong>登録情報
 					<%= link_to "編集する", edit_customers_path, class: "btn btn-info" %>
-					<%= link_to "パスワードを変更する", edit_customer_password_path, class: "btn btn-info" %>
+					<%= link_to "パスワードを変更する", customer_edit_path, class: "btn btn-info" %>
 				</strong>
 
 				<table class="table table-bordered ">
 					<tbody>
 						<tr>
 							<td class="active">氏名</td>
-							<td><%= @customer.first_name %><%= @customer.last_name %></td>
+							<td><%= @customer.last_name %><%= @customer.first_name %></td>
 						</tr>
 						<tr>
 							<td class="active">カナ</td>
-							<td><%= @customer.kana_first_name %><%= @customer.kana_last_name %></td>
+							<td><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td>
 						</tr>
 						<tr>
 							<td class="active">郵便番号</td>

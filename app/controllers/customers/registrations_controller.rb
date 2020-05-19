@@ -14,15 +14,21 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+   #GET /resource/edit
+   def edit
+     super
+   end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
+   #PUT /resource
+   def update
+    current_customer.assign_attributes(account_update_params)
+    if current_customer.save
+    redirect_to customers_path, notice: 'パスワード更新しました'
+    else
+      render "edit"
+    end
+     #super
+   end
 
   # DELETE /resource
   # def destroy
@@ -38,7 +44,11 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+   protected
+
+    def update_resource(resource, params)
+      resource.update_without_current_password(params)
+    end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -46,9 +56,11 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+   def configure_account_update_params
+      
+      devise_parameter_sanitizer.permit(:account_update, keys: [:password])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:password_confirmation])
+   end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

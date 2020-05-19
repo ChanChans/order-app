@@ -45,6 +45,9 @@ Rails.application.routes.draw do
   devise_for :customers, :controllers => {
     :sessions => 'customers/sessions'
   }
-
+  devise_scope :customer do
+    get 'customer/edit', to: 'customers/registrations#edit'
+    put 'customer/edit', to: 'customers/registrations#update'
+  end
 
 end
