@@ -1,1 +1,60 @@
 <h2>ショッピングカート</h2>
+<div calss="row">
+  <div class="col-xs-12">
+    <!-- if カートアイテムがある時 -->
+    リンク(カートを空にする)
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart| %>
+  			  <tr>
+            <td>
+              <%= attachment_image_tag( cart.product, :image, size: "60x50", fallback: "no_image.jpg") %>
+              <%= cart.product.name %>
+            </td>
+            <td>
+              <% tax_price = cart.product.tax_out_price * 1.1 %>
+      				<%= tax_price.floor.to_s(:delimited) %>
+            </td>
+            <td>
+              <%= form_for(cart, url: customers_cart_item_path(cart), method: :patch) do |f| %>
+                <%= f.number_field :quantity, class: "quantity" %>
+                <%= f.submit "変更" %>
+              <% end %>
+            </td>
+            <td>
+              <% sub_price = tax_price * cart.quantity  %>
+              <%= sub_price.floor.to_s(:delimited) %>
+            </td>
+            <td>
+              リンク(削除する)
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class ="action">
+      買い物を続ける
+    </div>
+    <div class="total_price">
+      <p>合計金額</p>
+      <p>
+
+      </p>
+    </div>
+
+    リンク（情報入力に進む)
+
+    <!-- カートアイテムがない時 -->
+    <!-- <p>お客様のショッピングカートに商品はありません。</p> -->
+    <!-- 商品一覧から商品をお探し下さい。 -->
+  </div>
+</div>
