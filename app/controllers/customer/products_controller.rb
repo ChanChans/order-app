@@ -14,9 +14,11 @@ class Customer::ProductsController < ApplicationController
 
 	def show
         @product = Product.find(params[:id])
+        @cart_item = CartItem.new
 	end
 
 	private
 	def product_params
 		parmas.require(:product).permit(:image ,:name, :explanation, :tax_out_price, :is_sale)
+	end
 end
