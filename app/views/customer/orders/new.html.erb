@@ -1,1 +1,31 @@
 <h2>注文情報入力</h2>
+  <%= form_with @order, :url => {:action => :create} do |f| %>
+    <h3>支払い方法</h3>
+      <p>
+        <%= f.radio_button :payment_method, :credit, checkd: "checkd" %>
+        クレジットカード
+      </p></br>
+      <p>
+        <%= f.radio_button :payment_method, :bank, checkd: "checkd" %>
+        銀行振り込み
+      </p>
+    =begin
+    <h3>お届け先</h3>
+        <div>
+          <%= f.radio_button ("address_option", "0") %><%= @customer %>
+        </div>
+
+        <div>
+          <%= f.radio_button ("address_option", "1") %>登録済住所から選択
+          <%= f.collection_select(@shipping_addresses, :id, :address) %>
+        </div>
+
+        <div>
+          <%= f.radio_button ("address_option", "2")  %>新しいお届け先
+          <%= f.collection_select(@shipping_addresses, :id, :address) %>
+        </div>
+
+    <%= f.submit %>
+    =end
+  <% end %>
+
