@@ -8,4 +8,5 @@ class Order < ApplicationRecord
 			  presence: true
 	validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
 	validates :postage, :total_price, numericality: { only_integer: true }
+
 end
