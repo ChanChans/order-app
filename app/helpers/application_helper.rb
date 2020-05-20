@@ -8,12 +8,15 @@ module ApplicationHelper
 
   # 小計の計算
   def sub_price(sub)
-    (tax_price(sub.product.tax_out_price) * sub.quantity).to_s(:delimited)
+    (tax_price(sub.product.tax_out_price) * sub.quantity)
   end
 
   # 合計金額の計算
-  # def total_price
-  #   current_cart = current_customer.cart_items
-  #   sub_price(current_cart).sum.to_s(:delimited)
-  # end
+  def total_price(totals)
+    total_price = 0
+      totals.each do |total|
+        total_price  +=  sub_price(total)
+      end
+      return total_price
+  end
 end

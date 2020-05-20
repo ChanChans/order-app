@@ -14,29 +14,25 @@ class Customer::CartItemsController < ApplicationController
 	def create
     @cart_item = current_customer.cart_items.new(params_cart_item)
 
-      # カートの中に同じ商品が重複しないようにして　古い商品を消して新しい商品を保存する
-      # undefined method `find_by' for nil:NilClassと出る
-    # @existing_cart_item =  @cart_items.find_by(product_id: @cart_item.product_id)
-    # if @existing_cart_item.present?
-    #     @existing_cart_item.destroy
-    # end
+      # カートの中に同じ商品が重複しないようにして　古い商品と新しい商品の数量を合わせる
+    @update_cart_item =  CartItem.find_by(product: @cart_item.product)
+    if @update_cart_item.present?
+        @cart_item.quantity += @update_cart_item.quantity
+        @update_cart_item.destroy
+    end
 
     if @cart_item.save
       redirect_to products_path
-    # else
-    #   @product = CartItem.find_by(product_id: params[:product_id])
-    #   @cart_item = CartItem.new
-    #   render ("customer/products/show")
+    else
+      @product = Product.find(params[:cart_item][:product_id])
+      @cart_item = CartItem.new
+      render ("customer/products/show")
     end
 	end
 
 	def all_destroy
-    # @cart_items = current_customer.cart_items.all
-    # @cart_items = CartItem.where(customer_id: current_customer.id)
-    # @cart_items = CartItem.all
-    # wrong number of arguments (given 0, expected 1)が出る（引数が足りない）
-    # binding.pry
-    @cart_items.destroy
+    @cart_items = current_customer.cart_items
+    @cart_items.destroy_all
     redirect_to customers_cart_items_path
 	end
 
