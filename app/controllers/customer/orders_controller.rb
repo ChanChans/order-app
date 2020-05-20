@@ -1,8 +1,6 @@
 class Customer::OrdersController < ApplicationController
   include ApplicationHelper
 
-  # before_action :current_cart, only:[:log]
-
   def new
   	@order = Order.new
   	@shipping_addresses = ShippingAddress.all
@@ -18,22 +16,26 @@ class Customer::OrdersController < ApplicationController
       # addressにresidenceの値がはいっていれば
       if params[:order][:addresses] == "residence"
         @order.postal_code = current_customer.postal_code
-        @order.address = current_customer.residence
-        @order.name = current_customer.last_name + current_customer.first_name
+        @order.address     = current_customer.residence
+        @order.name        = current_customer.last_name +
+                             current_customer.first_name
 
       # addressにshipping_addressesの値がはいっていれば
-    elsif params[:order][:addresses] == "shipping_addresses"
+      elsif params[:order][:addresses] == "shipping_addresses"
         ship = ShippingAddress.find(params[:order][:shipping_address_id])
         @order.postal_code = ship.postal_code
-        @order.address = ship.address
-        @order.name = ship.name
+        @order.address     = ship.address
+        @order.name        = ship.name
 
       # addressにnew_addressの値がはいっていれば
-    elsif params[:order][:addresses] == "new_address"
+      elsif params[:order][:addresses] == "new_address"
         @order.postal_code = params[:order][:postal_code]
-        @order.address = params[:order][:address]
-        @order.name = params[:order][:name]
-    end
+        @order.address     = params[:order][:address]
+        @order.name        = params[:order][:name]
+      end
+
+     # total_priceに請求額を代入
+     @order.total_price = billing(@order)
 	end
 
 	def create
@@ -41,6 +43,19 @@ class Customer::OrdersController < ApplicationController
     # binding.pry
     @order.save
     redirect_to thanx_customers_orders_path
+
+    # カート商品の情報を注文商品に移動
+    @cart_items = current_cart
+    @cart_items.each do |cart_item|
+    OrderDetail.create(
+      product: cart_item.product,
+      order: @order,
+      quantity: cart_item.quantity,
+      subprice: sub_price(cart_item)
+    )
+    end
+    # 注文完了後、カート商品を空にする
+    @cart_items.destroy_all
 	end
 
 	def thanx
