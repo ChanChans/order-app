@@ -12,10 +12,10 @@
 					<div class="product-container">
 					    <p id="img_field" class="product">
 					      <%= link_to product_path(product.id) do %>
-				        <%= attachment_image_tag(product, :image, size: "180x120", fallback: "no_image.jpg") %>
-				        <% end %>
-				      </p>
-				      <p>
+				          <%= attachment_image_tag(product, :image, size: "180x120", fallback: "no_image.jpg") %>
+				          <% end %>
+				        </p>
+				        <p>
 					  	  <%= link_to product_path(product.id) do %>
 					  	  <%= product.name %>
 					  	  <% end %>

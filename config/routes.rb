@@ -15,7 +15,8 @@ Rails.application.routes.draw do
    # customer
    scope module: :customer do
     resources :products,only: [:index,:show]
-  	resource :customers,only: [:show, :edit, :update] do
+    get 'customer/edit' => 'customers#edit'
+  	resource :customers,only: [:show,:update] do
   		collection do
   	     get 'quit'
   	     patch 'out'
@@ -50,26 +51,24 @@ Rails.application.routes.draw do
   #end
 
   devise_for :customers, :controllers => {
-    :sessions => 'customers/sessions'
+    :sessions => 'customers/sessions',
+    :registrations => 'customers/registrations',
+    :passwords => 'customers/passwords'
   }
-  devise_scope :customer do
-    get 'customer/edit', to: 'customers/registrations#edit'
-    put 'customer/edit', to: 'customers/registrations#update'
-  end
+
   #devise_for :customers, skip: :all
   #devise_scope :customer do
-    #get 'customers/sign_in', to: 'customers/sessions#new'
-    #post 'customers/sign_in', to: 'customers/sessions#create'
-    #delete 'customers/sign_out', to: 'customers/sessions#destroy'
-    #get 'customers/sign_up', to: 'customers/registrations#new'
-    #post 'customers/sign_up', to: 'customers/registrations#create'
-    #get 'customers/password', to: 'customers/passwords#new'
-    #post 'customers/password', to: 'customers/passwords#create'
-    #get 'customers/password/edit', to: 'customers/passwords#edit'
-    #put 'customers/password', to: 'customers/passwords#update'
+    #get 'sign_in', to: 'customers/sessions#new'
+    #post 'sign_in', to: 'customers/sessions#create'
+    #get 'sign_up', to: 'customers/registrations#new'
+    #post 'sign_up', to: 'customers/registrations#create'
+    #get 'password', to: 'customers/passwords#new'
+    #post 'password', to: 'customers/passwords#create'
+    #get 'password/edit', to: 'customers/passwords#edit'
+    #put 'password', to: 'customers/passwords#update'
     #registrationsのedit/updateのURLだけ、わざとcustomerにしています
-    #get 'customer/edit', to: 'customers/registrations#edit'
-    #put 'customer', to: 'customers/registrations#update'
+    #get 'edit', to: 'customers/registrations#edit'
+    #put 'customer/password', to: 'customers/registrations#update'
   #end
 
 end
