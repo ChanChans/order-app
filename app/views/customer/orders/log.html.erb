@@ -21,10 +21,7 @@
               <%= tax_price(cart.product.tax_out_price).to_s(:delimited) %>
             </td>
             <td>
-              <%= form_for(cart, url: customers_cart_item_path(cart), method: :patch) do |f| %>
-                <%= f.number_field :quantity, class: "quantity", size: 10, min: 1 %>
-                <%= f.submit "変更" %>
-              <% end %>
+                <%= cart.quantity %>
             </td>
             <td>
               <%= sub_price(cart).to_s(:delimited) %>
@@ -46,7 +43,7 @@
         </tr>
         <tr>
           <th>請求金額</th>
-          <th><%= @order.total_price %></th>
+          <th><%= billing(@order).to_s(:delimited) %></th>
         </tr>
     </table>
   </div>
@@ -55,21 +52,27 @@
       <tr>
         <th>支払方法</th>
         <th>
-          <%if @order.payment_method == 0 %>
-            クレジットカード
-          <% elsif @order.payment_method == 1 %>
-            銀行振込
-          <% else %>
-            支払方法が指定されていません
-          <% end %>
+          <%= @order.payment_method %>
         </th>
       </tr>
     </table>
     <table class="table table-hover table-inverse">
       <tr>
         <th>お届け先</th>
-        <th><%= "#{@order.postal_code} #{@order.address} #{@order.name}" %></th>
+        <th>
+          <%= "#{@order.postal_code} #{@order.address} #{@order.name}" %>
+        </th>
       </tr>
     </table>
+      <% @order.total_price = billing(@order) %>
+    <%= form_with model: @order, url: customers_orders_path, method: :post, local: true do |f| %>
+      <%= f.hidden_field :postal_code %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :payment_method %>
+      <%= f.hidden_field :total_price %>
+      <%= f.submit "購入を確定する", class:"btn btn-success center-block" %>
+    <% end %>
+
   </div>
 </div>

@@ -1,9 +1,11 @@
 class Customer::CartItemsController < ApplicationController
+  include ApplicationHelper
 
   before_action :set_cart_item, only: [:update, :destroy]
-  before_action :current_cart, only: [:index]
+  # before_action :current_cart, only: [:index]
 
   def index
+    @cart_items = current_cart 
   end
 
 	def update

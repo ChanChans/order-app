@@ -62,4 +62,6 @@ Rails.application.configure do
   logger           = ActiveSupport::Logger.new(STDOUT)
   logger.formatter = config.log_formatter
   config.logger = ActiveSupport::TaggedLogging.new(logger)
+
+  config.web_console.whitelisted_ips = '0.0.0.0/0'
 end

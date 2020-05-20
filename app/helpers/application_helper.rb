@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def current_cart
+    @cart_items = current_customer.cart_items
+  end
+
   # 小数点切り捨てはfloor,３桁区切りはto_s(:delimited)
   # 税込の計算
   def tax_price(price)
@@ -13,10 +17,17 @@ module ApplicationHelper
 
   # 合計金額の計算
   def total_price(totals)
-    total_price = 0
-      totals.each do |total|
-        total_price  +=  sub_price(total)
-      end
-      return total_price
+    price = 0
+    totals.each do |total|
+      price  +=  sub_price(total)
+    end
+    return price
   end
+
+  # 請求額の計算
+  def billing(order)
+    total_price(current_cart) + order.postage
+  end
+
+
 end
