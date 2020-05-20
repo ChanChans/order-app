@@ -36,7 +36,7 @@
               <% end %>
             </td>
             <td>
-              <%= sub_price(cart) %>
+              <%= sub_price(cart).to_s(:delimited) %>
             </td>
             <td>
               <%= link_to "削除する", customers_cart_item_path(cart), method: :delete, data: {confirm: '商品を削除してよろしいですか？'} %>
@@ -55,7 +55,7 @@
       <p>
         <!-- productにNoMethodErrorが出る -->
         <%# <% total_price = @cart_item.product.sum(:tax_out_price) * 1.1 %> %>
-        <%# <%= total_price %> %>
+        <%= total_price(@cart_items).to_s(:delimited) %>
 
       </p>
     </div>
