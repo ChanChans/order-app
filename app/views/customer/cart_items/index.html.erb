@@ -2,10 +2,7 @@
 <div calss="row">
   <div class="col-xs-12">
 
-    <!-- if カートアイテムがない時 -->
     <% if @cart_items.present? %>
-
-
     <%= link_to "カートを空にする", customers_cart_items_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'} %>
 
     <table class="table table-hover table-inverse">
@@ -53,15 +50,13 @@
     <div class="total_price">
       <p>合計金額</p>
       <p>
-        <!-- productにNoMethodErrorが出る -->
-        <%# <% total_price = @cart_item.product.sum(:tax_out_price) * 1.1 %> %>
         <%= total_price(@cart_items).to_s(:delimited) %>
-
       </p>
     </div>
     <%= link_to "情報入力に進む", new_customers_order_path %>
 
     <% else %>
+    <!-- if カートアイテムがない時 -->
     <p>お客様のショッピングカートに商品はありません。</p>
     <p><%= link_to "商品一覧", products_path %>から商品をお探し下さい。</p>
     <% end %>
