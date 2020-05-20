@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
    get  'about' => 'customer/products#about'
    root 'customer/products#top'
-  # devise
+   # devise
   devise_for :admins
   devise_for :customers, :controllers => {
     :sessions => 'customers/sessions'
