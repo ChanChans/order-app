@@ -1,1 +1,75 @@
 <h2>注文情報確認</h2>
+<div calss="row">
+  <div class="col-xs-9">
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart| %>
+          <tr>
+            <td>
+              <%= attachment_image_tag( cart.product, :image, size: "60x50", fallback: "no_image.jpg") %>
+              <%= cart.product.name %>
+            </td>
+            <td>
+              <%= tax_price(cart.product.tax_out_price).to_s(:delimited) %>
+            </td>
+            <td>
+              <%= form_for(cart, url: customers_cart_item_path(cart), method: :patch) do |f| %>
+                <%= f.number_field :quantity, class: "quantity", size: 10, min: 1 %>
+                <%= f.submit "変更" %>
+              <% end %>
+            </td>
+            <td>
+              <%= sub_price(cart).to_s(:delimited) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-xs-3">
+    <table class="table table-hover table-inverse">
+        <tr>
+          <th>送料</th>
+          <th><%= @order.postage %></th>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <th><%= total_price(@cart_items).to_s(:delimited) %></th>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <th><%= @order.total_price %></th>
+        </tr>
+    </table>
+  </div>
+  <div class="col-xs-9">
+    <table class="table table-hover table-inverse">
+      <tr>
+        <th>支払方法</th>
+        <th>
+          <%if @order.payment_method == 0 %>
+            クレジットカード
+          <% elsif @order.payment_method == 1 %>
+            銀行振込
+          <% else %>
+            支払方法が指定されていません
+          <% end %>
+        </th>
+      </tr>
+    </table>
+    <table class="table table-hover table-inverse">
+      <tr>
+        <th>お届け先</th>
+        <th><%= "#{@order.postal_code} #{@order.address} #{@order.name}" %></th>
+      </tr>
+    </table>
+  </div>
+</div>
