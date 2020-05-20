@@ -1,5 +1,19 @@
 <h2>配送先登録/一覧</h2>
 
+<% if flash[:notice] %>
+    <div class="flash">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<% if @shipping_address.errors.any? %>
+     <h3><%= pluralize(@shipping_address.errors.count, "error") %> prohibited this shipping_address from being saved:</h3>
+     <ul><% @shipping_address.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+         <% end %>
+     </ul>
+<% end %>
+
 <%= form_with(model: @shipping_address, :url => {:controller => "customer/shipping_addresses"}, local: true) do |f| %>
 
     <div class="field row">

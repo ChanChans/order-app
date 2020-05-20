@@ -8,6 +8,7 @@ class Customer::ShippingAddressesController < ApplicationController
 	def create
 		  @shipping_address = current_customer.shipping_address.new(shipping_address_params)
 		  if @shipping_address.save
+		  	 flash[:notice] = "新規配送先を作成しました"
 		     redirect_to customers_shipping_addresses_path
 		  else
 		     @shipping_addresses = ShippingAddress.all
@@ -22,6 +23,7 @@ class Customer::ShippingAddressesController < ApplicationController
 	def update
 		  @shipping_address = ShippingAddress.find(params[:id])
 		  if @shipping_address.update(shipping_address_params)
+		  	 flash[:notice] = "配送先を更新しました"
 		     redirect_to customers_shipping_addresses_path
 		  else
 			   render "edit"
