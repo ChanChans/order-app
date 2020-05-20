@@ -14,16 +14,19 @@
 <h2>オススメ商品</h2>
 <!-- ランダムに4つ表示されるようになっています -->
 <% @products.shuffle.first(4). each do |product| %>
+  <% if product.genre.is_valid == true %>
 		<div class="product-container">
-		  　<p id="img_field" class="product">
-		  	    <%= attachment_image_tag(product, :image, size: "180x120", fallback: "no_image.jpg") %>
-	      </p>
-	      <p>
-		  	    <%= product.name %>
-		    </p>
-		    <p>
-		    	　¥<%= product.tax_out_price.to_s(:delimited) %>
-		    </p>
+	  　<p id="img_field" class="product">
+	  	    <%= attachment_image_tag(product, :image, size: "180x120", fallback: "no_image.jpg") %>
+      </p>
+      <p>
+	  	    <%= product.name %>
+	    </p>
+	    <p>
+	    	　¥<%= product.tax_out_price.to_s(:delimited) %>
+	    </p>
 		</div>
+  <% else %>
+  <% end %>
 <% end %>
 <p><%= link_to "もっと見る", products_path %></p>
