@@ -1,8 +1,13 @@
 <h2>ショッピングカート</h2>
 <div calss="row">
   <div class="col-xs-12">
-    <!-- if カートアイテムがある時 -->
-    リンク(カートを空にする)
+
+    <!-- if カートアイテムがない時 -->
+    <% if @cart_items.present? %>
+
+
+    <%= link_to "カートを空にする", customers_cart_items_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'} %>
+
     <table class="table table-hover table-inverse">
       <thead>
         <tr>
@@ -13,6 +18,7 @@
           <th></th>
         </tr>
       </thead>
+
       <tbody>
         <% @cart_items.each do |cart| %>
   			  <tr>
@@ -21,40 +27,43 @@
               <%= cart.product.name %>
             </td>
             <td>
-              <% tax_price = cart.product.tax_out_price * 1.1 %>
-      				<%= tax_price.floor.to_s(:delimited) %>
+      				<%= tax_price(cart.product.tax_out_price).to_s(:delimited) %>
             </td>
             <td>
               <%= form_for(cart, url: customers_cart_item_path(cart), method: :patch) do |f| %>
-                <%= f.number_field :quantity, class: "quantity" %>
+                <%= f.number_field :quantity, class: "quantity", size: 10, min: 1 %>
                 <%= f.submit "変更" %>
               <% end %>
             </td>
             <td>
-              <% sub_price = tax_price * cart.quantity  %>
-              <%= sub_price.floor.to_s(:delimited) %>
+              <%= sub_price(cart) %>
             </td>
             <td>
-              リンク(削除する)
+              <%= link_to "削除する", customers_cart_item_path(cart), method: :delete, data: {confirm: '商品を削除してよろしいですか？'} %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
+
     <div class ="action">
-      買い物を続ける
+      <%= link_to "買い物を続ける", products_path %>
     </div>
+
     <div class="total_price">
       <p>合計金額</p>
       <p>
+        <!-- productにNoMethodErrorが出る -->
+        <%# <% total_price = @cart_item.product.sum(:tax_out_price) * 1.1 %> %>
+        <%# <%= total_price %> %>
 
       </p>
     </div>
+    <%= link_to "情報入力に進む", new_customers_order_path %>
 
-    リンク（情報入力に進む)
-
-    <!-- カートアイテムがない時 -->
-    <!-- <p>お客様のショッピングカートに商品はありません。</p> -->
-    <!-- 商品一覧から商品をお探し下さい。 -->
+    <% else %>
+    <p>お客様のショッピングカートに商品はありません。</p>
+    <p><%= link_to "商品一覧", products_path %>から商品をお探し下さい。</p>
+    <% end %>
   </div>
 </div>

@@ -20,9 +20,7 @@
       </div>
       <div class="field">
 				<p>税込価格(税抜価格)</p>
-				<!-- 小数点切り捨てはfloor、３桁区切りはto_s(:delimited) -->
-				<% tax_price = @product.tax_out_price * 1.1 %>
-				<%= tax_price.floor.to_s(:delimited) %>
+				<%= tax_price(@product.tax_out_price).to_s(:delimited) %>
         (<%= @product.tax_out_price.to_s(:delimited) %>) 円
       </div>
       <div class="field">
