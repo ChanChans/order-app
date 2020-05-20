@@ -49,4 +49,11 @@ class ApplicationController < ActionController::Base
     @customer = Customer.find(params[:id])
   end
 
+  def set_cart_item
+    @cart_item = CartItem.find(params[:id])
+  end
+
+  def current_cart
+    @cart_items = current_customer.cart_items
+  end
 end
