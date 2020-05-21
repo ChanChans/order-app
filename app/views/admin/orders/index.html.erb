@@ -1,4 +1,9 @@
 <h2>注文履歴一覧</h2>
+		<% if flash[:notice] %>
+          <div class="flash">
+             <%= flash[:notice] %>
+          </div>
+        <% end %>
 <div class="row">
 	<div class="col-xs-12">
 		<table class="table">
@@ -15,29 +20,20 @@
 		    <% @orders.each do |order| %>
 		      <tr>
 		        <td>
-		        	<%= link_to admin_order_path(order)  do %>
-		            <%= order.created_at %>
-		            <%= order.updated_at %>
+		          <%= link_to admin_order_path(order)  do %>
+		          <%= order.created_at %>
 		          <% end %>
 		        </td>
 		        <td>
-		          <%= order.customer.name %>
+		          <%= order.name %>
 		        </td>
 		        <td>
-		          <%= order.order_details.quantity.count %>
+		          <%= order.order_details.count %>
 		        </td>
-    	      <td>
-              <% if order.order_status == 0 %>
-              <p>入金まち</p>
-              <% elsif order.order_status == 1 %>
-              <p>入金確認</p>
-              <% elsif order.order_status == 2 %>
-              <p>発送準備中</p>
-              <% elsif order.order_status == 3 %>
-              <p>発送済</p>
-              <% end %>
-     	      </td>
-     	    </tr>
+    	        <td>
+    	      	  <%= order.order_status %>
+     	        </td>
+     	      </tr>
 		    <% end %>
 		  </tbody>
 		</table>
