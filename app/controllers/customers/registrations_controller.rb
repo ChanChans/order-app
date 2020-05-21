@@ -2,7 +2,7 @@
 
 class Customers::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-   before_action :configure_account_update_params, only: [:update]
+   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -21,8 +21,9 @@ class Customers::RegistrationsController < Devise::RegistrationsController
 
    #PUT /resource
    def update
-    current_customer.assign_attributes(account_update_params)
-    if current_customer.save
+    # current_customer.assign_attributes(account_update_params)
+    @customer = current_customer.find(params[:id])
+    if current_customer.update(customer_params)
     redirect_to customers_path, notice: 'パスワード更新しました'
     else
       render customer_edit_path
@@ -50,17 +51,21 @@ class Customers::RegistrationsController < Devise::RegistrationsController
       resource.update_without_current_password(params)
     end
 
+    def customer_params
+      params.require(:customer).permit(:password, :password_confirmation)
+    end
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
-   def configure_account_update_params
+   # def configure_account_update_params
 
-      devise_parameter_sanitizer.permit(:account_update, keys: [:password])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:password_confirmation])
-   end
+   #    devise_parameter_sanitizer.permit(:account_update, keys: [:password])
+   #    devise_parameter_sanitizer.permit(:account_update, keys: [:password_confirmation])
+   # end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

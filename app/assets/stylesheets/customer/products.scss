@@ -7,14 +7,24 @@
     display: block;
     clear: both;
 }
-.product-index{
+.product-index {
 	padding-top: 50px;
 }
-.product-headline{
+.product-headline {
 	display: inline;
 	margin: 10px;
 }
-.product-container{
+.product-container {
 	float: left;
 	margin: 40px 15px 20px 15px;
+}
+.toppage-head {
+	margin-bottom: 0;
+}
+.product-recommend {
+	float: left;
+	margin: 10px 15px 10px 15px;
+}
+.product-show {
+	margin-top: 100px;
 }
