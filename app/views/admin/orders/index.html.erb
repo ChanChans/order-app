@@ -16,19 +16,28 @@
 		      <tr>
 		        <td>
 		        	<%= link_to admin_order_path(order)  do %>
-		            <%= order.last_name %><%= order.first_name %>
-		          	<% end %>
+		            <%= order.created_at %>
+		            <%= order.updated_at %>
+		          <% end %>
 		        </td>
 		        <td>
-		          <%=  %>
+		          <%= order.customer.name %>
 		        </td>
 		        <td>
-		          <%=  %>
+		          <%= order.order_details.quantity.count %>
 		        </td>
-		        <td>
-		          <%= %>
-		        </td>
-		      </tr>
+    	      <td>
+              <% if order.order_status == 0 %>
+              <p>入金まち</p>
+              <% elsif order.order_status == 1 %>
+              <p>入金確認</p>
+              <% elsif order.order_status == 2 %>
+              <p>発送準備中</p>
+              <% elsif order.order_status == 3 %>
+              <p>発送済</p>
+              <% end %>
+     	      </td>
+     	    </tr>
 		    <% end %>
 		  </tbody>
 		</table>
