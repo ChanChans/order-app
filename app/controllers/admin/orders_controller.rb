@@ -12,6 +12,9 @@ class Admin::OrdersController < ApplicationController
 	end
 
 	def update
+		@order = Order.find(params[:id])
+		if @order.update(order_params)
+		   
 	end
 
 
