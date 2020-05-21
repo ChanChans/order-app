@@ -22,9 +22,22 @@
 	margin-bottom: 0;
 }
 .product-recommend {
+	position: relative;
 	float: left;
 	margin: 10px 15px 10px 15px;
 }
+.product-more {
+	position: absolute;
+	bottom: 5px;
+	right: 120px;
+}
 .product-show {
 	margin-top: 100px;
+}
+.tax {
+	font-size: 15px;
+	margin-left: 5px;
+}
+.product-description {
+	margin-bottom: 50px;
 }
