@@ -1,35 +1,36 @@
 <h2>注文履歴詳細</h2>
-<div class="row">
-	<div class="col-xs-12">
-		<div class="buyer clearfix">
-			<table class="table">
-			    <tbody>
-		            <tr>
-		            	<td>購入者</td>
-		                <td><%= @customer.last_name %><%= @customer.first_name %></td>
-		            </tr>
-		            <tr>
-		            	<td>配送先</td>
-		                <td><%= @shipping_address.postal_code %> <%= @shipping_address.residence %></td>
-		            </tr>
-		            <tr>
-		            	<td></td>
-		            	<td><%= @shipping_address.name %></td>
-		            </tr>
-		            <tr>
-		            	<td>支払方法</td>
-		            	<td></td>
-		            </tr>
-		            <tr>
-		            	<td>注文ステータス</td>
-		            	<td>
-		            		 <%= select :order_status, :name, Order.order_status.keys.to_a, include_blank: true %>
-		               	</td>
-		            </tr>
-			    </tbody>
-			</table>
-		</div>
-		<div class="buyer-order">
+
+    <div class="field row" >
+ 	    <h4>購入者</h4>
+ 	    <h5><%= @order.name %></h5>
+    </div>
+
+    <div class="field row">
+      <h4>配送先</h4>
+      <h5><%= @order.postal_code %></h5>
+      <h5><%= @order.address %></h5>
+    </div>
+
+    <div class="field row">
+      <h4>支払方法</h4>
+      <h5><%= @order.payment_method %></h5>
+    </div>
+
+ 	  <%= form_for(@order, url: admin_order_path, method: :patch) do |f| %>
+    <div class="field row">
+ 	    <h4>注文ステータス</h4>
+      <h5><%= f.select :order_status, [['入金待ち'], ['入金確認'], ['製作中'], ['発送準備中'], ['発送済']], class: "order_status" %></h5>
+    </div>
+
+    <div class="actions row">
+      <h5><%= f.submit '更新'  ,class: "btn btn-primary col-xs-1" %></h5>
+    </div>
+
+    <% end %>
+
+
+
+ 		<div class="buyer-order">
 			<table class="table table-hover table-inverse">
 			    <thead>
 			        <tr>
@@ -41,6 +42,11 @@
 			        </tr>
 			    </thead>
 			    <tbody>
+			    <% if flash[:notice] %>
+          <div class="flash">
+             <%= flash[:notice] %>
+          </div>
+          <% end %>
 					<% @order_details.each do |order_detail| %>
 					<tr>
 			            <td>
@@ -55,19 +61,22 @@
 			            <td>
 			              <%= sub_price(order_detail).to_s(:delimited) %>
 			            </td>
+			            <%= form_for(order_detail, url: admin_order_details_path(order_detail), method: :patch) do |f| %>
 			            <td>
-				          <%= select :produciton_status,:name,Order_detail.produciton_statuses.keys.to_a %>
-						      <%= select :produciton_status,:name,Order_detail.produciton_statuses.values.to_a %>
+			            	<%= f.select :produciton_status, [['着手不可'], ['製作待ち'], ['製作中'], ['製作完了']], class: "order_status" %>
 			            </td>
+			            <td>
+			            	<%= f.submit '更新'  ,class: "btn btn-primary col-xs-7" %>
+			            </td>
+			            <% end %>
 			      	</tr>
 			    	<% end %>
 			    </tbody>
 			</table>
 		</div>
 		<div class="total">
-			<P><strong>商品合計</strong><%= total_price(@order_details).to_s(:delimited) %></P>
-			<p><strong>送料</strong><%= postage %></p>
-			<p><strong>請求金額合計</strong><%= total_price %></p>
+			<P><strong>商品合計</strong><%= total_price(@order_details).to_s(:delimited) %>円</P>
+			<p><strong>送料</strong><%= @order.postage.to_s(:delimited) %>円</p>
+			<p><strong>請求金額合計</strong><%= @order.total_price.to_s(:delimited) %>円</p>
 		</div>
-	</div>
-</div>
+

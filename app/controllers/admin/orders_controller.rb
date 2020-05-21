@@ -5,16 +5,23 @@ class Admin::OrdersController < ApplicationController
 	end
 
 	def show
-		@customer = Customer.find(params[:id])
-		@shipping_address = ShippingAddress.find(params[:id])
-		@order_details = OrderDetail.find(params[:id])
+		@order_details = OrderDetail.all
 		@order = Order.find(params[:id])
 	end
 
 	def update
 		@order = Order.find(params[:id])
 		if @order.update(order_params)
-		   
+		   flash[:notice] = "ステータスを更新しました"
+		   redirect_to admin_orders_path
+		else
+		   render "show"
+		end
+	end
+
+	private
+	def order_params
+		  params.require(:order).permit(:order_status)
 	end
 
 
