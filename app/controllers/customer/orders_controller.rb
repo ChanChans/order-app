@@ -32,6 +32,7 @@ class Customer::OrdersController < ApplicationController
         @order.postal_code = params[:order][:postal_code]
         @order.address     = params[:order][:address]
         @order.name        = params[:order][:name]
+        @ship = "1"
       end
 
      # total_priceに請求額を代入
@@ -40,16 +41,20 @@ class Customer::OrdersController < ApplicationController
 
 	def create
     @order = current_customer.orders.new(order_params)
-    # binding.pry
     @order.save
     redirect_to thanx_customers_orders_path
+
+    # もし情報入力でnew_addressの場合ShippingAddressに保存
+    if params[:order][:ship] == "1"
+      ship = current_customer.shipping_address.create(address_params)
+    end
 
     # カート商品の情報を注文商品に移動
     @cart_items = current_cart
     @cart_items.each do |cart_item|
     OrderDetail.create(
-      product: cart_item.product,
-      order: @order,
+      product:  cart_item.product,
+      order:    @order,
       quantity: cart_item.quantity,
       subprice: sub_price(cart_item)
     )
@@ -74,4 +79,11 @@ class Customer::OrdersController < ApplicationController
     params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_price)
   end
 
+  def address_params
+    params.require(:order).permit(:postal_code, :address, :name)
+  end
+
+  # def to_log
+  #   redirect_to customers_cart_items_path if params[:id] == "log"
+  # end
 end
