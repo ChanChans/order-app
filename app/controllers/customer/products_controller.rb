@@ -2,8 +2,9 @@ class Customer::ProductsController < ApplicationController
 
   before_action :authenticate_customer!, only: [:show]
 
-    def top
-    	@products = Product.all
+  def top
+    @products = Product.all
+    @genres = Genre.all
 	end
 
 	def about

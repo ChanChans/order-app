@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  devise_for :customers, :controllers => {
+    :sessions => 'customers/sessions',
+    :registrations => 'customers/registrations',
+    :passwords => 'customers/passwords'
+  }
   # admin
   namespace :admin do
     resources :customers,only: [:index,:show,:edit,:update]
@@ -50,11 +56,6 @@ Rails.application.routes.draw do
     #delete 'admins/sign_out', to:'admin/sessions#destory'
   #end
 
-  devise_for :customers, :controllers => {
-    :sessions => 'customers/sessions',
-    :registrations => 'customers/registrations',
-    :passwords => 'customers/passwords'
-  }
 
   #devise_for :customers, skip: :all
   #devise_scope :customer do
