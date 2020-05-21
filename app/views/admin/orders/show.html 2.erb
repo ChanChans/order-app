@@ -1,0 +1,73 @@
+<h2>注文履歴詳細</h2>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="buyer clearfix">
+			<table class="table">
+			    <tbody>
+		            <tr>
+		            	<td>購入者</td>
+		                <td><%= @customer.last_name %><%= @customer.first_name %></td>
+		            </tr>
+		            <tr>
+		            	<td>配送先</td>
+		                <td><%= @shipping_address.postal_code %> <%= @shipping_address.residence %></td>
+		            </tr>
+		            <tr>
+		            	<td></td>
+		            	<td><%= @shipping_address.name %></td>
+		            </tr>
+		            <tr>
+		            	<td>支払方法</td>
+		            	<td></td>
+		            </tr>
+		            <tr>
+		            	<td>注文ステータス</td>
+		            	<td>
+		            		 <%= select :order_status, :name, Order.order_status.keys.to_a, include_blank: true %>
+		               	</td>
+		            </tr>
+			    </tbody>
+			</table>
+		</div>
+		<div class="buyer-order">
+			<table class="table table-hover table-inverse">
+			    <thead>
+			        <tr>
+			          <th>商品名</th>
+			          <th>単価（税込）</th>
+			          <th>数量</th>
+			          <th>小計</th>
+			          <th>製作ステータス</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+					<% @order_details.each do |order_detail| %>
+					<tr>
+			            <td>
+			              <%= order_detail.product.name %>
+			            </td>
+			            <td>
+			              <%= tax_price(order_detail.product.tax_out_price).to_s(:delimited) %>
+			            </td>
+			            <td>
+			              <%= order_detail.quantity %>
+			            </td>
+			            <td>
+			              <%= sub_price(order_detail).to_s(:delimited) %>
+			            </td>
+			            <td>
+				          <%= select :produciton_status,:name,Order_detail.produciton_statuses.keys.to_a %>
+						      <%= select :produciton_status,:name,Order_detail.produciton_statuses.values.to_a %>
+			            </td>
+			      	</tr>
+			    	<% end %>
+			    </tbody>
+			</table>
+		</div>
+		<div class="total">
+			<P><strong>商品合計</strong><%= total_price(@order_details).to_s(:delimited) %></P>
+			<p><strong>送料</strong><%= postage %></p>
+			<p><strong>請求金額合計</strong><%= total_price %></p>
+		</div>
+	</div>
+</div>

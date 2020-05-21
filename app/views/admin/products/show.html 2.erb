@@ -1,0 +1,38 @@
+<h2>商品詳細</h2>
+<div class="row">
+	  <div class="col-xs-4">
+      <div id="img_field">
+          <%= attachment_image_tag(@product, :image, size: "250x180", fallback: "no_image.jpg") %>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="field">
+				<p>商品名</p>
+				<%= @product.name %>
+      </div>
+      <div class="field">
+				<p>商品説明</p>
+        <%= @product.explanation %>
+      </div>
+      <div class="field">
+				<p>ジャンル</p>
+        <%= @product.genre.name %>
+      </div>
+      <div class="field">
+				<p>税込価格(税抜価格)</p>
+				<%= tax_price(@product.tax_out_price).to_s(:delimited) %>
+        (<%= @product.tax_out_price.to_s(:delimited) %>) 円
+      </div>
+      <div class="field">
+				<p>販売ステータス</p>
+        <% if @product.is_sale == true %>
+					<p>販売中</p>
+				<% elsif @product.is_sale == false %>
+					<p>販売停止中</p>
+				<% end %>
+      </div>
+			<div class="actions">
+	      <%= link_to "編集する", edit_admin_product_path(@product), data: {"turbolinks" => false} %>
+      </div>
+    </div>
+</div>

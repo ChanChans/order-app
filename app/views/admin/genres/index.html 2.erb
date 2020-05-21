@@ -1,0 +1,47 @@
+<h2>ジャンル一覧・追加</h2>
+  <%= form_for @genre, :url => {:action => :create} do |f| %>
+    <!-- エラーメッセージ表示-->
+    <% if @genre.errors.any? %>
+      <h3><%= @genre.errors.count %>error occurrence</h3>
+        <ul>
+          <% @genre.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    <% end %>
+    <!-- エラーメッセージ表示-->
+　　 <div>
+      ジャンル
+        <%= f.text_field :name  %>
+          <%= f.radio_button :is_valid, true %>
+          <%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %>
+          <%= f.radio_button :is_valid, false %>
+          <%= f.label :is_valid, "無効", {value: :false, style: "display: inline-block;"} %>
+        <%= f.submit "追加", class: "btn btn-info" %>
+    </div>
+  <% end %>
+
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <td>ジャンル</td>
+      <td>状態</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @genres.each do |genre| %>
+      <tr>
+        <td><%= genre.name%></td>
+
+        <% if genre.is_valid == true %>
+          <td>有効</td>
+        <% elsif genre.is_valid == false %>
+          <td>無効</td>
+        <% end %>
+
+        <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-info" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

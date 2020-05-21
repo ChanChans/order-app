@@ -1,0 +1,37 @@
+<h2>商品新規登録</h2>
+<div class="row">
+  <%= form_for(@product, url: admin_products_path, method: :post) do |f| %>
+	  <div class="col-xs-4">
+      <div class="img_field">
+      </div>
+	      <%= f.attachment_field :image, class: "image" %>
+    </div>
+    <div class="col-xs-4">
+      <div class="field">
+        <%= f.label :"商品名" %>
+        <%= f.text_field :name, class: "name" %>
+      </div>
+      <div class="field">
+        <%= f.label :"商品説明" %>
+        <%= f.text_area :explanation, class: "explanation" %>
+      </div>
+      <div class="field">
+        <%= f.label :"ジャンル" %>
+        <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --", class: "classic") %>
+      </div>
+      <div class="field">
+        <%= f.label :"税抜価格" %>
+        <%= f.text_field :tax_out_price, class: "tax_out_price" %>円
+      </div>
+      <div class="field">
+        <%= f.label :"販売ステータス" %>
+        <!-- booleanのformの書き方 -->
+        <%= f.select :is_sale, [['販売中', true], ['販売停止', false]], prompt: "-- 選択してください --", class: "classic" %>
+      </div>
+      <div class="actions">
+	      <%= f.submit "新規登録" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>

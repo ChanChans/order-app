@@ -1,0 +1,79 @@
+<h2>注文情報確認</h2>
+<div calss="row">
+  <div class="col-xs-9">
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart| %>
+          <tr>
+            <td>
+              <%= attachment_image_tag( cart.product, :image, size: "60x50", fallback: "no_image.jpg") %>
+              <%= cart.product.name %>
+            </td>
+            <td>
+              <%= tax_price(cart.product.tax_out_price).to_s(:delimited) %>
+            </td>
+            <td>
+                <%= cart.quantity %>
+            </td>
+            <td>
+              <%= sub_price(cart).to_s(:delimited) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-xs-3">
+    <table class="table table-hover table-inverse">
+        <tr>
+          <th>送料</th>
+          <th><%= @order.postage %></th>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <th><%= total_price(@cart_items).to_s(:delimited) %></th>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <th><%= billing(@order).to_s(:delimited) %></th>
+        </tr>
+    </table>
+  </div>
+  <div class="col-xs-9">
+    <table class="table table-hover table-inverse">
+      <tr>
+        <th>支払方法</th>
+        <th>
+          <%= @order.payment_method %>
+        </th>
+      </tr>
+    </table>
+    <table class="table table-hover table-inverse">
+      <tr>
+        <th>お届け先</th>
+        <th>
+          <%= "#{@order.postal_code} #{@order.address} #{@order.name}" %>
+        </th>
+      </tr>
+    </table>
+
+    <!-- 表示とformを分けて記入 -->
+    <%= form_with model: @order, url: customers_orders_path, method: :post, local: true do |f| %>
+      <%= f.hidden_field :postal_code %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :payment_method %>
+      <%= f.hidden_field :total_price %>
+      <%= f.submit "購入を確定する", class:"btn btn-success center-block" %>
+    <% end %>
+
+  </div>
+</div>

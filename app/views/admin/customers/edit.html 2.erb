@@ -1,0 +1,78 @@
+<% if @customer.errors.any? %>
+     <h3><%= pluralize(@customer.errors.count, "error") %> prohibited this shipping_address from being saved:</h3>
+     <ul><% @customer.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+         <% end %>
+     </ul>
+<% end %>
+<h2>
+  <%= @customer.last_name %>
+  <%= @customer.first_name %>さんの会員情報編集
+</h2>
+
+<%= form_with(model: @customer, url:admin_customer_path, local: true ,method: :patch) do |f| %>
+
+<body>
+  <table class="table table-hover table-inverse">
+    <tr>
+      <th>会員ID</th>
+      <td>
+        <%= f.text_field :id %>
+      </td>
+    </tr>
+    <tr>
+      <th>氏名</th>
+      <td>
+        <%= f.text_field :last_name %>
+        <%= f.text_field :first_name %>
+      </td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td>
+        <%= f.text_field :kana_last_name %>
+        <%= f.text_field :kana_first_name %>
+      </td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td>
+        <%= f.text_field :postal_code %>
+      </td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td>
+        <%= f.text_field :residence %>
+      </td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td>
+        <%= f.text_field :phone_number %>
+      </td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td>
+        <%= f.text_field :email%>
+      </td>
+    </tr>
+    <tr>
+      <th>会員ステータス</th>
+      <td>
+        <%= f.radio_button :is_valid, true %>
+        <%= f.label :is_valid, "退会済", {value: :true, style: "display: inline-block;"} %>
+        <%= f.radio_button :is_valid, false %>
+        <%= f.label :is_valid, "有効", {value: :false, style: "display: inline-block;"} %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.submit '変更を保存する' ,class: "btn btn-primary" %>
+      </td>
+    </tr>
+  </table>
+</body>
+
+<% end %>

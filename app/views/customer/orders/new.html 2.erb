@@ -1,0 +1,98 @@
+<h2>注文情報入力</h2>
+<<<<<<< HEAD
+  <%= form_with model: @order, url: {controller: 'orders', action: 'create' } do  |f| %>
+    <h3>支払い方法</h3>
+      <p>
+        <%= f.radio_button :payment_method, :credit, checkd: "checkd" %>
+        クレジットカード
+      </p></br>
+      <p>
+        <%= f.radio_button :payment_method, :bank, checkd: "checkd" %>
+        銀行振り込み
+      </p>
+
+    <h3>お届け先</h3>
+        <div>
+          <%= f.radio_button :address_option, 0 %><%= @customer %>
+        </div>
+        <div>
+          <%= f.radio_button :address_option, 1 %>登録済住所から選択
+          <%= f.collection_select :address, @shipping_addresses, :id, :address_all %>
+        </div>
+        <div>
+          <%= f.radio_button :address_option, 2  %>新しいお届け先
+          <%= form_with model: @shipping_address, url: {controller: 'orders', action: 'create' } do |f| %>
+            <div class="field row">
+              <%= f.label :"郵便番号(ハイフンなし)" %>
+              <%= f.text_field :postal_code %>
+            </div>
+            <div class="field row">
+              <%= f.label :"住所" %>
+              <%= f.text_field :address %>
+            </div>
+
+            <div class="field row">
+              <%= f.label :"宛名" %>
+              <%= f.text_field :name %>
+            </div>
+          <% end %>
+=======
+<% if current_customer.cart_items.present? %>
+  <%= form_with :model => @order, url:log_customers_orders_path, method: :post, local: true  do |f| %>
+    <h3>支払い方法</h3>
+    <p>
+      <%= f.radio_button :payment_method, :"クレジットカード", checked: true %>
+      クレジットカード
+    </p>
+    <p>
+      <%= f.radio_button :payment_method, :"銀行振込" %>
+      銀行振り込み
+    </p>
+
+    <h3>お届け先</h3>
+      <div>
+        <%= f.radio_button :addresses, "residence", checked: true  %>
+        ご自身の住所<br>
+        <%= "#{current_customer.postal_code} #{current_customer.residence}" %>
+        <br>
+        <%= "#{current_customer.first_name} #{current_customer.last_name}" %>
+      </div>
+
+      <div>
+        <%= f.radio_button :addresses, "shipping_addresses" %>
+          登録済住所から選択<br>
+          <!-- order_addressはshipping_addressのモデルでpostal_code+address+name -->
+        <%= f.collection_select(:shipping_address_id, @shipping_addresses, :id, :order_address) %>
+      </div>
+      <div>
+        <%= f.radio_button :addresses, "new_address" %>
+        新しいお届け先<br>
+        <div class="field">
+          <%= f.label :"郵便番号(ハイフンなし)" %>
+          <%= f.text_field :postal_code %>
+        </div>
+        <div class="field">
+          <%= f.label :"住所" %>
+          <%= f.text_field :address %>
+>>>>>>> e9cf965a4cd6e4bea59394e635704cfe326c1ee3
+        </div>
+        <div class="field">
+          <%= f.label :"宛名" %>
+          <%= f.text_field :name %>
+        </div>
+      </div>
+
+<<<<<<< HEAD
+      <%= f.submit '確認画面へ進む' ,class: "btn btn-primary" %>
+  <% end %>
+
+
+=======
+    <%= f.submit "確認画面へ進む" %>
+  <% end %>
+<% else %>
+    <!-- if カートアイテムがない時 -->
+    <p>お客様のショッピングカートに商品はありませんので注文情報の入力ができません。</p>
+    <p><%= link_to "商品一覧", products_path %>から商品をお探し下さい。</p>
+<% end %>
+>>>>>>> e9cf965a4cd6e4bea59394e635704cfe326c1ee3

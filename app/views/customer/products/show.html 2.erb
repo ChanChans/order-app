@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-xs-2">
+      <!-- ジャンル検索 -->
+    </div>
+
+    <div class="col-xs-5 product-show">
+      <%= attachment_image_tag(@product, :image, size: "450x270", fallback: "no_image.jpg" ) %>
+    </div>
+
+    <div class="col-xs-5 product-show">
+      <div class="field">
+        <h3><%= @product.name %></h3>
+      </div>
+      <div class="field">
+        <%= @product.explanation %>
+      </div>
+      <div class="field">
+        <h3>¥ <%= tax_price(@product.tax_out_price).to_s(:delimited) %></h3>
+        <p>(税込)</p>
+      </div>
+      <div class="field">
+        <%= form_for(@cart_item , url: customers_cart_items_path, method: :post) do |f| %>
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+          <%= f.submit "カートに入れる" %>
+        <% end %>
+      </div>
+    </div>
+
+</div>

@@ -1,0 +1,70 @@
+<% if flash[:notice] %>
+    <div class="flash">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+<h2>
+    <%= @customer.first_name %>
+    <%= @customer.last_name %>さんの会員詳細
+</h2>
+
+<body>
+  <table class="table table-hover table-inverse">
+      <tr>
+          <th>顧客ID</th>
+          <td>
+              <%= @customer.id %>
+              <% if @customer.is_valid == true %>
+              <p>退会済</p>
+              <% elsif @customer.is_valid == false %>
+              <p>有効会員</p>
+              <% end %>
+          </td>
+      </tr>
+      <tr>
+          <th>氏名</th>
+          <td>
+              <%= @customer.first_name %>
+              <%= @customer.last_name %>
+          </td>
+      </tr>
+      <tr>
+          <th>フリガナ</th>
+          <td>
+              <%= @customer.kana_first_name %>
+              <%= @customer.kana_last_name %>
+          </td>
+      </tr>
+      <tr>
+          <th>郵便番号</th>
+          <td>
+              <%= @customer.postal_code %>
+          </td>
+      </tr>
+      <tr>
+          <th>住所</th>
+          <td>
+              <%= @customer.residence %>
+          </td>
+      </tr>
+      <tr>
+          <th>電話番号</th>
+          <td>
+              <%= @customer.phone_number %>
+          </td>
+      </tr>
+      <tr>
+          <th>メールアドレス</th>
+          <td>
+              <%= @customer.email%>
+          </td>
+      </tr>
+      <tr>
+        
+          <td>
+              <%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn-sm btn-success edit_shipping_addres_#{@customer.id}" %>
+              <%= link_to "注文履歴一覧を見る", customers_orders_path, class: "btn btn-info" %>
+          </td>
+      </tr>
+  </table>
+</body>
