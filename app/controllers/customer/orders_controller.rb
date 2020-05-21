@@ -46,7 +46,7 @@ class Customer::OrdersController < ApplicationController
 
     # もし情報入力でnew_addressの場合ShippingAddressに保存
     if params[:order][:ship] == "1"
-      ship = current_customer.shipping_address.create(address_params)
+      current_customer.shipping_address.create(address_params)
     end
 
     # カート商品の情報を注文商品に移動
