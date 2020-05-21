@@ -44,13 +44,16 @@
               <%= f.text_field :name %>
             </div>
           </div>
-
-          <%= f.submit "確認画面へ進む", class: "btn btn-success" %>
-      <% end %>
-    <% else %>
-        <!-- if カートアイテムがない時 -->
-        <p>お客様のショッピングカートに商品はありませんので注文情報の入力ができません。</p>
-        <p><%= link_to "商品一覧", products_path %>から商品をお探し下さい。</p>
-    <% end %>
+              <%= f.submit "確認画面へ進む" %>
+            <% end %>
+            <%= link_to customers_cart_items_path do %>
+              カート(<%= current_customer.cart_items.count %>)へ戻る
+            <% end %>
+          <% else %>
+              <!-- if カートアイテムがない時 -->
+              <p>お客様のショッピングカートに商品はありませんので注文情報の入力ができません。</p>
+              <p><%= link_to "商品一覧", products_path %>から商品をお探し下さい。</p>
+          <% end %>
   </div>
 </div>
+

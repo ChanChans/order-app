@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Customers::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-   # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -14,22 +14,33 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-   #GET /resource/edit
-   def edit
-     #super
-   end
+  # GET /resource/edit
+  def edit
+    super
+     # @customer = current_customer
+  end
 
-   #PUT /resource
-   def update
-    # current_customer.assign_attributes(account_update_params)
-    @customer = current_customer.find(params[:id])
-    if current_customer.update(customer_params)
-    redirect_to customers_path, notice: 'パスワード更新しました'
+  # PUT /resource
+  def update
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+    resource_updated = update_resource(resource, account_update_params)
+    yield resource if block_given?
+    if resource_updated
+      set_flash_message_for_update(resource, prev_unconfirmed_email)
+      bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
+
+      # respond_with resource, location: after_update_path_for(resource)
+      redirect_to customers_path
     else
-      render customer_edit_path
+      clean_up_passwords resource
+      set_minimum_password_length
+      # respond_with resource
+      redirect_to customers_path
     end
-     #super
-   end
+    # super
+  end
 
   # DELETE /resource
   # def destroy
@@ -45,27 +56,32 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-   protected
+  protected
 
-    def update_resource(resource, params)
-      resource.update_without_current_password(params)
-    end
-
-    def customer_params
-      params.require(:customers).permit(:password, :password_confirmation)
-    end
+  def customer_params
+    params.require(:customers).permit(:password, :password_confirmation)
+  end
+  # If you have extra params to permit, append them to the sanitizer.
+  def configure_sign_up_params
+   devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  # def configure_account_update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:password, :password_confirmation])
   # end
 
-  # If you have extra params to permit, append them to the sanitizer.
-   # def configure_account_update_params
+  # def configure_account_update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  # end
 
-   #    devise_parameter_sanitizer.permit(:account_update, keys: [:password])
-   #    devise_parameter_sanitizer.permit(:account_update, keys: [:password_confirmation])
-   # end
+  def update_resource(resource, params)
+    resource.update_with_password(params)
+  end
+
+  def after_update_path_for(resource)
+    customers_path(resource)
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

@@ -34,7 +34,7 @@
       Product.create!(
         name: "チーズケーキ#{n + 1}",
         explanation: "甘くて美味しい#{n + 1}",
-        tax_out_price: "#{n + 1000}",
+        tax_out_price: "#{1000 + (n * 1000)}",
         genre_id: n + 1,
         is_sale: [['販売中', true], ['販売停止', false]],
         image: open("./app/assets/images/no_image.jpg")
@@ -50,22 +50,23 @@
   )
 end
 
-# 5.times do |n|
-#   Order.create!(
-#     address: "大阪#{n + 1}",
-#     postal_code: "123456#{n + 1}",
-#     name: "test#{n + 1}",
-#     postage: "800",
-#     total_price: "#{n + 1000}",
-#     payment_method: [['クレジットカード', 0], ['銀行振込', 1]],
-#     order_status: [['入金待ち', 0], ['入金確認', 1], ['製作中', 2], ['発送準備中', 3], ['発送済み', 4]]
-#     )
-# end
+5.times do |n|
+  Order.create!(
+    customer_id: n +1,
+    address: "大阪#{n + 1}",
+    postal_code: "123456#{n + 1}",
+    name: "test#{n + 1}",
+    postage: "800",
+    total_price: "#{1000 + (n * 1000) +800}",
+    payment_method: "クレジットカード"
+    )
+end
 
-# 5.times do |n|
-#   OrderDetail.create!(
-#     quantity: n + 1,
-#     subprice: "#{n + 1000}",
-#     produciton_status: [['着手不可', 0], ['製作待ち', 1], ['製作中', 2], ['製作完了', 3]]
-#     )
-# end
+5.times do |n|
+  OrderDetail.create!(
+    product_id: n + 1,
+    order_id: n + 1,
+    quantity: n + 3,
+    subprice: "#{1000 + (n * 1000)}"
+    )
+end
