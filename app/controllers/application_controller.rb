@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
       #sign_upの際にnameのデータ操作を許。追加したカラム。
   		devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
-      
+
     end
 
   private
@@ -51,9 +51,5 @@ class ApplicationController < ActionController::Base
 
   def set_cart_item
     @cart_item = CartItem.find(params[:id])
-  end
-
-  def current_cart
-    @cart_items = current_customer.cart_items
   end
 end
