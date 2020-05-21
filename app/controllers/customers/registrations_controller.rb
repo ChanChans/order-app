@@ -52,7 +52,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
     end
 
     def customer_params
-      params.require(:customer).permit(:password, :password_confirmation)
+      params.require(:customers).permit(:password, :password_confirmation)
     end
 
   # If you have extra params to permit, append them to the sanitizer.
