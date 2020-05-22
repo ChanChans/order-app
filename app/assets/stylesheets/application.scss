@@ -16,8 +16,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-select {
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+select {
   /* styling */
   background-color: white;
   border: thin solid blue;
@@ -26,7 +32,7 @@ select {
   font: inherit;
   line-height: 1.5em;
   padding: 3px 30px 3px 15px;
-  
+
 
 
   /* reset */
@@ -83,3 +89,30 @@ select {
  .head-line{
   margin: 40px 0;
  }
+
+ // header
+ header {
+   padding: 10px 20px 70px 20px;
+   border-bottom: 1px solid #CCFFFF;
+   background-color: #FFC7AF;
+ }
+ .header-name {
+   padding-top: 17px;
+   padding-right: 10px;
+   font-weight: bold;
+   color: #444444;
+ }
+ .navbar-right .dropdown-menu {
+    right: 0;
+    left: 0;
+}
+.title {
+  font-size: 30px;
+}
+.title_h2 {
+  width: 450px;
+  background-color: #CCCCCC;
+}
+a {
+  color: #444444;
+}

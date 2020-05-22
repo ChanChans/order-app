@@ -1,6 +1,8 @@
 class Customer::OrdersController < ApplicationController
   include ApplicationHelper
 
+  before_action :to_log, only: [:show]
+
   def new
   	@order = Order.new
   	@shipping_addresses = ShippingAddress.all
@@ -83,7 +85,7 @@ class Customer::OrdersController < ApplicationController
     params.require(:order).permit(:postal_code, :address, :name)
   end
 
-  # def to_log
-  #   redirect_to customers_cart_items_path if params[:id] == "log"
-  # end
+  def to_log
+    redirect_to customers_cart_items_path if params[:id] == "log"
+  end
 end
