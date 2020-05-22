@@ -1,0 +1,16 @@
+<div class="col-xs-2 genre_search">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="h4">ジャンル検索</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.each do |product| %>
+        <tr>
+          <td><%= product.genre.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

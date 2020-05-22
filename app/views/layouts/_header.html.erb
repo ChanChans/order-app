@@ -1,49 +1,61 @@
 <header>
-  <div class="container">
-    <nav class="nav navbar-nav navbar-left">
-      <%= link_to "NaganoCAKE", root_path %>
+    <nav class="nav navbar-nav navbar-left title">
+      <%= link_to "NaganoCAKE", root_path, class: "fas fa-birthday-cake" %>
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if customer_signed_in? %>
 
           <!--カスタマーがログインしている時 -->
-          <li>
+          <li class="header-name">
             ようこそ、<%= current_customer.first_name %>さん！
           </li>
           <li>
-            <%= link_to "マイページ", customers_path(current_customer) %>
+            <%= link_to "マイページ", customers_path(current_customer), class: "btn btn-outline-danger glyphicon glyphicon-home" %>
           </li>
           <li>
-            <%= link_to "商品一覧", products_path %>
+            <%= link_to "商品一覧", products_path, class: "glyphicon glyphicon-briefcase" %>
           </li>
-          <li>
-            <%= link_to customers_cart_items_path do %>
-              カート(<%= current_customer.cart_items.count %>)
+          <li class="dropdown">
+            <%= link_to "#", class: "dropdown-toggle glyphicon glyphicon-th-list",
+             'data-toggle': :dropdown do %>ジャンル検索<span class="caret"></span>
             <% end %>
-            <%# <%= link_to "カート", customers_cart_items_path %>
+            <ul class="dropdown-menu">
+              <% Genre.all.each do |genre| %>
+			          <li class="genre_dropdown">
+                  <%= link_to products_path do %>
+                    <%= genre.name %>
+                  <% end %>
+                </li>
+              <% end %>
+		        </ul>
           </li>
           <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+            <%= link_to customers_cart_items_path,
+             class: "glyphicon glyphicon-shopping-cart" do %>カート(<%= current_customer.cart_items.count %>個)
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
           </li>
 
         <% elsif admin_signed_in? %>
 
           <!-- 管理者がログインしている時 -->
           <li>
-            <%= link_to "商品一覧", admin_products_path %>
+            <%= link_to "商品一覧", admin_products_path, class: "glyphicon glyphicon-briefcase" %>
           </li>
           <li>
-            <%= link_to "会員一覧", admin_customers_path %>
+            <%= link_to "会員一覧", admin_customers_path, class: "glyphicon glyphicon-user"  %>
           </li>
           <li>
-            <%= link_to "注文履歴一覧", admin_orders_path %>
+            <%= link_to "注文履歴一覧", admin_orders_path, class: "glyphicon glyphicon-list-alt" %>
           </li>
           <li>
-            <%= link_to "ジャンル一覧", admin_genres_path %>
+            <%= link_to "ジャンル一覧", admin_genres_path, class: "glyphicon glyphicon-th-list" %>
           </li>
           <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
           </li>
 
           <p>Search</p>
@@ -52,13 +64,13 @@
 
           <!-- ログインしていない時 -->
           <li>
-            <%= link_to "商品一覧", products_path %>
+            <%= link_to "商品一覧", products_path, class: "glyphicon glyphicon-briefcase" %>
           </li>
           <li>
-            <%= link_to "新規登録", new_customer_registration_path %>
+            <%= link_to "新規登録", new_customer_registration_path, class: "glyphicon glyphicon-edit" %>
           </li>
           <li>
-            <%= link_to "ログイン", new_customer_session_path %>
+            <%= link_to "ログイン", new_customer_session_path, class: "glyphicon glyphicon-log-in" %>
           </li>
 
           <!-- 最後の消す -->
@@ -68,5 +80,4 @@
         <% end %>
       </ul>
     </nav>
-  </div>
 </header>
