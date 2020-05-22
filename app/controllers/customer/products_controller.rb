@@ -4,7 +4,6 @@ class Customer::ProductsController < ApplicationController
 
   def top
     @products = Product.all
-    @genres = Genre.all
 	end
 
 	def about
@@ -15,8 +14,9 @@ class Customer::ProductsController < ApplicationController
 	end
 
 	def show
-        @product = Product.find(params[:id])
-        @cart_item = CartItem.new
+    @products = Product.all
+    @product = Product.find(params[:id])
+    @cart_item = CartItem.new
 	end
 
 	private
