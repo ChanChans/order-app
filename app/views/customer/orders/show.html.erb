@@ -1,1 +1,66 @@
 <h2 class="head-line title_h2 text-center">注文履歴詳細</h2>
+<div calss="row">
+  <div class="col-xs-8">
+  	<strong>注文情報</strong>
+      <table class="table table-hover">
+        <tbody>
+            <tr>
+              <td>注文日</td>
+        	  <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+            </tr>
+            <tr>
+            　<td>配送先</td>
+              <td><%= @order.postal_code %><br>
+              	  <%= @order.address %><br>
+              	  <%= @order.name %>
+              </td>
+            </tr>
+            <tr>
+            　<td>支払方法</td>
+              <td><%= @order.payment_method %></td>
+            </tr>
+            <tr>
+              <td>ステータス</td>
+              <td><%= @order.order_status %></td>
+            </tr>
+        </tbody>
+      </table>
+  </div>
+
+  <div class="col-xs-3 col-xs-offset-1">
+    <strong>請求情報</strong>
+      <table class="table table-hover">
+          <tr>
+            <td>商品合計</td>
+            <td><%= total_price(@order_details).to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <td>配送料</td>
+            <td><%= @order.postage.to_s(:delimited) %>円</td>
+          </tr>
+          <tr>
+            <td>ご請求金額</td>
+            <td><%= @order.total_price.to_s(:delimited) %>円</td>
+          </tr>
+      </table>
+  </div>
+  <div class="col-xs-9">
+  	<strong>注文内容</strong>
+      <table class="table table-hover table-inverse">
+      	<thead>
+      	  <th>商品</th>
+      	  <th>単価（税込）</th>
+      	  <th>個数</th>
+      	  <th>小計</th>
+      	</thead>
+      	<tbody>
+          <tr>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
