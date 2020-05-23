@@ -1,19 +1,22 @@
-<h2 class="product-headline">商品一覧</h2>
-<span class="products-count">
-	(全<%= @products.total_count %>件中　<%= @products.count %>件)
-</span>
 <div class="row">
-	<div class="col-xs-9 product-index">
+	<div class="col-xs-9 center-block">
+		<h2 class="product-headline title_h2">
+		商品一覧
+		<span>
+			(全<%= @products.total_count %>件中　<%= @products.count %>件)
+		</span>
+		</h2>
+
 			<div class="clearfix product-box">
 				<% @products. each do |product| %>
 				  <% if product.genre.is_valid == true %>
 				    <div class="product-container">
 				      <p id="img_field" class="product">
 				        <%= link_to product_path(product.id) do %>
-			            	<%= attachment_image_tag(product, :image, size: "180x120", fallback: "no_image.jpg") %>
+			            	<%= attachment_image_tag(product, :image, size: "180x130", fallback: "no_image.jpg") %>
 			          	<% end %>
 			          </p>
-			          <p>
+			          <p class="products-name">
 				  	    <%= link_to product_path(product.id) do %>
 				  	      <%= product.name %>
 				  	    <% end %>
@@ -24,6 +27,7 @@
 				  <% end %>
 				<% end %>
 			</div>
-		<%= paginate(@products) %>
+			<div class="paginate"><%= paginate(@products) %></div>
+		
 	</div>
 </div>

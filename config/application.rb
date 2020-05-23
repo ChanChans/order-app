@@ -20,5 +20,6 @@ module OrderApp
     # the framework and any gems in your application.
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
+    config.i18n.default_locale = :ja
   end
 end

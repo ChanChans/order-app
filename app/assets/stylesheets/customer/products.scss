@@ -7,17 +7,6 @@
     display: block;
     clear: both;
 }
-.product-index {
-	padding-top: 50px;
-}
-.product-headline {
-	display: inline;
-	margin: 10px;
-}
-.product-container {
-	float: left;
-	margin: 40px 15px 20px 15px;
-}
 .toppage-head {
 	margin-bottom: 0;
 }
@@ -31,8 +20,53 @@
 	bottom: 5px;
 	right: 120px;
 }
+
+
+.product-headline {
+	
+	margin-left: 10px;
+	margin-top: 40px;
+}
+.product-headline>span {
+	font-size: 18px;
+}
+.product-container {
+	float: left;
+	margin: 40px 15px 20px 15px;
+}
+.product-box {
+	text-align: center;
+}
+.products-name {
+	font-size: 17px;
+}
+.paginate {
+	margin-left: 280px;
+}
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+
 .product-show {
 	margin-top: 100px;
+}
+.product-name {
+	margin-bottom: 20px;
+}
+.product-price {
+	margin-top : 40px;
 }
 .tax {
 	font-size: 15px;
@@ -41,6 +75,8 @@
 .product-description {
 	margin-bottom: 50px;
 }
+
+
 .genre_id {
   width: 70px;
   height: 33px;

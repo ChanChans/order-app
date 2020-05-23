@@ -9,7 +9,7 @@ class Customer::ProductsController < ApplicationController
 
 	def index
     @genres = Genre.all
-    @products = Product.all.page(params[:page]).per(5)
+    @products = Product.all.page(params[:page]).per(8)
 	end
 
 	def show

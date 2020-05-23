@@ -1,26 +1,28 @@
 <div class="row">
 
-    <div class="col-xs-4 product-show">
+    <div class="col-xs-4 col-xs-offset-2 product-show">
       <%= attachment_image_tag(@product, :image, size: "300x200", fallback: "no_image.jpg" ) %>
     </div>
 
     <div class="col-xs-6 product-show">
       <div class="product-description">
-        <div class="field">
+        <div class="field product-name">
           <h2><%= @product.name %></h2>
         </div>
         <div class="field">
           <%= @product.explanation %>
         </div>
-        <div class="field">
-          <h3>¥ <%= tax_price(@product.tax_out_price).to_s(:delimited) %><span class="tax">(税込)</span></h3>
+        <div class="field product-price">
+          <h3>¥ <%= tax_price(@product.tax_out_price).to_s(:delimited) %>
+              <span class="tax">(税込)</span>
+          </h3>
         </div>
       </div>
       <div class="field">
         <%= form_for(@cart_item , url: customers_cart_items_path, method: :post) do |f| %>
           <%= f.hidden_field :product_id, value: @product.id %>
           <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-          <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+          <%= f.submit "カートに入れる", class: "glyphicon glyphicon-shopping-cart btn btn-primary" %>
         <% end %>
       </div>
     </div>
