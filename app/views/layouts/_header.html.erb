@@ -22,11 +22,13 @@
             <% end %>
             <ul class="dropdown-menu">
               <% Genre.all.each do |genre| %>
-			          <li class="genre_dropdown">
-                  <%= link_to products_path do %>
-                    <%= genre.name %>
-                  <% end %>
-                </li>
+                <% if genre.is_valid == true %>
+			            <li class="genre_dropdown">
+                    <%= link_to admin_genre_path(genre), method: :get do %>
+                      <%= genre.name %>
+                    <% end %>
+                  </li>
+                <% end %>
               <% end %>
 		        </ul>
           </li>
