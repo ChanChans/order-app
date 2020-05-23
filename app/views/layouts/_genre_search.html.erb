@@ -5,12 +5,17 @@
         <th class="h4">ジャンル検索</th>
       </tr>
     </thead>
-    <tbody>
+      <tbody>
       <% products.each do |product| %>
+        <% if product.genre.is_valid == true %>
         <tr>
-          <td><%= product.genre.name %></td>
+          <td>
+            <%= link_to admin_genre_path(product.genre.id), method: :get do %>
+              <%= product.genre.name %>
+            <% end %>
+          </td>
         </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
-</div>

@@ -4,13 +4,12 @@ class Customer::ProductsController < ApplicationController
 
   def top
     @products = Product.all
-	end
-
-	def about
+    @genres = Genre.all
 	end
 
 	def index
-		@products = Product.all.page(params[:page]).per(5)
+    @genres = Genre.all
+    @products = Product.all.page(params[:page]).per(5)
 	end
 
 	def show
