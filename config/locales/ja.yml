@@ -1,4 +1,3 @@
----
 ja:
   activerecord:
     errors:
@@ -17,7 +16,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -205,3 +204,10 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
