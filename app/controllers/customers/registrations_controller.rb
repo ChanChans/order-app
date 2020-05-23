@@ -37,7 +37,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       redirect_to customers_path
-      flash[:error] = "パスワードを変更できませんでした。"
+      flash[:alert] = "パスワードを変更できませんでした。"
     end
     # super
   end

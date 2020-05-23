@@ -71,3 +71,5 @@ gem "refile-mini_magick"
 gem "ransack"
 gem "kaminari"
 gem "pry-byebug"
+gem 'devise-i18n'
+gem 'devise-i18n-views'
