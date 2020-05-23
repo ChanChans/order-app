@@ -23,7 +23,9 @@ Rails.application.routes.draw do
     resources :products,only: [:index,:show]
     get 'search' => 'products#search'
     get 'customer/edit' => 'customers#edit'
-  	resource :customers,only: [:show,:update] do
+    put 'customer' => 'customers#update'
+
+  	resource :customers,only: [:show] do
   		collection do
   	     get 'quit'
   	     patch 'out'
