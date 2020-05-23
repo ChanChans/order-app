@@ -1,4 +1,4 @@
-<div class="col-xs-2 genre_search">
+<div class="genre_search">
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -8,14 +8,15 @@
       <tbody>
       <% products.each do |product| %>
         <% if product.genre.is_valid == true %>
-        <tr>
-          <td>
-            <%= link_to admin_genre_path(product.genre.id), method: :get do %>
-              <%= product.genre.name %>
-            <% end %>
-          </td>
-        </tr>
+          <tr>
+            <td>
+              <%= link_to admin_genre_path(product.genre.id), method: :get do %>
+                <%= product.genre.name %>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
       <% end %>
     </tbody>
   </table>
+</div>
