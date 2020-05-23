@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :customers,only: [:index,:show,:edit,:update]
   	resources :products,only: [:index,:new,:create,:show,:edit,:update,]
   	get 'top'=>'products#top'
-  	resources :genres,only: [:index,:create,:edit,:update]
+  	resources :genres,only: [:index,:create,:edit,:update, :show]
   	resources :orders,only: [:index,:show,:update] do
   	  member do
        resource :order_details,only: [:update]
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
    # customer
    scope module: :customer do
     resources :products,only: [:index,:show]
+    get 'search' => 'products#search'
     get 'customer/edit' => 'customers#edit'
   	resource :customers,only: [:show,:update] do
   		collection do

@@ -5,22 +5,22 @@
       <table class="table table-hover">
         <tbody>
             <tr>
-              <td>注文日</td>
+              <td class="active">注文日</td>
         	  <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
             </tr>
             <tr>
-            　<td>配送先</td>
+            　<td class="active">配送先</td>
               <td><%= @order.postal_code %><br>
               	  <%= @order.address %><br>
               	  <%= @order.name %>
               </td>
             </tr>
             <tr>
-            　<td>支払方法</td>
+            　<td class="active">支払方法</td>
               <td><%= @order.payment_method %></td>
             </tr>
             <tr>
-              <td>ステータス</td>
+              <td class="active">ステータス</td>
               <td><%= @order.order_status %></td>
             </tr>
         </tbody>
@@ -31,15 +31,15 @@
     <strong>請求情報</strong>
       <table class="table table-hover">
           <tr>
-            <td>商品合計</td>
+            <td class="active">商品合計</td>
             <td><%= total_price(@order_details).to_s(:delimited) %></td>
           </tr>
           <tr>
-            <td>配送料</td>
+            <td class="active">配送料</td>
             <td><%= @order.postage.to_s(:delimited) %>円</td>
           </tr>
           <tr>
-            <td>ご請求金額</td>
+            <td class="active">ご請求金額</td>
             <td><%= @order.total_price.to_s(:delimited) %>円</td>
           </tr>
       </table>
@@ -48,18 +48,22 @@
   	<strong>注文内容</strong>
       <table class="table table-hover table-inverse">
       	<thead>
-      	  <th>商品</th>
-      	  <th>単価（税込）</th>
-      	  <th>個数</th>
-      	  <th>小計</th>
+	      <tr  class="info">
+	      	<th>商品</th>
+	        <th>単価（税込）</th>
+	      	<th>個数</th>
+	      	<th>小計</th>
+	      </tr>
       	</thead>
       	<tbody>
+      	<% @order_details.each do |order_detail| %>
           <tr>
-	        <td></td>
-	        <td></td>
-	        <td></td>
-	        <td></td>
+	        <td><%= order_detail.product.name %></td>
+	        <td><%= tax_price(order_detail.product.tax_out_price).to_s(:delimited) %></td>
+	        <td><%= order_detail.quantity %></td>
+	        <td><%= sub_price(order_detail).to_s(:delimited) %></td>
           </tr>
+        <% end %>
         </tbody>
       </table>
   </div>

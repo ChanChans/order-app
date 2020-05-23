@@ -24,7 +24,9 @@
 		          <%= order.name %>
 		        </td>
 		        <td>
-		          <%= order.name %>
+		          <% order.order_details.each do |order_detail| %>
+		          	<%= order_detail.product.name %><br>
+		          <% end %>
 		        </td>
 		        <td>
 		          <%= order.total_price.to_s(:delimited) %>円

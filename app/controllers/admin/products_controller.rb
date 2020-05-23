@@ -48,6 +48,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def set_genres
-    @genres = Genre.all
+    @genres = Genre.where(is_valid: true)
   end
 end

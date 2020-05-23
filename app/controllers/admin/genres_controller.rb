@@ -17,6 +17,12 @@ class Admin::GenresController < ApplicationController
     end
   end
 
+  def show
+    @products = Product.all
+    @genre = Genre.find(params[:id])
+    @genres = @genre.products.order(created_at: :desc).all
+  end
+
   def edit
     @genre = Genre.find(params[:id])
   end

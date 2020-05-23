@@ -1,6 +1,8 @@
 <div class="container">
 	<div class="row">
-		<%= render "layouts/genre_search", products: @products %>
+		<div class="col-xs-3">
+		  <%= render "layouts/genre_search", products: @products %>
+		</div>
 
 		<div class="col-xs-9">
 			<div class = "example">
@@ -13,7 +15,7 @@
 				</p>
 			</div>
 
-			<p><%= link_to "このサイトについての詳細", about_path %>
+			<p><%= link_to "このサイトについての詳細", about_path %></p>
 
 			<h2 class="toppage-head">オススメ商品</h2>
 			<!-- ランダムに4つ表示されるようになっています -->
@@ -22,8 +24,8 @@
 					<div class="product-recommend">
 					  　<p id="img_field" class="product">
 					  	    <%= attachment_image_tag(product, :image, size: "180x120", fallback: "no_image.jpg") %>
-				      	</p>
-			      		<p>
+				      </p>
+			      	<p>
 				  	    <%= product.name %>
 				    	</p>
 				    	<p>
