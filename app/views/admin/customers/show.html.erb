@@ -1,70 +1,58 @@
-<% if flash[:notice] %>
+<div class="row">
+  <% if flash[:notice] %>
     <div class="flash">
-        <%= flash[:notice] %>
+      <%= flash[:notice] %>
     </div>
-<% end %>
-<h2>
+  <% end %>
+  <h2 class="head-line title_h2 text-center">
     <%= @customer.first_name %>
     <%= @customer.last_name %>さんの会員詳細
-</h2>
+  </h2>
+  <div class="col-xs-8">
+    <div class="field">
+      <p>
+        顧客ID　　　　　<%= @customer.id %>
+        <% if @customer.is_valid == true %>
+          <span>　退会済
+        <% elsif @customer.is_valid == false %>
+          　有効会員</span>
+        <% end %>
+      </p>
+    </div>
+    <div class="field">
+      <p>
+        氏名　　　　　　<%= @customer.first_name %><%= @customer.last_name %>
+      </p>
+    </div>
+    <div class="field">
+      <p>
+        フリガナ　　　　<%= @customer.kana_first_name %><%= @customer.kana_last_name %>
+      </p>
+    </div>
+    <div class="field">
+      <p>
+        郵便番号　　　　<%= @customer.postal_code %>
+      </p>
+    </div>
+    <div class="field">
+      <p>
+        住所　　　　　　<%= @customer.residence %>
+      </p>
+    </div>
+    <div class="field">
+      <p>
+        電話番号　　　　<%= @customer.phone_number %>
+      </p>
+    </div>
+    <div class="field">
+      <p>
+        メールアドレス　<%= @customer.email%>
+      </p>
+    </div>
 
-<body>
-  <table class="table table-hover table-inverse">
-      <tr>
-          <th>顧客ID</th>
-          <td>
-              <%= @customer.id %>
-              <% if @customer.is_valid == true %>
-              <p>退会済</p>
-              <% elsif @customer.is_valid == false %>
-              <p>有効会員</p>
-              <% end %>
-          </td>
-      </tr>
-      <tr>
-          <th>氏名</th>
-          <td>
-              <%= @customer.first_name %>
-              <%= @customer.last_name %>
-          </td>
-      </tr>
-      <tr>
-          <th>フリガナ</th>
-          <td>
-              <%= @customer.kana_first_name %>
-              <%= @customer.kana_last_name %>
-          </td>
-      </tr>
-      <tr>
-          <th>郵便番号</th>
-          <td>
-              <%= @customer.postal_code %>
-          </td>
-      </tr>
-      <tr>
-          <th>住所</th>
-          <td>
-              <%= @customer.residence %>
-          </td>
-      </tr>
-      <tr>
-          <th>電話番号</th>
-          <td>
-              <%= @customer.phone_number %>
-          </td>
-      </tr>
-      <tr>
-          <th>メールアドレス</th>
-          <td>
-              <%= @customer.email%>
-          </td>
-      </tr>
-      <tr>
-        
-          <td>
-              <%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn-sm btn-success edit_shipping_addres_#{@customer.id}" %>
-              <%= link_to "注文履歴一覧を見る", customers_orders_path, class: "btn btn-info" %>
-          </td>
-      </tr>
-  </table>
-</body>
+    <div class="actions">
+      <%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn btn-success edit_shipping_addres_#{@customer.id}" %>
+      <%= link_to "注文履歴一覧を見る", customers_orders_path, class: "btn btn-info" %>
+    </div>
+  </div>
+</div>

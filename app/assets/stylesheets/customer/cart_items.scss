@@ -5,7 +5,11 @@
 .margin-bottom {
   margin-bottom: 20px;
 }
-.quantity_cart {
-  width: 40px;
-  height: 33px
+#quantity_cart {
+  width: 50px;
+  height: 33px;
+  text-align: center;
+}
+.table > tbody > tr > td, {
+  line-height: 3 !important;
 }
