@@ -30,14 +30,14 @@ class Customers::RegistrationsController < Devise::RegistrationsController
     if resource_updated
       set_flash_message_for_update(resource, prev_unconfirmed_email)
       bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
-
       # respond_with resource, location: after_update_path_for(resource)
+      flash[:notice] = "パスワード変更しました。"
       redirect_to customers_path
     else
       clean_up_passwords resource
       set_minimum_password_length
-      # respond_with resource
       redirect_to customers_path
+      flash[:error] = "パスワードを変更できませんでした。"
     end
     # super
   end

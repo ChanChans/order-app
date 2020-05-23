@@ -3,7 +3,9 @@
 	(全<%= @products.total_count %>件中　<%= @products.count %>件)
 </span>
 <div class="row">
-	<%= render "layouts/genre_search", products: @products %>
+	<div class="col-xs-3">
+	  <%= render "layouts/genre_search", products: @products %>
+	</div>
 	<div class="col-xs-9 product-index">
 			<div class="clearfix product-box">
 				<% @products. each do |product| %>

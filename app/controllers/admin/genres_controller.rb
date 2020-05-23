@@ -20,7 +20,7 @@ class Admin::GenresController < ApplicationController
   def show
     @products = Product.all
     @genre = Genre.find(params[:id])
-    @genres = @genre.products.order(created_at: :desc).all
+    @genres = @genre.products.order(created_at: :desc).all.page(params[:page]).per(5)
   end
 
   def edit
