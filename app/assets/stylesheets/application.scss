@@ -133,3 +133,25 @@ select {
 a {
   color: #444444;
 }
+
+.notice {
+  color: green;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.alert {
+  color: red;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+#error_explanation {
+  color: red;
+}
+
+#error_explanation ul li {
+  color: red;
+}
