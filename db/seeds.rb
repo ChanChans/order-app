@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-5.times do |n|
+20.times do |n|
     Customer.create!(
       email: "test#{n + 1}@test.com",
       first_name: "名#{n + 1}",
@@ -23,14 +23,14 @@
     email: "admin@admin.com",
     password: "123456"
   )
-  5.times do |n|
+  20.times do |n|
     Genre.create!(
       name: "ケーキ#{n + 1}",
       is_valid: [['有効', true], ['無効', false]]
     )
   end
 
-  5.times do |n|
+  20.times do |n|
       Product.create!(
         name: "チーズケーキ#{n + 1}",
         explanation: "甘くて美味しい#{n + 1}",
@@ -41,7 +41,7 @@
       )
   end
 
-3.times do |n|
+20.times do |n|
   ShippingAddress.create!(
     name: "test#{n + 1}",
     postal_code: "123456#{n + 1}",
