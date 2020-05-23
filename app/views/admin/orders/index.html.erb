@@ -1,16 +1,16 @@
 <h2 class="head-line title_h2 text-center">注文履歴一覧</h2>
-		<% if flash[:notice] %>
-          <div class="flash">
-             <%= flash[:notice] %>
-          </div>
-        <% end %>
+	<% if flash[:notice] %>
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 <div class="row">
 	<div class="col-xs-12">
-		<table class="table">
+		<table class="table table-hover table-condensed">
 		  <thead>
 		    <tr>
 		      <th>購入日時</th>
-		      <th>購入者</th>
+	      <th>購入者</th>
 		      <th>注文個数</th>
 		      <th>注文ステータス</th>
 		    </tr>
@@ -21,7 +21,7 @@
 		      <tr>
 		        <td>
 		          <%= link_to admin_order_path(order)  do %>
-		          <%= order.created_at %>
+		          	<%= order.created_at %>
 		          <% end %>
 		        </td>
 		        <td>
@@ -37,6 +37,5 @@
 		    <% end %>
 		  </tbody>
 		</table>
-
 	</div>
 </div>
