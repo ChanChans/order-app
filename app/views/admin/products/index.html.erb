@@ -1,10 +1,10 @@
 <h2 class="head-line title_h2 text-center">商品一覧</h2>
 <div class="row">
   <div class="col-xs-12">
-    <%= link_to "新規商品（ボタンに変更）", new_admin_product_path, data: {"turbolinks" => false} %>
-    <table class="table table-hover table-inverse">
+    <%= link_to "新規商品登録", new_admin_product_path, data: {"turbolinks" => false}, class: "btn btn-warning pull-right" %>
+    <table class="table table-hover table-condensed">
       <thead>
-        <tr>
+        <tr class="info">
           <th>商品ID</th>
           <th>商品名</th>
           <th>税抜価格</th>
@@ -19,7 +19,7 @@
               <%= product.id %>
             </td>
             <td>
-              <%= link_to admin_product_path(product) do %>
+              <%= link_to admin_product_path(product), class: "btn-link" do %>
                 <%= product.name %>
               <% end %>
             </td>
