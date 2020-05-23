@@ -13,8 +13,9 @@
   <body id="wrapper">
     <%= render "layouts/header" %>
     <div class="container">
-      <%= flash[:notice] %>
-      <%= flash[:error] %>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
       <%= yield %>
     </div>
     <footer>
