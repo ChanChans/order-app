@@ -4,21 +4,12 @@ class Customer::ProductsController < ApplicationController
 
   def top
     @products = Product.all
-	end
-
-	def about
+    @genres = Genre.all
 	end
 
 	def index
-    if params[:genre_id]
-      # Genreのデータベースのテーブルから一致するidを取得
-      @genre = Genre.find(params[:genre_id])
-      # genre_idと紐づく商品を取得
-      @products = @genre.products.order(created_at: :desc).all
-    else
-      # 商品すべてを取得
-      @products = Product.all.page(params[:page]).per(5)
-    end
+    @genres = Genre.all
+    @products = Product.all.page(params[:page]).per(5)
 	end
 
 	def show

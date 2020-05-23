@@ -1,0 +1,28 @@
+<h2 class="product-headline"><%= @genre.name %>一覧</h2>
+</span>
+<div class="row">
+  <%= render "layouts/genre_search", products: @products %>
+  <div class="col-xs-9 product-index">
+      <div class="clearfix product-box">
+        <% @genres. each do |product| %>
+          <% if product.genre.is_valid == true %>
+            <div class="product-container">
+              <p id="img_field" class="product">
+                <%= link_to product_path(product.id) do %>
+                    <%= attachment_image_tag(product, :image, size: "180x120", fallback: "no_image.jpg") %>
+                  <% end %>
+                </p>
+                <p>
+                <%= link_to product_path(product.id) do %>
+                  <%= product.name %>
+                <% end %>
+              </p>
+              <p>¥<%= product.tax_out_price.to_s(:delimited) %></p>
+            </div>
+          <% else %>
+          <% end %>
+        <% end %>
+      </div>
+    <%= paginate(@genres) %>
+  </div>
+</div>
