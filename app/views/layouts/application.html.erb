@@ -10,12 +10,21 @@
     <script src="https://kit.fontawesome.com/6f0d38cdd3.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body id="wrapper">
     <%= render "layouts/header" %>
     <div class="container">
       <%= flash[:notice] %>
       <%= flash[:error] %>
       <%= yield %>
     </div>
+    <footer>
+      <ul class="footer-menu">
+       <li>home ｜</li>
+       <li>about ｜</li>
+       <li>service ｜</li>
+       <li>Contact Us</li>
+      </ul>
+      <p>© All rights reserved by chanchans.</p>
+    </footer>
   </body>
 </html>
