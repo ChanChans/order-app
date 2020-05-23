@@ -41,7 +41,7 @@
       )
   end
 
-20.times do |n|
+9.times do |n|
   ShippingAddress.create!(
     name: "test#{n + 1}",
     postal_code: "123456#{n + 1}",
