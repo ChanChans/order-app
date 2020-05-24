@@ -81,3 +81,41 @@
   width: 70px;
   height: 33px;
 }
+
+
+.test {
+  background-color: #FFE4E1;
+
+}
+
+.container{
+	
+}
+
+.sample {
+  position: relative;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 100%;
+ }
+
+.sample p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-radius: 30px;
+  margin:0;
+  color: black;
+  background: #FFE4E1;
+  font-size: 30px;
+  line-height: 1;
+  padding: 30px 45px;
+ }
+
+.sample img {
+  width: 100%;
+ }
+
