@@ -1,17 +1,18 @@
 class Customer::ShippingAddressesController < ApplicationController
 
-  def index
+    def index
     	@shipping_addresses = current_customer.shipping_address
     	@shipping_address = ShippingAddress.new
 	end
 
 	def create
-		  @shipping_address = current_customer.shipping_address.new(shipping_address_params)
+		  @shipping_address = ShippingAddress.new(shipping_address_params)
+		  @shipping_address.customer_id = current_customer.id
 		  if @shipping_address.save
 		  	 flash[:notice] = "新規配送先を作成しました"
 		     redirect_to customers_shipping_addresses_path
 		  else
-		     @shipping_addresses = ShippingAddress.all
+		  	 @shipping_addresses = current_customer.shipping_address
 		     render 'index'
 	    end
 	end

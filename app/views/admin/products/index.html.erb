@@ -32,11 +32,7 @@
             </td>
             <td>
               <% if product.is_sale == true %>
-                <% if product.genre.is_valid == true %>
-      					  <p>販売中</p>
-                <% else %>
-                  <p>販売停止中</p>
-                <% end %>
+      					<p>販売中</p>
       				<% elsif product.is_sale == false %>
       					<p>販売停止中</p>
       				<% end %>

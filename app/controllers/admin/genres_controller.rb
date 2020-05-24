@@ -2,8 +2,9 @@ class Admin::GenresController < ApplicationController
 
 
 
+
   def index
-    @genre = Genre.new(params[:q])
+    @genre = Genre.new
     @genres = Genre.all.page(params[:page]).per(10)
   end
 
@@ -12,13 +13,13 @@ class Admin::GenresController < ApplicationController
     if @genre.save
        redirect_to admin_genres_path
     else
-      @genres = Genre.all
+      @genres = Genre.all.page(params[:page]).per(10)
       render :index and return
     end
   end
 
   def show
-    @products = Product.all
+    @products = Product.all.all.page(params[:page]).per(10)
     @genre = Genre.find(params[:id])
     @genres = @genre.products.order(created_at: :desc).all.page(params[:page]).per(5)
   end
@@ -30,7 +31,13 @@ class Admin::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-       redirect_to admin_genres_path
+      redirect_to admin_genres_path
+      if @genre.is_valid == false
+        @genre.products.each do |product|
+          product.is_sale = false
+          product.save
+        end
+      end
     else
        render :edit and return
     end
