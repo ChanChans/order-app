@@ -39,10 +39,13 @@ ja:
         name: "宛名"
         address: "住所"
         postal_code: "郵便番号"
+      genre: 
+        name: ジャンル名
     models:
       customer: "お客様"
       product: "商品"
       shipping_address: "配送先"
+      genre: "ジャンル"
   devise:
     confirmations:
       new:
