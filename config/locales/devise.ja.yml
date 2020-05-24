@@ -33,6 +33,7 @@ ja:
         postal_code: "郵便番号"
       product:
         genre: "ジャンル"
+        genre_id: "ジャンル"
         name: "商品名"
         tax_out_price: "税抜価格"
       shipping_address:
@@ -41,6 +42,7 @@ ja:
         postal_code: "郵便番号"
       genre: 
         name: ジャンル名
+
     models:
       customer: "お客様"
       product: "商品"

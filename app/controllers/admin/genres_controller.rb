@@ -2,6 +2,7 @@ class Admin::GenresController < ApplicationController
 
 
 
+
   def index
     @genre = Genre.new
     @genres = Genre.all.page(params[:page]).per(10)
@@ -30,7 +31,13 @@ class Admin::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-       redirect_to admin_genres_path
+      redirect_to admin_genres_path
+      if @genre.is_valid == false
+        @genre.products.each do |product|
+          product.is_sale = false
+          product.save
+        end
+      end
     else
        render :edit and return
     end
