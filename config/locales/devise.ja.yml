@@ -26,13 +26,23 @@ ja:
         remember_me: "次回から自動的にログイン"
         first_name: "名"
         last_name: "姓"
-        kana_first_name: "メイ"
-        kana_last_name: "セイ"
+        kana_first_name: "(メイ)"
+        kana_last_name: "(セイ)"
         residence: "住所"
         phone_number: "電話番号"
         postal_code: "郵便番号"
+      product:
+        genre: "ジャンル"
+        name: "商品名"
+        tax_out_price: "税抜価格"
+      shipping_address:
+        name: "宛名"
+        address: "住所"
+        postal_code: "郵便番号"
     models:
       customer: "お客様"
+      product: "商品"
+      shipping_address: "配送先"
   devise:
     confirmations:
       new:

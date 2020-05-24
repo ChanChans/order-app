@@ -18,13 +18,21 @@
           </h3>
         </div>
       </div>
+
       <div class="field">
-        <%= form_for(@cart_item , url: customers_cart_items_path, method: :post) do |f| %>
-          <%= f.hidden_field :product_id, value: @product.id %>
-          <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-          <%= f.submit "カートに入れる", class: "glyphicon glyphicon-shopping-cart btn btn-primary" %>
+        <% if @product.is_sale == true %>
+          <% if @product.genre.is_valid == true %>
+            <%= form_for(@cart_item , url: customers_cart_items_path, method: :post) do |f| %>
+              <%= f.hidden_field :product_id, value: @product.id %>
+              <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+              <%= f.submit "カートに入れる", class: "glyphicon glyphicon-shopping-cart btn btn-primary" %>
+            <% end %>
+          <% else %>
+            <h3>販売停止中</h3>
+          <% end %>
+        <% elsif @product.is_sale == false %>
+          <h3>販売停止中</h3>
         <% end %>
       </div>
     </div>
-
 </div>
