@@ -3,34 +3,34 @@
 	<div class="col-xs-offset-1 col-xs-9">
 		<h2 class="head-line text-center title_h2">マイページ</h2>
 		<p><strong class="information-link">登録情報</strong>
-			<%= link_to "編集する", customer_edit_path, class: "glyphicon glyphicon-pencil btn btn-info" %>
-			<%= link_to "パスワードを変更する", edit_customer_registration_path, class: "glyphicon glyphicon-pencil btn btn-info" %>
+			<%= link_to " 編集する", customer_edit_path, class: "glyphicon glyphicon-pencil btn btn-info" %>
+			<%= link_to " パスワードを変更する", edit_customer_registration_path, class: "glyphicon glyphicon-pencil btn btn-info" %>
 		</p>
 
-			<table class="table table-bordered ">
+			<table class="table table-bordered table-condensed" >
 				<tbody>
 					<tr>
-						<td class="active">氏名</td>
+						<td class="info">氏名</td>
 						<td><%= full_name(@customer) %></td>
 					</tr>
 					<tr>
-						<td class="active">カナ</td>
+						<td class="info">カナ</td>
 						<td><%= kana_full_name(@customer) %></td>
 					</tr>
 					<tr>
-						<td class="active">郵便番号</td>
+						<td class="info">郵便番号</td>
 						<td><%= @customer.postal_code %></td>
 					</tr>
 					<tr>
-						<td class="active">住所</td>
+						<td class="info">住所</td>
 						<td><%= @customer.residence %></td>
 					</tr>
 					<tr>
-						<td class="active">電話番号</td>
+						<td class="info">電話番号</td>
 						<td><%= @customer.phone_number %></td>
 					</tr>
 					<tr>
-						<td class="active">メールアドレス</td>
+						<td class="info">メールアドレス</td>
 						<td><%= @customer.email %></td>
 					</tr>
 				</tbody>
@@ -38,10 +38,10 @@
 
 			<div class="mypage-bottoms">
 				<P><strong class="shipping-link">配送先</strong>
-					<%= link_to "一覧を見る", customers_shipping_addresses_path, class: "btn btn-info" %>
+					<%= link_to " 一覧を見る", customers_shipping_addresses_path, class: "glyphicon glyphicon-folder-open btn btn-info" %>
 				</p>
 				<p><strong class="order-link">注文履歴</strong>
-					<%= link_to "一覧を見る", customers_orders_path, class: "btn btn-info" %>
+					<%= link_to " 一覧を見る", customers_orders_path, class: "glyphicon glyphicon-folder-open btn btn-info" %>
 				</p>
 			</div>
 	</div>

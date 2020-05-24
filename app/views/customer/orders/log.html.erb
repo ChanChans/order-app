@@ -5,7 +5,7 @@
     <% if current_customer.cart_items.present? %>
       <table class="table table-hover table-inverse">
         <thead>
-          <tr>
+          <tr class="info">
             <th>商品名</th>
             <th>単価(税込)</th>
             <th>数量</th>
@@ -33,37 +33,35 @@
         </tbody>
       </table>
     </div>
-    <div class="col-xs-3">
-      <table class="table table-hover table-inverse">
+    <div class="col-xs-3 billing">
+      <table class="table  table-hover table-condensed">
           <tr>
-            <th>送料</th>
-            <th><%= @order.postage %></th>
+            <th class="active">送料</th>
+            <td><%= @order.postage %></td>
           </tr>
           <tr>
-            <th>商品合計</th>
-            <th><%= total_price(@cart_items).to_s(:delimited) %></th>
+            <th class="active">商品合計</th>
+            <td><%= total_price(@cart_items).to_s(:delimited) %></td>
           </tr>
           <tr>
-            <th>請求金額</th>
-            <th><%= billing(@order).to_s(:delimited) %></th>
+            <th class="active">請求金額</th>
+            <td><%= billing(@order).to_s(:delimited) %></td>
           </tr>
       </table>
     </div>
-    <div class="col-xs-9">
-      <table class="table table-hover table-inverse">
+    <div class="col-xs-9 billing">
+      <table class="table table-hover table-condensed">
         <tr>
-          <th>支払方法</th>
-          <th>
+          <th  class="active"><strong>支払方法</strong></th>
+          <td>
             <%= @order.payment_method %>
-          </th>
+          </td>
         </tr>
-      </table>
-      <table class="table table-hover table-inverse">
         <tr>
-          <th>お届け先</th>
-          <th>
-            <%= "#{@order.postal_code} #{@order.address} #{@order.name}" %>
-          </th>
+          <th  class="active"><strong>お届け先</strong></th>
+          <td>
+            <%= "#{@order.postal_code} #{@order.address} 　#{@order.name}" %>
+          </td>
         </tr>
       </table>
 
@@ -76,8 +74,8 @@
         <%= f.hidden_field :payment_method %>
         <%= f.hidden_field :total_price %>
         <%= f.hidden_field :ship, value: @ship %>
-        <%= link_to "注文情報入力へ戻る", new_customers_order_path, class: "btn btn-warning col-sm-4" %>
-        <%= f.submit "購入を確定する", class:"btn btn-success center-block col-sm-3" %>
+        <%= link_to "注文情報入力へ戻る", new_customers_order_path, class: "btn btn-warning col-sm-3 back" %>
+        <%= f.submit "購入を確定する", class: "btn btn-success center-block btn-lg col-sm-4" %>
       <% end %>
       </div>
     <% else %>

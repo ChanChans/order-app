@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .title_h2 {
 	border-bottom: solid 3px #FFC7AF;
-
 }
 strong {
 	font-size: 18px;
@@ -15,7 +14,7 @@ table th{
 	position: relative;
 	text-align: center;
 }
-.billing > table th.active:after{
+.billing > table th.info:after{
 	display: block;
 	content: "";
 	width: 0px;
@@ -40,5 +39,27 @@ table td{
 	position: absolute;
 	right: 200px;
 	float: left;
-	bottom: -90px;
+	bottom: 0;
+}
+.form-control-static {
+	line-height: 1 !important;
+}
+.sub-head {
+	border-bottom: solid 1px #FFC7AF;
+}
+.btns {
+	margin: 10px;
+}
+.cart-back {
+	margin-top: 10px;
+	margin-right: 170px;
+}
+.radio {
+	margin-bottom: 5px;
+}
+.radio > span {
+	font-weight: bolder;
+}
+.back {
+	margin-right: 240px;
 }
