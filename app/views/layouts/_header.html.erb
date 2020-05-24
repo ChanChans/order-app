@@ -60,7 +60,7 @@
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
           </li>
 
-          <p>Search</p>
+          <%= render "layouts/search" %>
 
         <% else %>
 
