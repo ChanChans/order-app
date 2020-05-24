@@ -28,10 +28,10 @@
               <%= f.submit "カートに入れる", class: "glyphicon glyphicon-shopping-cart btn btn-primary" %>
             <% end %>
           <% else %>
-            <h3>販売停止中</h3>
+            <h3>売り切れ中</h3>
           <% end %>
         <% elsif @product.is_sale == false %>
-          <h3>販売停止中</h3>
+          <h3>売り切れ中</h3>
         <% end %>
       </div>
     </div>
