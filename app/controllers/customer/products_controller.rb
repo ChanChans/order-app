@@ -1,6 +1,6 @@
 class Customer::ProductsController < ApplicationController
 
-  before_action :authenticate!, except: [:index, :top]
+  before_action :authenticate_customer!, only: [:show]
 
   def top
     @products = Product.all
@@ -9,7 +9,7 @@ class Customer::ProductsController < ApplicationController
 
 	def index
     @genres = Genre.all
-    @products = Product.all.page(params[:page]).per(8)
+    @products = Product.where(is_sale: true).page(params[:page]).per(8)
 	end
 
 	def show
@@ -17,6 +17,9 @@ class Customer::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
 	end
+
+  def about
+  end
 
 	private
 	def product_params

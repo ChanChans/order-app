@@ -8,11 +8,10 @@
 		</span>
 		</h2>
 			<div class="clearfix product-box">
-				<% @products.first(8).each do |product| %>
+				<% @products.each do |product| %>
 				  <%= render "product_each", product: product %>
 				<% end %>
 			</div>
 			<div class="paginate"><%= paginate(@products) %></div>
-
 	</div>
 </div>

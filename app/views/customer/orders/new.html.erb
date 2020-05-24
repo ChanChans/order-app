@@ -3,6 +3,7 @@
   <div class="col-xs-12">
     <h2 class="head-line title_h2 text-center">注文情報入力</h2>
     <% if current_customer.cart_items.present? %>
+    <%= render "layouts/error_messages", resource: @order%>
       <%= form_with :model => @order, url:log_customers_orders_path, method: :post, local: true  do |f| %>
         <h3 class="col-xs-3 sub-head">支払い方法</h3>
           <div class="col-xs-10 radio">
