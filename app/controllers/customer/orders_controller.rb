@@ -2,6 +2,7 @@ class Customer::OrdersController < ApplicationController
   include ApplicationHelper
 
   before_action :to_log, only: [:show]
+  before_action :authenticate_customer!
 
   def new
   	@order = Order.new
@@ -14,31 +15,34 @@ class Customer::OrdersController < ApplicationController
       customer: current_customer,
       payment_method: params[:order][:payment_method]
     )
-    # binding.pry
-      # addressにresidenceの値がはいっていれば
-      if params[:order][:addresses] == "residence"
-        @order.postal_code = current_customer.postal_code
-        @order.address     = current_customer.residence
-        @order.name        = current_customer.last_name +
-                             current_customer.first_name
+    # total_priceに請求額を代入
+    @order.total_price = billing(@order)
+    # addressにresidenceの値がはいっていれば
+    if params[:order][:addresses] == "residence"
+      @order.postal_code = current_customer.postal_code
+      @order.address     = current_customer.residence
+      @order.name        = current_customer.last_name +
+                           current_customer.first_name
 
-      # addressにshipping_addressesの値がはいっていれば
-      elsif params[:order][:addresses] == "shipping_addresses"
-        ship = ShippingAddress.find(params[:order][:shipping_address_id])
-        @order.postal_code = ship.postal_code
-        @order.address     = ship.address
-        @order.name        = ship.name
+    # addressにshipping_addressesの値がはいっていれば
+    elsif params[:order][:addresses] == "shipping_addresses"
+      ship = ShippingAddress.find(params[:order][:shipping_address_id])
+      @order.postal_code = ship.postal_code
+      @order.address     = ship.address
+      @order.name        = ship.name
 
-      # addressにnew_addressの値がはいっていれば
-      elsif params[:order][:addresses] == "new_address"
-        @order.postal_code = params[:order][:postal_code]
-        @order.address     = params[:order][:address]
-        @order.name        = params[:order][:name]
-        @ship = "1"
+    # addressにnew_addressの値がはいっていれば
+    elsif params[:order][:addresses] == "new_address"
+      @order.postal_code = params[:order][:postal_code]
+      @order.address     = params[:order][:address]
+      @order.name        = params[:order][:name]
+      @ship = "1"
+      # バリデーションがあるならエラーメッセージを表示
+      unless @order.valid? == true
+        @shipping_addresses = ShippingAddress.where(customer: current_customer)
+        render :new
       end
-
-     # total_priceに請求額を代入
-     @order.total_price = billing(@order)
+    end
 	end
 
 	def create

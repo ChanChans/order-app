@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate!, except: [:top, :about, :contact]
 
   protected
     # ログイン時のパスを変更してる
@@ -32,15 +31,6 @@ class ApplicationController < ActionController::Base
   private
 
   # before_action作成
-
-  # 管理者がログインしてる時は管理者だけ、カスタマーがログインしてる時はカスタマーだけ
-  def authenticate!
-    if admin_signed_in?
-      authenticate_admin!
-    else
-      authenticate_customer!
-    end
-  end
 
   def set_product
     @product = Product.find(params[:id])

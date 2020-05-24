@@ -47,7 +47,7 @@ module ApplicationHelper
 	end
 
   def full_address(key)
-		  "key.#{postal_code}" + key.address
+		  "#{key.postal_code} #{key.address}"
 	end
 
 end
