@@ -1,3 +1,55 @@
 // Place all the styles related to the customer/shipping_addresses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sample {
+	background-image: url(/assets/112-backgrounds-free.jpg);
+	background-color:rgba(255,255,255,0.5);
+    background-blend-mode:lighten;
+	background-size: cover;
+}
+
+.sample2 {
+	background-image: url(/assets/10336381i.jpg);
+	background-color:rgba(255,255,255,0.5);
+    background-blend-mode:lighten;
+	background-size: cover;
+}
+
+
+.shipping_addres {
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+
+.ShippingAddresTable {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 25px;
+}
+
+.ShippingAddresTable th:first-child{
+  border-radius: 5px 0 0 0;
+}
+
+.ShippingAddresTable th:last-child{
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid #3c6690;
+}
+
+.ShippingAddresTable th{
+  text-align: center;
+  color:white;
+  background: linear-gradient(#829ebc,#225588);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+}
+
+.ShippingAddresTable td {
+    border: solid 1px #000000;
+}
+
+.ShippingAddresTable tr {
+	border: solid 1px #000000;
+}
