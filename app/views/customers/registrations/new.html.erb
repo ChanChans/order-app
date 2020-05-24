@@ -38,13 +38,13 @@
       </div>
 
       <div class="actions col-xs-9">
-        <%= f.submit "新規登録",class: 'btn btn-success' %>
+        <%= f.submit "新規登録",class: 'btn btn-success btn-lg col-xs-7' %>
       </div>
     <% end %>
 
     <div class="col-xs-9">
-      <h2>既に登録済みの方</h2>
-      <p><%= render "customers/shared/links", class: "btn-link" %>からログインしてください。</p>
+      <h2 class="head-line title_h2 text-center">既に登録済みの方</h2>
+      <p class="new-link"><%= render "customers/shared/links", class: "btn-link" %>からログインしてください。</p>
     </div>
   </div>
 </div>

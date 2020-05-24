@@ -6,22 +6,22 @@
 	    <table class="table table-bordered table-condensed">
         <tbody>
             <tr>
-              <th class="active">注文日</th>
+              <th class="info">注文日</th>
         	  <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
             </tr>
             <tr>
-            　<th class="active">配送先</th>
+            　<th class="info">配送先</th>
               <td><%= @order.postal_code %><br>
               	  <%= @order.address %><br>
               	  <%= @order.name %>
               </td>
             </tr>
             <tr>
-            　<th class="active">支払方法</th>
+            　<th class="info">支払方法</th>
               <td><%= @order.payment_method %></td>
             </tr>
             <tr>
-              <th class="active">ステータス</th>
+              <th class="info">ステータス</th>
               <td><%= @order.order_status %></td>
             </tr>
         </tbody>
@@ -32,15 +32,15 @@
     <strong>請求情報</strong>
       	<table class="table  table-bordered table-condensed">
           <tr>
-            <th class="active">商品合計</th>
+            <th class="info">商品合計</th>
             <td><%= total_price(@order_details).to_s(:delimited) %>円</td>
           </tr>
           <tr>
-            <th class="active">配送料</th>
+            <th class="info">配送料</th>
             <td><%= @order.postage.to_s(:delimited) %>円</td>
           </tr>
           <tr>
-            <th class="active">ご請求金額</th>
+            <th class="info">ご請求金額</th>
             <td><%= @order.total_price.to_s(:delimited) %>円</td>
           </tr>
       </table>
@@ -60,13 +60,17 @@
       	<% @order_details.each do |order_detail| %>
           <tr>
 	        <td><%= order_detail.product.name %></td>
-	        <td><%= tax_price(order_detail.product.tax_out_price).to_s(:delimited) %></td>
+	        <td><%= tax_price(order_detail.product.tax_out_price).to_s(:delimited) %>円</td>
 	        <td><%= order_detail.quantity %></td>
-	        <td><%= sub_price(order_detail).to_s(:delimited) %></td>
+	        <td><%= sub_price(order_detail).to_s(:delimited) %>円</td>
           </tr>
         <% end %>
         </tbody>
       </table>
   </div>
-  <%= link_to "注文履歴一覧へ戻る", customers_orders_path, class: "btn btn-info order-index-back" %>
+  <% if customer_signed_in? %>
+    <%= link_to "注文履歴一覧へ戻る", customers_orders_path, class: "btn btn-info order-index-back" %>
+  <% else %>
+    <%= link_to "会員詳細へ戻る", admin_customer_path, class: "btn btn-info order-index-back" %>
+  <% end %>
 </div>
