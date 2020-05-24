@@ -1,5 +1,7 @@
 <% provide(:title, "ありがとうございました！") %>
-<div class="row">
-  <h1 class="text-center thanx">ご購入ありがとうございました！</h1>
-  <p　class="text-center">注文履歴がマイページから確認することができます。</p>
+<div class="row col-xs-12 center-block">
+  <h1 class="text-center thanx">ご購入ありがとうございました！</h1><br>
+  <div class="col-xs-7">
+    <%= link_to "　注文履歴はこちら　", customers_orders_path, class: "btn btn-info pull-right" %>
+  </div>
 </div>
