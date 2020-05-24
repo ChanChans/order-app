@@ -1,11 +1,12 @@
 <% provide(:title, "ジャンル編集") %>
-<h2 class="head-line title_h2 text-center">ジャンル編集</h2>
+<h2 class="head-line title_h2 text-center" >ジャンル編集</h2>
 
   <% if @genre.errors.any? %>
-  <%= render "layouts/error_messages", resource: @genre %>
+    <%= render "layouts/error_messages", resource: @genre %>
+  <% end %>
 
   <%= form_for @genre, :url => {:action => :update} do |f| %>
-　　<div>
+  <div>
     ジャンル
       <%= f.text_field :name  %>
       <%= f.radio_button :is_valid, true %>
