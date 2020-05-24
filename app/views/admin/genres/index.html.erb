@@ -1,18 +1,10 @@
+<% provide(:title, "ジャンル一覧・追加") %>
 <div class="row">
   <div class="col-xs-12">
     <h2 class="head-line title_h2 text-center">ジャンル一覧・追加</h2>
       <%= form_for @genre, :url => {:action => :create} do |f| %>
-    <!-- エラーメッセージ表示-->
-        <% if @genre.errors.any? %>
-          <h3><%= @genre.errors.count %>error occurrence</h3>
-            <ul>
-              <% @genre.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-        <% end %>
-    <!-- エラーメッセージ表示-->
-　　     <div>
+        <%= render "layouts/error_messages", resource: @genre %>
+        <div>
           ジャンル
           <%= f.text_field :name  %>
             <%= f.radio_button :is_valid, true %>

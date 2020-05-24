@@ -1,12 +1,7 @@
+<% provide(:title, "配送先編集") %>
 <h2>配送先編集</h2>
 
-<% if @shipping_address.errors.any? %>
-     <h3><%= pluralize(@shipping_address.errors.count, "error") %> prohibited this shipping_address from being saved:</h3>
-     <ul><% @shipping_address.errors.full_messages.each do |message| %>
-         <li><%= message %></li>
-         <% end %>
-     </ul>
-<% end %>
+<%= render "layouts/error_messages", resource: @shipping_address %>
 
 <%= form_with(model: @shipping_address, url:customers_shipping_address_path, local: true ,method: :patch) do |f| %>
 

@@ -1,3 +1,4 @@
+<% provide(:title, "注文情報確認") %>
 <h2 class="head-line title_h2 text-center">注文情報確認</h2>
 <div calss="row">
   <div class="col-xs-9">
@@ -67,6 +68,7 @@
       </table>
 
       <!-- 表示とformを分けて記入 -->
+      <div class ="col-xs-9">
       <%= form_with model: @order, url: customers_orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :postal_code %>
         <%= f.hidden_field :address %>
@@ -74,9 +76,10 @@
         <%= f.hidden_field :payment_method %>
         <%= f.hidden_field :total_price %>
         <%= f.hidden_field :ship, value: @ship %>
-        <%= f.submit "購入を確定する", class:"btn btn-success center-block" %>
+        <%= link_to "注文情報入力へ戻る", new_customers_order_path, class: "btn btn-warning col-sm-4" %>
+        <%= f.submit "購入を確定する", class:"btn btn-success center-block col-sm-3" %>
       <% end %>
-      <%= link_to "注文情報入力へ戻る", new_customers_order_path %>
+      </div>
     <% else %>
         <!-- if カートアイテムがない時 -->
         <p>お客様のショッピングカートに商品はありませんので注文確定ができません。</p>

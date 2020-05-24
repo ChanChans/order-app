@@ -1,3 +1,4 @@
+<% provide(:title, "パスワード編集") %>
 <div class="row">
   <div class="col-xs-offset-1 col-xs-9">
 
@@ -7,7 +8,7 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field form-group col-xs-12">
-        <%= f.label :"メールアドレス", class: "col-sm-3 control-label" %>
+        <%= f.label :"メールアドレス", class: "col-sm-4 control-label" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-4 form-control-static" %>
       </div>
 
@@ -16,13 +17,13 @@
       <% end %>
 
       <div class="field form-group col-xs-12">
-        <%= f.label :"現在のパスワード", class: "col-sm-3 control-label" %>
+        <%= f.label :"現在のパスワード", class: "col-sm-4 control-label" %>
         <%= f.password_field :current_password, autocomplete: "current-password", class: "col-sm-4 form-control-static" %>
       </div>
 
       <div class="field form-group col-xs-12">
-        <%= f.label :"新しいパスワード", class: "col-sm-3 control-label" %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
+        <%= f.label :"新しいパスワード", class: "col-sm-4 control-label" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "col-sm-4 form-control-static" %><br>
         <% if @minimum_password_length %>
           <br />
           <em>(<%= @minimum_password_length %>文字以上にして下さい)</em>
@@ -30,7 +31,7 @@
       </div>
 
       <div class="field form-group col-xs-12">
-        <%= f.label :"パスワード確認", class: "col-sm-3 control-label" %>
+        <%= f.label :"パスワード確認", class: "col-sm-4 control-label" %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
       </div>
 

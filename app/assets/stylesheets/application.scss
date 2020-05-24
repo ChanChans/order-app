@@ -48,7 +48,9 @@ select {
 
 /* arrows */
 
-#product_is_sale, #product_genre_id, #cart_item_quantity, #order_shipping_address_id {
+#product_is_sale, #product_genre_id, #cart_item_quantity,
+#order_shipping_address_id, #order_order_status,
+#order_detail_produciton_status {
   background-image:
     linear-gradient(45deg, transparent 50%, gray 50%),
     linear-gradient(135deg, gray 50%, transparent 50%),
@@ -65,7 +67,8 @@ select {
 }
 
 #product_is_sale:focus, #product_genre_id:focus,
-#cart_item_quantity:focus, , #order_shipping_address_id:focus {
+#cart_item_quantity:focus, , #order_shipping_address_id:focus,
+#order_order_status:focus,#order_detail_produciton_status:focus {
   background-image:
     linear-gradient(45deg, skyblue 50%, transparent 50%),
     linear-gradient(135deg, transparent 50%, skyblue 50%),
@@ -115,6 +118,15 @@ select {
    padding: 10px 20px 20px 20px;
    border-bottom: 1px solid #CCFFFF;
    background-color: #FFC7AF;
+   position: sticky;
+    top: 0;
+   z-index:9999;
+   width: 100%;
+ }
+ .header_btn:hover {
+   background-color: #FFCCCC !important;
+   color: #FF0066;
+   border-radius:30px;
  }
  .header-name {
    padding-top: 17px;
@@ -175,4 +187,8 @@ footer{
 }
 ul.footer-menu li {
 display: inline;
+}
+
+.thanx {
+  padding-top: 100px;
 }

@@ -1,3 +1,4 @@
+<% provide(:title, "登録情報編集") %>
 <div class="row">
   <div class="col-xs-12">
 
@@ -5,16 +6,7 @@
 
     <%= form_with(model:@customer, url:customer_path, local: true ,method: :put) do |f| %>
 
-      <!-- エラーメッセージ表示-->
-      <% if @customer.errors.any? %>
-        <h3><%= @customer.errors.count %>error occurrence</h3>
-        <ul>
-          <% @customer.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-      <!-- エラーメッセージ表示-->
+      <%= render "layouts/error_messages", resource: @customer %>
 
       <div class="col-xs-10">
         <div class="form-group col-xs-12">
