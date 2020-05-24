@@ -46,11 +46,11 @@
             </div>
           </div>
 
-          <div class="btns">
-            <%= link_to customers_cart_items_path, class: "glyphicon glyphicon-shopping-cart btn btn-warning col-sm-2 cart-back" do %>
+          <div class="btns col-xs-10">
+            <%= link_to customers_cart_items_path, class: "glyphicon glyphicon-shopping-cart btn btn-info col-xs-2 cart-back" do %>
               カート(<%= current_customer.cart_items.count %>)へ戻る
             <% end %>
-            <%= f.submit "確認画面へ進む", class: "btn btn-info btn-lg col-sm-3" %>
+            <%= f.submit "確認画面へ進む", class: "btn btn-success col-xs-5" %>
           </div>
       <% end %>
     <% else %>

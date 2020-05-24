@@ -1,7 +1,7 @@
 <% provide(:title, "注文情報確認") %>
 <h2 class="head-line title_h2 text-center">注文情報確認</h2>
 <div calss="row">
-  <div class="col-xs-8">
+  <div class="col-xs-9">
     <% if current_customer.cart_items.present? %>
       <table class="table table-hover table-inverse table-bordered">
         <thead>
@@ -15,14 +15,14 @@
         <tbody>
           <% @cart_items.each do |cart| %>
             <tr>
-              <td>
+              <td class="text-left">
                 <%= attachment_image_tag( cart.product, :image, size: "60x50", fallback: "no_image.jpg") %>
                 <%= cart.product.name %>
               </td>
               <td class="text-right">
                 ¥<%= tax_price(cart.product.tax_out_price).to_s(:delimited) %>
               </td>
-              <td>
+              <td class="text-right">
                   <%= cart.quantity %>
               </td>
               <td class="text-right">
@@ -52,13 +52,13 @@
     <div class="col-xs-9 billing">
       <table class="table table-hover table-condensed table-bordered">
         <tr>
-          <th  class="info"><strong>支払方法</strong></th>
+          <th  class="info">支払方法</th>
           <td class="text-left">
             <%= @order.payment_method %>
           </td>
         </tr>
         <tr>
-          <th  class="info"><strong>お届け先</strong></th>
+          <th  class="info">お届け先</th>
           <td class="text-left">
             <%= "#{@order.postal_code} #{@order.address} 　#{@order.name}" %>
           </td>
@@ -66,7 +66,7 @@
       </table>
 
       <!-- 表示とformを分けて記入 -->
-      <div class ="col-xs-9">
+      <div class ="col-xs-11">
       <%= form_with model: @order, url: customers_orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :postal_code %>
         <%= f.hidden_field :address %>
@@ -74,8 +74,9 @@
         <%= f.hidden_field :payment_method %>
         <%= f.hidden_field :total_price %>
         <%= f.hidden_field :ship, value: @ship %>
-        <%= link_to "注文情報入力へ戻る", new_customers_order_path, class: "btn btn-warning col-sm-3 back" %>
-        <%= f.submit "購入を確定する", class: "btn btn-success center-block btn-lg col-sm-4" %>
+        <%= link_to "注文情報入力へ戻る", new_customers_order_path, class: "btn btn-info col-xs-3 back" %>
+        　　<i class="fas fa-shipping-fast fa-2x"></i>
+        <%= f.submit "購入を確定する", class: "btn btn-warning center-block col-xs-5" %>
       <% end %>
       </div>
     <% else %>
