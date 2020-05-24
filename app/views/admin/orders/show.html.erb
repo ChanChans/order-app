@@ -8,8 +8,7 @@
 
     <div class="field row">
       <h4>配送先</h4>
-      <h5><%= @order.postal_code %></h5>
-      <h5><%= @order.address %></h5>
+      <h5><%= full_address(@order) %></h5>
     </div>
 
     <div class="field row">

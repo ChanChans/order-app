@@ -19,7 +19,9 @@
 			<% @products.shuffle.first(4). each do |product| %>
 			  <%= render "product_each", product: product %>
 			<% end %>
-			<p class="product-more"><%= link_to "もっと見る", products_path %></p>
+			<div class="col-xs-12">
+			<%= link_to "もっと見る", products_path, class: "btn-link  pull-right" %>
+			</div>
 		</div>
 
 	</div>
