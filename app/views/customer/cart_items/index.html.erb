@@ -1,7 +1,7 @@
 <% provide(:title, "カート") %>
 <h2 class="head-line title_h2 text-center">ショッピングカート</h2>
 <div calss="row">
-  <div class="col-xs-12">
+  <div class="col-xs-11">
 
     <% if @cart_items.present? %>
     <div class="pull-right margin-bottom">
@@ -21,12 +21,12 @@
       <tbody>
         <% @cart_items.each do |cart| %>
   			  <tr>
-            <td>
+            <td class="text-left">
               <%= attachment_image_tag( cart.product, :image, size: "55x43", fallback: "no_image.jpg") %>
               <%= cart.product.name %>
             </td>
-            <td>
-      				<%= tax_price(cart.product.tax_out_price).to_s(:delimited) %>
+            <td class="text-right">
+      				¥<%= tax_price(cart.product.tax_out_price).to_s(:delimited) %>
             </td>
             <td>
               <%= form_for(cart, url: customers_cart_item_path(cart), method: :patch) do |f| %>
@@ -34,8 +34,8 @@
                 <%= f.submit "変更", class: "btn btn-info" %>
               <% end %>
             </td>
-            <td>
-              <%= sub_price(cart).to_s(:delimited) %>
+            <td class="text-right">
+              ¥<%= sub_price(cart).to_s(:delimited) %>
             </td>
             <td>
               <%= link_to " 削除する", customers_cart_item_path(cart), method: :delete, data: {confirm: '商品を削除してよろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
@@ -50,20 +50,20 @@
       </div>
     </div>
 
-    <div class="col-xs-3 pull-right">
+    <div class="col-xs-3 pull-right billing">
       <table class="table table-bordered text-right">
         <thead>
           <tr>
-            <th class="info">合計金額</th>
-            <th>
-              <%= total_price(@cart_items).to_s(:delimited) %>
-            </th>
+            <td class="warning">合計金額</td>
+            <td class="text-right">
+              ¥<%= total_price(@cart_items).to_s(:delimited) %>
+            </td>
           </tr>
         </thead>
       </table>
     </div>
     <div class="col-md-4 col-md-offset-4 text-center">
-      <%= link_to "情報入力に進む", new_customers_order_path, class: "glyphicon glyphicon-pencil btn btn-success btn-lg center-block" %>
+      <%= link_to " 情報入力に進む", new_customers_order_path, class: "glyphicon glyphicon-pencil btn btn-success center-block" %>
     </div>
     <% else %>
     <!-- if カートアイテムがない時 -->

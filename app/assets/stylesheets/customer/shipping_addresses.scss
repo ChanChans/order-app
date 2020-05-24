@@ -39,3 +39,10 @@
 .ShippingAddresTable tr {
 	border: solid 1px #000000;
 }
+.table > tbody > .shipping-tr > td {
+  line-height: 2px !important;
+  vertical-align: middle !important; 
+}
+.shipping-back {
+  margin-top: 50px;
+}

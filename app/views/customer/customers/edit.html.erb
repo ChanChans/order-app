@@ -11,21 +11,21 @@
       <div class="col-xs-10">
         <div class="form-group col-xs-12">
           <%= f.label :"氏名", class: "col-sm-3 control-label" %>
-          <%= f.text_field :last_name, class: "last_name col-sm-4 form-control-static name" %>
-          <%= f.text_field :first_name, class: "first_name col-sm-4 form-control-static name" %>
+          <%= f.text_field :last_name, class: "last_name col-sm-3 form-control-static name" %>
+          <%= f.text_field :first_name, class: "first_name col-sm-3 form-control-static name" %>
         </div>
         <div class="form-group col-xs-12">
           <%= f.label :"フリガナ", class: "col-sm-3 control-label" %>
-          <%= f.text_field :kana_last_name, class: "kana_last_name col-sm-4 form-control-static name" %>
-          <%= f.text_field :kana_first_name, class: "kana_first_name col-sm-4 form-control-static name" %>
+          <%= f.text_field :kana_last_name, class: "kana_last_name col-sm-3 form-control-static name" %>
+          <%= f.text_field :kana_first_name, class: "kana_first_name col-sm-3 form-control-static name" %>
         </div>
         <div class="form-group col-xs-12">
           <%= f.label :"メールアドレス", class: "col-sm-3 control-label" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-9 form-control-static" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6 form-control-static" %>
         </div>
         <div class="form-group col-xs-12">
           <%= f.label :"郵便番号", class: "col-sm-3 control-label" %>
-          <%= f.text_field :postal_code, class: "col-sm-4 form-control-static" %>
+          <%= f.text_field :postal_code, class: "col-sm-2 form-control-static" %>
         </div>
         <div class="form-group col-xs-12">
           <%= f.label :"住所", class: "col-sm-3 control-label" %>
@@ -33,15 +33,17 @@
         </div>
         <div class="form-group col-xs-12">
           <%= f.label :"電話番号(ハイフンなし)", class: "col-sm-3 control-label" %>
-          <%= f.text_field :phone_number, class: "col-sm-4 form-control-static" %>
+          <%= f.text_field :phone_number, class: "col-sm-2 form-control-static" %>
         </div>
       </div>
 
-      <div class="actions col-xs-9">
-        <%= f.submit "編集内容を保存する", class: "btn btn-primary save col-sm-5" %>
+      <div class="actions col-xs-9 col-xs-offset-3">
+        <%= f.submit "編集内容を保存する", class: "btn btn-primary save col-xs-6" %>
         <%= link_to '退会する', quit_customers_path, class: "glyphicon glyphicon-tint btn btn-danger"%>
       </div>
-
     <% end %>
+    <div class="col-xs-12">
+      <%= link_to "戻る", customers_path, class: "glyphicon glyphicon-home btn btn-info" %>
+    </div>
   </div>
 </div>

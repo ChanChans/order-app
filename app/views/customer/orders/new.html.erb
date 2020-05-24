@@ -1,6 +1,6 @@
 <% provide(:title, "注文情報入力") %>
 <div class="row">
-  <div class="col-xs-offset-1 col-xs-11">
+  <div class="col-xs-12">
     <h2 class="head-line title_h2 text-center">注文情報入力</h2>
     <% if current_customer.cart_items.present? %>
       <%= form_with :model => @order, url:log_customers_orders_path, method: :post, local: true  do |f| %>
@@ -46,11 +46,11 @@
             </div>
           </div>
 
-          <div class="btns">
-            <%= link_to customers_cart_items_path, class: "glyphicon glyphicon-shopping-cart btn btn-warning col-sm-2 cart-back" do %>
+          <div class="btns col-xs-10">
+            <%= link_to customers_cart_items_path, class: "glyphicon glyphicon-shopping-cart btn btn-info col-xs-2 cart-back" do %>
               カート(<%= current_customer.cart_items.count %>)へ戻る
             <% end %>
-            <%= f.submit "確認画面へ進む", class: "btn btn-info btn-lg col-sm-3" %>
+            <%= f.submit "確認画面へ進む", class: "btn btn-success col-xs-5" %>
           </div>
       <% end %>
     <% else %>
