@@ -73,3 +73,5 @@ gem "kaminari"
 gem "pry-byebug"
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'rubocop-airbnb'
+gem 'faker'

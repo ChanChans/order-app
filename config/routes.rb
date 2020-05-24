@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
    get  'about' => 'customer/products#about'
    root 'customer/products#top'
+   get 'contact' => 'customer/customers#contact'
 
    # devise
   devise_for :admins#, skip: :all

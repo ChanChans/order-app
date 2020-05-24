@@ -30,6 +30,9 @@ class Customer::CustomersController < ApplicationController
     end
 	end
 
+  def contact
+  end
+
 	private
 
 	def customer_params
