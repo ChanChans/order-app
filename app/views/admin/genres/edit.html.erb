@@ -1,22 +1,17 @@
+<% provide(:title, "ジャンル編集") %>
 <h2 class="head-line title_h2 text-center">ジャンル編集</h2>
 
   <% if @genre.errors.any? %>
-    <h3><%= @genre.errors.count %>error occurrence</h3>
-      <ul>
-        <% @genre.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-  <% end %>
+  <%= render "layouts/error_messages", resource: @genre %>
 
   <%= form_for @genre, :url => {:action => :update} do |f| %>
 　　<div>
     ジャンル
       <%= f.text_field :name  %>
-        <%= f.radio_button :is_valid, true %>
-        <%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %>
-        <%= f.radio_button :is_valid, false %>
-        <%= f.label :is_valid, "無効", {value: :false, style: "display: inline-block;"} %>
+      <%= f.radio_button :is_valid, true %>
+      <%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %>
+      <%= f.radio_button :is_valid, false %>
+      <%= f.label :is_valid, "無効", {value: :false, style: "display: inline-block;"} %>
       <%= f.submit "変更を保存する", class: "btn btn-info" %>
     </div>
   <% end %>

@@ -14,7 +14,7 @@
       kana_last_name: "メイ",
       password: "123456",
       postal_code: "1234567",
-      residence: "テスト#{n + 1}",
+      residence: "東京都渋谷区神南1丁目19-11 パークウェースクエア2 4階#{n + 1}",
       phone_number: "09012345678"
     )
   end
@@ -45,7 +45,7 @@
   ShippingAddress.create!(
     name: "test#{n + 1}",
     postal_code: "123456#{n + 1}",
-    address: "大阪#{n + 1}",
+    address: "東京都渋谷区神南1丁目19-11 パークウェースクエア2 4階#{n + 1}",
     customer_id: n + 1
   )
 end
@@ -53,7 +53,7 @@ end
 5.times do |n|
   Order.create!(
     customer_id: n +1,
-    address: "大阪#{n + 1}",
+    address: "東京都渋谷区神南1丁目19-11 パークウェースクエア2 4階#{n + 1}",
     postal_code: "123456#{n + 1}",
     name: "test#{n + 1}",
     postage: "800",

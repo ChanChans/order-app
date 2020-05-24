@@ -1,7 +1,9 @@
+<% provide(:title, "商品新規登録") %>
 <h2 class="head-line title_h2 text-center">商品新規登録</h2>
 <div class="row">
   <%= form_for(@product, url: admin_products_path, method: :post, class: "form-horizontal") do |f| %>
-	  <div class="col-xs-4">
+    <%= render "layouts/error_messages", resource: @product %>
+    <div class="col-xs-4">
       <div class="img_field">
       </div>
 	      <%= f.attachment_field :image, class: "image" %>

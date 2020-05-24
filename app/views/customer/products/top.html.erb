@@ -1,6 +1,7 @@
+<% provide(:title, "ホーム") %>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-9">
+		<div class="col-xs-12">
 			<div class = "example">
 				<img src="assets/4dbc7e0f.jpg">
 				<p>
@@ -16,20 +17,7 @@
 			<h2 class="toppage-head">オススメ商品</h2>
 			<!-- ランダムに4つ表示されるようになっています -->
 			<% @products.shuffle.first(4). each do |product| %>
-			  <% if product.genre.is_valid == true %>
-					<div class="product-recommend">
-					  　<p id="img_field" class="product">
-					  	    <%= attachment_image_tag(product, :image, size: "180x120", fallback: "no_image.jpg") %>
-				      </p>
-			      	<p>
-				  	    <%= product.name %>
-				    	</p>
-				    	<p>
-				    	　¥<%= product.tax_out_price.to_s(:delimited) %>
-				    	</p>
-					</div>
-			  <% else %>
-			  <% end %>
+			  <%= render "product_each", product: product %>
 			<% end %>
 			<p class="product-more"><%= link_to "もっと見る", products_path %></p>
 		</div>
