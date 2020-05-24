@@ -10,28 +10,28 @@
 			<table class="table table-bordered table-condensed" >
 				<tbody>
 					<tr>
-						<td class="info">氏名</td>
-						<td><%= full_name(@customer) %></td>
+						<td class="info col-xs-2">氏名</td>
+						<td class="text-left"><%= full_name(@customer) %></td>
 					</tr>
 					<tr>
 						<td class="info">カナ</td>
-						<td><%= kana_full_name(@customer) %></td>
+						<td class="text-left"><%= kana_full_name(@customer) %></td>
 					</tr>
 					<tr>
 						<td class="info">郵便番号</td>
-						<td><%= @customer.postal_code %></td>
+						<td class="text-left"><%= @customer.postal_code %></td>
 					</tr>
 					<tr>
 						<td class="info">住所</td>
-						<td><%= @customer.residence %></td>
+						<td class="text-left"><%= @customer.residence %></td>
 					</tr>
 					<tr>
 						<td class="info">電話番号</td>
-						<td><%= @customer.phone_number %></td>
+						<td class="text-left"><%= @customer.phone_number %></td>
 					</tr>
 					<tr>
 						<td class="info">メールアドレス</td>
-						<td><%= @customer.email %></td>
+						<td class="text-left"><%= @customer.email %></td>
 					</tr>
 				</tbody>
 			</table>

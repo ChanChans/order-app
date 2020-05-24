@@ -1,9 +1,9 @@
 <% provide(:title, "注文情報確認") %>
 <h2 class="head-line title_h2 text-center">注文情報確認</h2>
 <div calss="row">
-  <div class="col-xs-9">
+  <div class="col-xs-8">
     <% if current_customer.cart_items.present? %>
-      <table class="table table-hover table-inverse">
+      <table class="table table-hover table-inverse table-bordered">
         <thead>
           <tr class="info">
             <th>商品名</th>
@@ -19,14 +19,14 @@
                 <%= attachment_image_tag( cart.product, :image, size: "60x50", fallback: "no_image.jpg") %>
                 <%= cart.product.name %>
               </td>
-              <td>
-                <%= tax_price(cart.product.tax_out_price).to_s(:delimited) %>
+              <td class="text-right">
+                ¥<%= tax_price(cart.product.tax_out_price).to_s(:delimited) %>
               </td>
               <td>
                   <%= cart.quantity %>
               </td>
-              <td>
-                <%= sub_price(cart).to_s(:delimited) %>
+              <td class="text-right">
+                ¥<%= sub_price(cart).to_s(:delimited) %>
               </td>
             </tr>
           <% end %>
@@ -34,32 +34,32 @@
       </table>
     </div>
     <div class="col-xs-3 billing">
-      <table class="table  table-hover table-condensed">
+      <table class="table table-hover table-condensed table-bordered">
           <tr>
-            <th class="active">送料</th>
-            <td><%= @order.postage %></td>
+            <th class="info">送料</th>
+            <td class="text-right col-xs-5">¥<%= @order.postage %></td>
           </tr>
           <tr>
-            <th class="active">商品合計</th>
-            <td><%= total_price(@cart_items).to_s(:delimited) %></td>
+            <th class="info">商品合計</th>
+            <td class="text-right">¥<%= total_price(@cart_items).to_s(:delimited) %></td>
           </tr>
           <tr>
-            <th class="active">請求金額</th>
-            <td><%= billing(@order).to_s(:delimited) %></td>
+            <th class="info">請求金額</th>
+            <td class="text-right">¥<%= billing(@order).to_s(:delimited) %></td>
           </tr>
       </table>
     </div>
     <div class="col-xs-9 billing">
-      <table class="table table-hover table-condensed">
+      <table class="table table-hover table-condensed table-bordered">
         <tr>
-          <th  class="active"><strong>支払方法</strong></th>
-          <td>
+          <th  class="info"><strong>支払方法</strong></th>
+          <td class="text-left">
             <%= @order.payment_method %>
           </td>
         </tr>
         <tr>
-          <th  class="active"><strong>お届け先</strong></th>
-          <td>
+          <th  class="info"><strong>お届け先</strong></th>
+          <td class="text-left">
             <%= "#{@order.postal_code} #{@order.address} 　#{@order.name}" %>
           </td>
         </tr>

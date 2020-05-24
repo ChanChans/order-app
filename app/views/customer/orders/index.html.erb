@@ -16,26 +16,26 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              	<td>
-		          <%= order.created_at.strftime('%Y/%m/%d') %>
-		        </td>
-		        <td>
-		          <%= order.postal_code %><br>
-		          <%= order.address %><br>
-		          <%= order.name %>
-		        </td>
-		        <td>
-		          <% order.order_details.each do |order_detail| %>
-		          	<%= order_detail.product.name %><br>
-		          <% end %>
-		        </td>
-		        <td>
-		          <%= order.total_price.to_s(:delimited) %>円
-		        </td>
-		        <td>
-		          <%= order.order_status %>
-		        </td>
-     	        <td>
+              <td>
+  		          <%= order.created_at.strftime('%Y/%m/%d') %>
+  		        </td>
+  		        <td class="text-left">
+  		          <%= order.postal_code %><br>
+  		          <%= order.address %><br>
+  		          <%= order.name %>
+  		        </td>
+  		        <td>
+  		          <% order.order_details.each do |order_detail| %>
+  		          	<%= order_detail.product.name %><br>
+  		          <% end %>
+  		        </td>
+  		        <td class="text-right">
+  		          <%= order.total_price.to_s(:delimited) %>円
+  		        </td>
+  		        <td>
+  		          <%= order.order_status %>
+  		        </td>
+       	      <td>
      	          <%= link_to "注文詳細", customers_order_path(order), class: "glyphicon glyphicon-zoom-in btn btn-success" %>
      	        </td>
             </tr>

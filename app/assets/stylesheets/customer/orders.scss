@@ -39,7 +39,7 @@ table td{
 	position: absolute;
 	right: 200px;
 	float: left;
-	bottom: 100px;
+	bottom: 150px;
 }
 .form-control-static {
 	line-height: 1 !important;
@@ -62,4 +62,8 @@ table td{
 }
 .back {
 	margin-right: 240px;
+}
+.table-condensed > tbody > tr > td {
+	line-height: 20px !important;
+	vertical-align: middle !important; 
 }
