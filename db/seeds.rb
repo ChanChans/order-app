@@ -23,22 +23,214 @@
     email: "admin@admin.com",
     password: "123456"
   )
-  20.times do |n|
-    Genre.create!(
-      name: "ケーキ#{n + 1}",
-      is_valid: [['有効', true], ['無効', false]]
-    )
-  end
 
-  20.times do |n|
-      Product.create!(
-        name: "チーズケーキ#{n + 1}",
-        explanation: "甘くて美味しい#{n + 1}",
-        tax_out_price: "#{1000 + (n * 1000)}",
-        genre_id: n + 1,
-        is_sale: [['販売中', true], ['販売停止', false]],
-        image: open("./app/assets/images/no_image.jpg")
-      )
+  Genre.create!(
+    name: "ホールケーキ",
+    is_valid: [['有効', true], ['無効', false]]
+  )
+  Genre.create!(
+    name: "パンダケーキ",
+    is_valid: [['有効', true], ['無効', false]]
+  )
+  Genre.create!(
+    name: "チーズケーキ",
+    is_valid: [['有効', true], ['無効', false]]
+  )
+  Genre.create!(
+    name: "モンブラン",
+    is_valid: [['有効', true], ['無効', false]]
+  )
+  Genre.create!(
+    name: "ミルクレープ",
+    is_valid: [['有効', true], ['無効', false]]
+  )
+  Genre.create!(
+    name: "ミルフィーユ",
+    is_valid: [['有効', true], ['無効', false]]
+  )
+  Genre.create!(
+    name: "チョコレートケーキ",
+    is_valid: [['有効', true], ['無効', false]]
+  )
+  Genre.create!(
+    name: "ロールケーキ",
+    is_valid: [['有効', true], ['無効', false]]
+  )
+  Genre.create!(
+    name: "マカロン",
+    is_valid: [['有効', true], ['無効', false]]
+  )
+  Genre.create!(
+    name: "ケーキ",
+    is_valid: [['有効', true], ['無効', false]]
+  )
+  Genre.create!(
+    name: "シュークリーム",
+    is_valid: [['有効', true], ['無効', false]]
+  )
+
+  Product.create!(
+    name: "ショートケーキ",
+    explanation: "甘くて美味しい　イチゴのショートケーキ",
+    tax_out_price: "400",
+    genre_id: 10,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/ケーキ3.jpg")
+  )
+  Product.create!(
+    name: "チーズケーキ",
+    explanation: "ほんのり甘酸っぱい　チーズケーキ",
+    tax_out_price: "450",
+    genre_id: 3,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/20130625125049.jpg")
+  )
+  Product.create!(
+    name: "マカロン",
+    explanation: "高級感のあるマカロン",
+    tax_out_price: "200",
+    genre_id: 9,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/59c9bb1e3c85e.jpg")
+  )
+  Product.create!(
+    name: "ケーキ",
+    explanation: "お洒落なケーキ",
+    tax_out_price: "250",
+    genre_id: 10,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/5e2fc3aa682c1.jpeg")
+  )
+  Product.create!(
+    name: "ロールケーキ",
+    explanation: "定番のロールケーキ　クリームには蜂蜜の隠し味",
+    tax_out_price: "700",
+    genre_id: 8,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/41maa3p3-fL.jpg")
+  )
+  Product.create!(
+    name: "モンブラン",
+    explanation: "みんな大好きモンブラン",
+    tax_out_price: "500",
+    genre_id: 4,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/get.jpeg")
+  )
+  Product.create!(
+    name: "チョコレートケーキ",
+    explanation: "ヨーロッパ伝統の本格チョコケーキ",
+    tax_out_price: "600",
+    genre_id: 7,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/get11.jpeg")
+  )
+  Product.create!(
+    name: "ミルクレープ",
+    explanation: "一枚一枚てやきしたクレープに濃厚な生クリームとカスタードを合わせて焼きました。",
+    tax_out_price: "430",
+    genre_id: 5,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/img_sizzle_millecrepes.jpg")
+  )
+  Product.create!(
+    name: "ミルフィーユケーキ",
+    explanation: "しっとりしたクリームとサクサクのパイ生地が何層にも重なったミルフィーユ",
+    tax_out_price: "390",
+    genre_id: 6,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/recipe-title-main-1394.jpg")
+  )
+  Product.create!(
+    name: "チョコレートケーキ2",
+    explanation: "ビターチョコを使って大人味にも変化するガトー・ショコラ",
+    tax_out_price: "2600",
+    genre_id: 7,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/be2fc17b17fc961ab1a3006c45853728.jpeg")
+  )
+  Product.create!(
+    name: "パンダケーキ",
+    explanation: "チョコとミルクのホイップでできた可愛いパンダケーキ",
+    tax_out_price: "1500",
+    genre_id: 2,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/518K-0NFZAL._AC_.jpg")
+  )
+  Product.create!(
+    name: "パンダケーキ(フルーツ)",
+    explanation: "周りはポッキー、上にはフルーツの盛り合わせにパンダをのせてみました",
+    tax_out_price: "900",
+    genre_id: 2,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/images.jpeg")
+  )
+  Product.create!(
+    name: "猫のシュークリーム２個",
+    explanation: "大好きな猫をシュークリームにのせて作ってみました",
+    tax_out_price: "600",
+    genre_id: 11,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/5ae123c3d894d.jpeg")
+  )
+  Product.create!(
+    name: "パンダケーキ(ホール)",
+    explanation: "ホールのケーキにたくさんの可愛いパンダをのせました",
+    tax_out_price: "2200",
+    genre_id: 2,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/mig.jpeg")
+  )
+  Product.create!(
+    name: "ホールケーキ",
+    explanation: "たくさんのクリームと美味しいイチゴを６個　誕生日などにオススメ",
+    tax_out_price: "3200",
+    genre_id: 1,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/ケーキ2.jpg")
+  )
+  Product.create!(
+    name: "イチゴのホールケーキ",
+    explanation: "たくさんイチゴをのせたハート型のイチゴケーキ",
+    tax_out_price: "4000",
+    genre_id: 1,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/ケーキ4.jpeg")
+  )
+  Product.create!(
+    name: "チーズケーキ(ホール)",
+    explanation: "とろけてしまうほどの美味しさ",
+    tax_out_price: "3800",
+    genre_id: 3,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/recipe_img_usual015_01.jpg")
+  )
+  Product.create!(
+    name: "チーズケーキ",
+    explanation: "とろけてしまうほどの美味しさ",
+    tax_out_price: "3800",
+    genre_id: 3,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/carousel_0a5bb2e9bdbd091fc6cefe314c78b6b4.jpg")
+  )
+  Product.create!(
+    name: "いちごのチョコレートケーキ",
+    explanation: "たくさんのいちごととろけるチョコレートのケーキ",
+    tax_out_price: "3100",
+    genre_id: 7,
+    is_sale: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/ケーキ1.jpg")
+  )
+
+  10.times do |n|
+    Product.create!(
+      name: "チーズケーキ#{n + 1}",
+      explanation: "甘くて美味しい#{n + 1}",
+      tax_out_price: "#{1000 + (n * 1000)}",
+      genre_id: n + 1,
+      is_sale: [['販売中', true], ['販売停止', false]],
+      image: open("./app/assets/images/no_image.jpg")
+    )
   end
 
 9.times do |n|
@@ -59,7 +251,7 @@ end
     postage: "800",
     total_price: "#{1000 + (n * 1000) +800}",
     payment_method: "クレジットカード"
-    )
+  )
 end
 
 5.times do |n|
@@ -68,5 +260,5 @@ end
     order_id: n + 1,
     quantity: n + 3,
     subprice: "#{1000 + (n * 1000)}"
-    )
+  )
 end

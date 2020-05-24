@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
 
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: [:show]
 
   def index
     @genre = Genre.new
