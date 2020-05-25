@@ -22,3 +22,8 @@ $(function() {
   // jQuery Upload Thumbs
       $('form input:file').uploadThumbs();
 });
+
+
+$(function() {
+  setTimeout("$('.flash').fadeOut('slow')", 2000);
+});
