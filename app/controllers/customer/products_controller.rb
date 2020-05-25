@@ -3,7 +3,8 @@ class Customer::ProductsController < ApplicationController
   before_action :authenticate_customer!, only: [:show]
 
   def top
-    @products = Product.all
+    @products = Product.all.order(created_at: :asc)
+    #=> :asc,古い順 :desc,新しい順　
     @genres = Genre.all
 	end
 

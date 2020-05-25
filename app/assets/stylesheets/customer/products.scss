@@ -102,9 +102,11 @@
   transform: translate(-50%,-50%);
   border-radius: 30px;
   margin:0;
+
   color: black;
   background: #FFE4E1;
   font-size: 30px;
+  font-family: "M PLUS 1p";
   line-height: 1;
   padding: 30px 45px;
  }
@@ -112,3 +114,30 @@
 .sample img {
   width: 100%;
  }
+
+ .about {
+  background-image: url(/assets/20190131042940.jpg);
+  background-color:rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+  background-size: cover;
+}
+
+.sample1 {
+  margin-top: 80px;
+  font-size: 25px;
+  font-family: "arial black";
+  text-align: center;
+}
+
+.aaa {
+  
+}
+
+.aaa img {
+  margin-top: 20%;
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width:  180px;       /* ※縦横を同値に */
+  height: 180px;       /* ※縦横を同値に */
+  border: 9px solid white;
+}
+
