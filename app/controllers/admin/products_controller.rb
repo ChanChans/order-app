@@ -1,3 +1,4 @@
+  
 class Admin::ProductsController < ApplicationController
 
   before_action :set_product, only: [:show, :edit, :update]
@@ -6,14 +7,14 @@ class Admin::ProductsController < ApplicationController
 
   def top
     now = Time.current
-		@orders = Order.where(created_at: now.all_day)
-	end
+    @orders = Order.where(created_at: now.all_day)
+  end
 
-	def new
+  def new
     @product = Product.new
-	end
+  end
 
-	def create
+  def create
     @product = Product.new(product_params)
     # binding.pry
     if @product.save
@@ -21,25 +22,25 @@ class Admin::ProductsController < ApplicationController
     else
       render("admin/products/new")
     end
-	end
+  end
 
-	def index
+  def index
     @products = Product.all.page(params[:page]).per(10)
-	end
+  end
 
-	def show
-	end
+  def show
+  end
 
-	def edit
-	end
+  def edit
+  end
 
-	def update
+  def update
     if @product.update(product_params)
       redirect_to admin_product_path(@product)
     else
       render("admin/products/edit")
     end
-	end
+  end
 
   private
 
