@@ -1,13 +1,6 @@
 <% provide(:title, "配送先登録/一覧") %>
 <div class="row">
     <div class="col-xs-12">
-        <script>
-          $(function() {
-            setTimeout("$('.flash').fadeOut('slow')", 2000);
-          });
-        </script>
-
-
         <h2 class="head-line text-center title_h2">配送先登録/一覧</h2>
 
         <%= render "layouts/error_messages", resource: @shipping_address %>
