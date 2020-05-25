@@ -1,5 +1,5 @@
 <% provide(:title, "#{@genre.name}一覧") %>
-<h2 class="product-headline"><%= @genre.name %>一覧</h2>
+<h2 class="product-headlinehead-line title_h2 text-center"><%= @genre.name %>一覧</h2>
 </span>
 <div class="row">
   <div class="col-xs-3 product-index">
@@ -11,6 +11,7 @@
           <%= render "customer/products/product_each", product: product %>
         <% end %>
       </div>
-    <%= paginate(@genres) %>
+     <div class="text-center"><%= paginate(@genres) %></div>
   </div>
+ 
 </div>
