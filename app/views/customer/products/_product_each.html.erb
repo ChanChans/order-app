@@ -1,7 +1,7 @@
 <% if product.genre.is_valid == true %>
   <div class="product-container">
 
-      <%= link_to product_path(product.id), class: "btn-link" do %>
+      <%= link_to product_path(product.id), class: "btn-link", :style=>"color:#0099FF;" do %>
       <div id="img_field" class="product">
         <%= attachment_image_tag(product, :image, size: "180x130", fallback: "no_image.jpg") %>
       </div>
@@ -13,7 +13,7 @@
     <% if product.is_sale == true %>
       <p>¥<%= product.tax_out_price.to_s(:delimited) %></p>
     <% elsif product.is_sale == false %>
-      <p>売り切れ中</p>
+      <p class="soldout">売り切れ中</p>
     <% end %>
   </div>
 <% end %>

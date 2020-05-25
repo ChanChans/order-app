@@ -1,10 +1,10 @@
 <% provide(:title, "マイページ") %>
 <div class="row">
-	<div class="col-xs-offset-1 col-xs-9">
+	<div class="col-xs-offset-1 col-xs-8">
 		<h2 class="head-line text-center title_h2">マイページ</h2>
-		<p><strong class="information-link">登録情報</strong>
-			<%= link_to " 編集する", customer_edit_path, class: "glyphicon glyphicon-pencil btn btn-info" %>
-			<%= link_to " パスワードを変更する", edit_customer_registration_path, class: "glyphicon glyphicon-pencil btn btn-info" %>
+		<p><strong class="information-link"><i class="far fa-user"></i>登録情報</strong>
+			<%= link_to " 編集する", customer_edit_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
+			<%= link_to " パスワードを変更する", edit_customer_registration_path, class: "glyphicon glyphicon-pencil btn btn-warning" %>
 		</p>
 
 			<table class="table table-bordered table-condensed" >

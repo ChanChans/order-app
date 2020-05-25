@@ -23,7 +23,6 @@
 
 
 .product-headline {
-
 	margin-left: 10px;
 	margin-top: 40px;
 }
@@ -39,9 +38,6 @@
 }
 .products-name {
 	font-size: 17px;
-}
-.paginate {
-	margin-left: 280px;
 }
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
@@ -75,17 +71,15 @@
 .product-description {
 	margin-bottom: 50px;
 }
-
-
 .genre_id {
   width: 70px;
   height: 33px;
 }
-
-.container{
+.welcom {
+  font-family: 'Chalkboard SE','Georgia','HoeflerText-Regular','Hoefler Text',sans-serif !important;
+  font-size: 33px;
 
 }
-
 .sample {
   position: relative;
   margin-top: 25px;
@@ -95,20 +89,20 @@
 
 .sample p {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   border-radius: 30px;
   margin:0;
-
   color: black;
   background: #FFE4E1;
-  font-size: 30px;
-  font-family: "M PLUS 1p";
-  line-height: 1;
-  padding: 30px 45px;
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.5;
+  padding: 20px 15px;
+  font-family: 'Hannotate SC', 'Meiryo UI', 'Osaka', 'MS ゴシック', 'sans-serif' !important;
  }
 
 .sample img {
@@ -129,10 +123,6 @@
   text-align: center;
 }
 
-.aaa {
-  
-}
-
 .aaa img {
   margin-top: 20%;
   border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
@@ -140,4 +130,11 @@
   height: 180px;       /* ※縦横を同値に */
   border: 9px solid white;
 }
-
+.products-name {
+  color: #0099FF !important;
+  font-weight: 2 !important; 
+  font-family: 'Hannotate SC', 'Meiryo UI', 'Osaka', 'MS ゴシック', 'sans-serif' !important;
+}
+.soldout {
+  color: #FF3366 !important;
+}
