@@ -23,7 +23,7 @@ $(function() {
       $('form input:file').uploadThumbs();
 });
 
-
-$(function() {
-  setTimeout("$('.flash').fadeOut('slow')", 2000);
-});
+// 
+// $(function() {
+//   setTimeout("$('.flash').fadeOut('slow')", 2000);
+// });

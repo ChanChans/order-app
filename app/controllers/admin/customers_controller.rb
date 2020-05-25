@@ -2,7 +2,7 @@ class Admin::CustomersController < ApplicationController
 
   before_action :authenticate_admin!
 
-    def index
+  def index
     @customers = Customer.all.page(params[:page]).per(10)
 	end
 
@@ -17,7 +17,7 @@ class Admin::CustomersController < ApplicationController
 	def update
 	@customer = Customer.find(params[:id])
 		if @customer.update(customer_params)
-		   flash[:notice] = "会員情報を変更しました"
+		   flash[:success] = "会員情報を変更しました"
 		   redirect_to admin_customer_path
 		else
 			render "edit"
