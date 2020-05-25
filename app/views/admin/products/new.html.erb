@@ -1,19 +1,22 @@
 <% provide(:title, "商品新規登録") %>
-<h2 class="head-line title_h2 text-center">商品新規登録</h2>
-<div class="row">
-  <%= form_for(@product, url: admin_products_path, method: :post, class: "form-horizontal") do |f| %>
-    <%= render "layouts/error_messages", resource: @product %>
-    <div class="col-xs-4">
-      <div class="img_field">
-      </div>
-	      <%= f.attachment_field :image, class: "image" %>
-    </div>
-    <div class="col-xs-6">
-      <%= render "form_product", f: f %>
-      <div class="actions">
-	      <%= f.submit "新規登録", class: "btn btn-primary pull-right" %>
-      </div>
 
-    </div>
-  <% end %>
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="head-line title_h2 text-center">商品新規登録</h2>
+    <%= form_for(@product, url: admin_products_path, method: :post, class: "form-horizontal") do |f| %>
+      <%= render "layouts/error_messages", resource: @product %>
+      <div class="col-xs-4 col-xs-offset-1">
+        <div class="img_field">
+        </div>
+  	      <%= f.attachment_field :image, class: "image" %>
+      </div>
+      <div class="col-xs-6">
+        <%= render "form_product", f: f %>
+        <div class="actions col-xs-7">
+  	      <%= f.submit "新規登録", class: "btn btn-primary btn-lg pull-right" %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
 </div>

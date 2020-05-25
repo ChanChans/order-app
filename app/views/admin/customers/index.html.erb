@@ -1,8 +1,8 @@
 <% provide(:title, "会員一覧") %>
 <h2 class="head-line title_h2 text-center">会員一覧</h2>
 <div class="row">
-  <div class="col-xs-12">
-    <table class="table table-hover table-condensed">
+  <div class="col-xs-10 col-xs-offset-1">
+    <table class="table table-hover table-bordered table-condensed">
       <thead>
         <tr class="info">
           <th>会員ID</th>
@@ -15,22 +15,23 @@
       <tbody>
         <% @customers.each do |customer| %>
           <tr>
-            <td>
+            <td class="info col-xs-1">
               <%= customer.id %>
             </td>
-            <td>
+            <td class="text-left">
               <%= link_to admin_customer_path(customer), class: "btn-link"  do %>
+                <i class="far fa-user"></i>
                 <%= full_name(customer) %>
               <% end %>
             </td>
-            <td>
+            <td class="text-left">
               <%= customer.email %>
             </td>
-            <td>
+            <td class="col-xs-2">
               <% if customer.is_valid == true%>
-                <p>退会済</p>
+                <p><i class="fas fa-bullseye blue"></i>退会済</p>
               <% else %>
-                <p>有効</p>
+                <p><i class="fas fa-bullseye red"></i>有効</p>
               <% end %>
             </td>
           </tr>
@@ -38,5 +39,5 @@
       </tbody>
     </table>
   </div>
-    <%= paginate(@customers) %>
+    <div class= "text-center"><%= paginate(@customers) %></div>
 </div>

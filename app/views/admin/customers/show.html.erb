@@ -2,51 +2,52 @@
   <h2 class="head-line title_h2 text-center">
     <%= full_name(@customer) %>さんの会員詳細
   </h2>
-  <div class="col-xs-8">
-    <div class="field">
-      <p>
-        顧客ID　　　　　<%= @customer.id %>
-        <% if @customer.is_valid == true %>
-          <span>　退会済
-        <% elsif @customer.is_valid == false %>
-          　有効会員</span>
-        <% end %>
-      </p>
-    </div>
-    <div class="field">
-      <p>
-        氏名　　　　　　<%= full_name(@customer) %>
-      </p>
-    </div>
-    <div class="field">
-      <p>
-        フリガナ　　　　<%= kana_full_name(@customer) %>
-      </p>
-    </div>
-    <div class="field">
-      <p>
-        郵便番号　　　　<%= @customer.postal_code %>
-      </p>
-    </div>
-    <div class="field">
-      <p>
-        住所　　　　　　<%= @customer.residence %>
-      </p>
-    </div>
-    <div class="field">
-      <p>
-        電話番号　　　　<%= @customer.phone_number %>
-      </p>
-    </div>
-    <div class="field">
-      <p>
-        メールアドレス　<%= @customer.email%>
-      </p>
-    </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="field">
+        <p>
+          顧客ID　　　　　<%= @customer.id %>
+          <% if @customer.is_valid == true %>
+            <span>　<i class="fas fa-bullseye blue"></i>退会済
+          <% elsif @customer.is_valid == false %>
+            　<i class="fas fa-bullseye red"></i>有効会員</span>
+          <% end %>
+        </p>
+      </div>
+      <div class="field">
+        <p>
+          氏名　　　　　　<%= full_name(@customer) %>
+        </p>
+      </div>
+      <div class="field">
+        <p>
+          フリガナ　　　　<%= kana_full_name(@customer) %>
+        </p>
+      </div>
+      <div class="field">
+        <p>
+          郵便番号　　　　<%= @customer.postal_code %>
+        </p>
+      </div>
+      <div class="field">
+        <p>
+          住所　　　　　　<%= @customer.residence %>
+        </p>
+      </div>
+      <div class="field">
+        <p>
+          電話番号　　　　<%= @customer.phone_number %>
+        </p>
+      </div>
+      <div class="field">
+        <p>
+          メールアドレス　<%= @customer.email%>
+        </p>
+      </div>
 
-    <div class="actions">
-      <%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn btn-success edit_shipping_addres_#{@customer.id}" %>
-      <%= link_to "注文履歴一覧を見る", customers_order_path, class: "btn btn-info" %>
+      <div class="actions">
+        <%= link_to "編集する",edit_admin_customer_path(@customer), class: "glyphicon glyphicon-pencil btn btn-success edit_shipping_addres_#{@customer.id}" %>
+        <%= link_to " 注文履歴一覧を見る", admin_orders_path, class: "glyphicon glyphicon-folder-open btn btn-info" %>
+      </div>
     </div>
   </div>
-</div>
