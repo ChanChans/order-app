@@ -5,11 +5,10 @@
     <h2 class="head-line title_h2 text-center">
       <%= full_name(@customer) %>さんの会員情報編集
     </h2>
-  </div>
 
   <%= form_with(model: @customer, url:admin_customer_path, local: true ,method: :patch) do |f| %>
 
-    <div class="col-xs-9">
+    <div class="col-xs-10">
       <div class="form-group col-xs-9">
         <%= f.label :"会員ID", class: "col-sm-4 control-label" %>
         <%= f.label :"#{@customer.id}" %>
@@ -38,9 +37,13 @@
         　<%= f.radio_button :is_valid, false %>
         　<%= f.label :is_valid, "有効", {value: :false, style: "display: inline-block;"} %>
       </div>
-      <div class="actions col-xs-9">
+    </div>
+      <div class="actions  col-xs-9 col-xs-offset-4">
         <%= f.submit '変更を保存する' ,class: "btn btn-primary" %>
       </div>
-    </div>
   <% end %>
+    <div class="col-xs-12">
+      <%= link_to "戻る", admin_customer_path, class: "glyphicon glyphicon-home btn btn-info" %>
+    </div>
+  </div>
 </div>

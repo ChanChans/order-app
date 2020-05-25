@@ -12,9 +12,9 @@
 </div>
 <div class="form-group">
   <%= f.label :"税抜価格", class: "col-sm-3 control-label" %>
-  <%= f.text_field :tax_out_price, class: "col-sm-8 form-control-static tax_out_price" %>円
+  <%= f.text_field :tax_out_price, class: "col-sm-3 form-control-static tax_out_price" %>円
 </div>
 <div class="form-group">
-  <%= f.label :"販売　　　ステータス", class: "col-sm-3 control-label" %>
+  <%= f.label :"販売ステータス", class: "col-sm-3 control-label" %>
   <%= f.select :is_sale, [['販売中', true], ['販売停止', false]], prompt: "-- 選択してください --", class: "col-sm-9 is_sale" %>
 </div>

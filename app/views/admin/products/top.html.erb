@@ -1,3 +1,13 @@
 <% provide(:title, "トップ") %>
-<h2 class="head-line title_h2 text-center">管理者画面</h2>
-<p>本日の注文件数 <%= @orders.count %>件</p>
+<div class="row">
+	<div class="col-xs-12">
+		<h2 class="head-line title_h2 text-center">管理者画面</h2>
+		<p class="order-count">本日の注文件数
+			<span>
+				<%= link_to admin_orders_path do %>
+				<%= @orders.count %>件
+				<% end %>
+			</span>
+		</p>
+	</div>
+</div>

@@ -5,7 +5,7 @@
       <%= form_for @genre, :url => {:action => :create} do |f| %>
         <%= render "layouts/error_messages", resource: @genre %>
         <div>
-          ジャンル
+          <i class="fas fa-candy-cane"></i>ジャンル
           <%= f.text_field :name  %>
             <%= f.radio_button :is_valid, true %>
             <%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %>
@@ -17,7 +17,7 @@
 
       <table class="table table-hover table-inverse">
         <thead>
-          <tr>
+          <tr class="info">
             <td>ジャンル</td>
             <td>状態</td>
             <td></td>
@@ -29,15 +29,15 @@
               <td><%= genre.name%></td>
 
               <% if genre.is_valid == true %>
-                <td>有効</td>
+                <td><i class="fas fa-bullseye red"></i>有効</td>
               <% elsif genre.is_valid == false %>
-                <td>無効</td>
+                <td><i class="fas fa-bullseye blue"></i>無効</td>
               <% end %>
-              <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-info" %></td>
+              <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "glyphicon glyphicon-pencil btn btn-success" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
   </div>
-    <%= paginate(@genres) %>
+    <div class= "text-center"><%= paginate(@genres) %></div>
 </div>

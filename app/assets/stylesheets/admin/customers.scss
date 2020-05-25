@@ -1,3 +1,21 @@
 // Place all the styles related to the admin::customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.order-count {
+	font-size: 25px;
+	margin-top: 100px;
+	margin-left: 150px;
+	letter-spacing: 0.4em;
+}
+.fa-plus {
+	color: #528fff;
+}
+.fa-user {
+	color: #FF9900;
+}
+.red {
+	color:#e54747;
+}
+.blue {
+	color:#528fff;
+}
