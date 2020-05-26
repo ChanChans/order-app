@@ -40,14 +40,19 @@ ja:
         name: "宛名"
         address: "住所"
         postal_code: "郵便番号"
-      genre: 
+      genre:
         name: ジャンル名
+      order:
+        address: "住所"
+        name: "宛名"
+        postal_code: "郵便番号"
 
     models:
       customer: "お客様"
       product: "商品"
       shipping_address: "配送先"
       genre: "ジャンル"
+      order: "商品"
   devise:
     confirmations:
       new:
