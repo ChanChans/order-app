@@ -6,7 +6,7 @@
 		<div class="field">
 		  <div class="col-xs-4">
 			購入者
-		  </div> 
+		  </div>
 		  <div class="col-xs-8">
 		    <%= @order.name %>
 		  </div>
@@ -15,7 +15,7 @@
 	    <div class="field">
 	      <div class="col-xs-4">
 	        配送先
-	      </div> 
+	      </div>
 	      <div class="col-xs-8">
 	        <%= full_address(@order) %>
 	      </div>
@@ -24,7 +24,7 @@
 	    <div class="field">
 	      <div class="col-xs-4">
 	        支払い方法
-	      </div> 
+	      </div>
 	      <div class="col-xs-8">
 	        <%= @order.payment_method %>
 	      </div>
@@ -32,7 +32,9 @@
 
  	  <%= form_for(@order, url: admin_order_path, method: :patch) do |f| %>
  	    <div class="col-xs-4">注文ステータス</div>
-      	  <div class="col-xs-6"><%= f.select :order_status, [['入金待ち'], ['入金確認'], ['製作中'], ['発送準備中'], ['発送済']], class: "order_status" %></div>
+      	  <div class="col-xs-6">
+            <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
+          </div>
 
       	<div class="actions">
           <div class="col-xs-2"><%= f.submit '更新'  ,class: "btn btn-primary" %></div>
@@ -49,7 +51,7 @@
 			          <th>数量</th>
 			          <th>小計</th>
 			          <th>製作ステータス</th>
-			          
+
 			        </tr>
 			    </thead>
 				<tbody>
@@ -74,7 +76,7 @@
 			            </td>
 			            <%= form_for(order_detail, url: admin_order_details_path(order_detail), method: :patch) do |f| %>
 			            <td>
-			            	<%= f.select :produciton_status, [['着手不可'], ['製作待ち'], ['製作中'], ['製作完了']], class: "order_status" %>
+			            	<%= f.select :produciton_status, OrderDetail.produciton_statuses.keys, class: "order_status" %>
 			            	<%= f.submit '更新'  ,class: "btn btn-warning" %>
 			            </td>
 			            <% end %>
@@ -100,5 +102,8 @@
 				</tr>
 		    </table>
 	  </div>
-	</div>
+    <div class="col-xs-12">
+      <%= link_to "戻る", admin_orders_path, class: "glyphicon glyphicon-home btn btn-info" %>
+    </div>
+	  </div>
   </div>

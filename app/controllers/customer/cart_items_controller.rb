@@ -30,7 +30,8 @@ class Customer::CartItemsController < ApplicationController
     else
       @product = Product.find(params[:cart_item][:product_id])
       @cart_item = CartItem.new
-      render :show
+      flash[:alert] = "個数を選択してください"
+      render ("customer/products/show")
     end
 	end
 
