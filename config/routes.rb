@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   	resources :genres,only: [:index,:create,:edit,:update, :show]
   	resources :orders,only: [:index,:show,:update] do
   	  member do
-       resource :order_details,only: [:update]
+        get :current_index
+        resource :order_details,only: [:update]
+      end
+      collection do
+        get :today_order_index
       end
     end
   end
