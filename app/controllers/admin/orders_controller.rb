@@ -4,6 +4,7 @@ class Admin::OrdersController < ApplicationController
 
   def index
   		@orders = Order.all.page(params[:page]).per(10)
+      # @orders = Order.where(customer:)
 	end
 
 	def show
@@ -14,8 +15,8 @@ class Admin::OrdersController < ApplicationController
 	def update
 		@order = Order.find(params[:id])
 		if @order.update(order_params)
-		   flash[:notice] = "ステータスを更新しました"
-		   redirect_to admin_orders_path
+		   flash[:success] = "注文ステータスを変更しました"
+		   redirect_to admin_order_path(@order)
 		else
 		   render "show"
 		end

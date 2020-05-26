@@ -8,7 +8,7 @@
 
           <!--カスタマーがログインしている時 -->
           <li class="header-name">
-            ようこそ、<%= current_customer.first_name %>さん！
+            ようこそ、<%= full_name(current_customer) %>さん！
           </li>
           <li>
             <%= link_to "マイページ", customers_path(current_customer), class: "header_btn glyphicon glyphicon-home" %>

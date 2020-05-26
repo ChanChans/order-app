@@ -1,4 +1,4 @@
-  
+
 class Admin::ProductsController < ApplicationController
 
   before_action :set_product, only: [:show, :edit, :update]
@@ -16,11 +16,11 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    # binding.pry
     if @product.save
+      flash[:notice] = "新商品を登録しました"
       redirect_to admin_product_path(@product)
     else
-      render("admin/products/new")
+      render :new
     end
   end
 
@@ -36,9 +36,10 @@ class Admin::ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
+      flash[:success] = "商品内容をを変更しました"
       redirect_to admin_product_path(@product)
     else
-      render("admin/products/edit")
+      render :edit
     end
   end
 

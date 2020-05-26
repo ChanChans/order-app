@@ -21,7 +21,7 @@
 		    <% @orders.each do |order| %>
 		      <tr>
 		        <td>
-		          <%= link_to admin_order_path(order), :style=>"color:#528fff;"  do %>
+		          <%= link_to admin_order_path(order), data: {"turbolinks" => false}, :style=>"color:#528fff;"  do %>
 		          	<%= order.created_at %>
 		          <% end %>
 		        </td>

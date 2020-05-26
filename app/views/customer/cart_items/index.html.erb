@@ -38,7 +38,7 @@
               ¥<%= sub_price(cart).to_s(:delimited) %>
             </td>
             <td>
-              <%= link_to " 削除する", customers_cart_item_path(cart), method: :delete, data: {confirm: '商品を削除してよろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
+              <%= link_to " 削除する", customers_cart_item_path(cart), method: :delete, data: {confirm: "#{cart.product.name}を削除してよろしいですか？"}, class: "glyphicon glyphicon-trash btn btn-danger" %>
             </td>
           </tr>
         <% end %>
