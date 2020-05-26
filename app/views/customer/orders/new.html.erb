@@ -26,12 +26,15 @@
             &emsp;&emsp;<%= "#{current_customer.first_name} #{current_customer.last_name}" %>
           </div>
 
+          <% if @shipping_addresses != [] %>
           <div class="col-xs-10 radio">
             <%= f.radio_button :addresses, "shipping_addresses" %>
               <span>&nbsp;登録済住所から選択</span><br>
               <!-- order_addressはshipping_addressのモデルでpostal_code+address+name -->
             &emsp;&emsp;<%= f.collection_select(:shipping_address_id, @shipping_addresses, :id, :order_address) %>
           </div>
+          <% end %>
+
           <div class="new-address col-xs-10 radio">
             <%= f.radio_button :addresses, "new_address" %>
             <span>&nbsp;新しいお届け先</span><br>

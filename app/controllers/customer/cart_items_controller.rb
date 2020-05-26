@@ -19,7 +19,7 @@ class Customer::CartItemsController < ApplicationController
 
       # カートの中に同じ商品が重複しないようにして　古い商品と新しい商品の数量を合わせる
     @update_cart_item =  CartItem.find_by(product: @cart_item.product)
-    if @update_cart_item.present?
+    if @update_cart_item.present? && @cart_item.valid?
         @cart_item.quantity += @update_cart_item.quantity
         @update_cart_item.destroy
     end

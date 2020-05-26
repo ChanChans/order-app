@@ -4,7 +4,7 @@
 		<h2 class="head-line title_h2 text-center">管理者画面</h2>
 		<p class="order-count">本日の注文件数
 			<span>
-				<%= link_to admin_orders_path, class: "btn-link" do %> 
+				<%= link_to today_order_index_admin_orders_path, class: "btn-link" do %> 
 				<%= @orders.count %>件
 				<% end %>
 			</span>

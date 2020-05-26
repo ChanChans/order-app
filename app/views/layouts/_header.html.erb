@@ -1,6 +1,10 @@
 <header>
     <nav class="nav navbar-nav navbar-left title">
+      <% if admin_signed_in? %>
+      <%= link_to "NaganoCAKE", admin_top_path, class: "fas fa-birthday-cake" %>
+      <% else %>
       <%= link_to "NaganoCAKE", root_path, class: "fas fa-birthday-cake" %>
+      <% end %>
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
