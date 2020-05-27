@@ -53,4 +53,5 @@ class Admin::ProductsController < ApplicationController
   def set_genres
     @genres = Genre.where(is_valid: true)
   end
+  
 end
