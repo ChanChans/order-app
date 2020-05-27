@@ -24,7 +24,7 @@
     password: ENV['admin_pass']
   )
   Admin.create!(
-    email: "admin1@admin@.com",
+    email: "admin1@admin.com",
     password: "123456"
   )
 
