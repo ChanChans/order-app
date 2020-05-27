@@ -26,4 +26,5 @@ class Customer::ProductsController < ApplicationController
 	def product_params
 		parmas.require(:product).permit(:image ,:name, :explanation, :tax_out_price, :is_sale)
 	end
+  
 end
