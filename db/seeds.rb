@@ -23,6 +23,10 @@
     email: ENV['admin_mail'],
     password: ENV['admin_pass']
   )
+  Admin.create!(
+    email: "admin1@admin@.com",
+    password: "123456"
+  )
 
   Genre.create!(
     name: "ホールケーキ",
