@@ -21,4 +21,16 @@ class Customer < ApplicationRecord
     super && (self.is_valid == false)
   end
 
+  # 住所の自動入力
+  # include JpPrefecture
+  # jp_prefecture :residence
+  #
+  # def prefecture_name
+  #   JpPrefecture::Prefecture.find(code: residence).try(:name)
+  # end
+  #
+  # def prefecture_name=(prefecture_name)
+  #   self.residence = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  # end
+
 end
