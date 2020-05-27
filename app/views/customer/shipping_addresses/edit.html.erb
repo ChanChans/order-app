@@ -25,10 +25,10 @@
                 <div class="form-group col-xs-12">
                     <%= f.submit '編集する' ,class: "col-xs-2 btn btn-primary btn-lg pull-right" %>
                 </div>
-            </div>  
+            </div>
         <% end %>
             <div class="shipping-back col-xs-12">
-                <%= link_to "配送先登録/一覧へ戻る", customers_shipping_addresses_path, class: "btn btn-info" %>
+                <%= link_to "配送先登録/一覧へ戻る", customers_shipping_addresses_path, data: {"turbolinks" => false}, class: "btn btn-info" %>
             </div>
     </div>
 </div>

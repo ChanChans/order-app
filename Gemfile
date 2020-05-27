@@ -65,7 +65,7 @@ gem "devise"
 gem "jquery-rails"
 gem 'jquery-turbolinks'
 gem "bootstrap-sass", '~> 3.4.1'
-gem "jp_prefecture"
+# gem "jp_prefecture"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem "ransack"
@@ -75,3 +75,4 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'rubocop-airbnb'
 gem 'faker'
+gem 'dotenv-rails'

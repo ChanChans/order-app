@@ -18,12 +18,22 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+
 $(function() {
-  // jQuery Upload Thumbs
-      $('form input:file').uploadThumbs();
+    // 画像をアップしたら表示する
+    // jQuery Upload Thumbs
+    $('form input:file').uploadThumbs();
+
+    // サクセスメッセージを秒数で消す
+    setTimeout("$('.flash').fadeOut('slow')", 2000);
 });
 
-
-$(function() {
-  setTimeout("$('.flash').fadeOut('slow')", 2000);
+// 住所の自動入力
+$(window).ready( function() {
+  $(".postal_code").jpostal({
+    postcode : [ ".postal_code" ],
+    address  : {
+        ".address"    : "%3%4%5%6%7",
+    }
+  });
 });
