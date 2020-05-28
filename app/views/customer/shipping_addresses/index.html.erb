@@ -4,11 +4,11 @@
         <h2 class="head-line text-center title_h2">配送先登録/一覧</h2>
 
         <%= render "layouts/error_messages", resource: @shipping_address %>
-        <div id="<%= @shipping_address.id %>">
-          <%= render "customer/shipping_addresses/shipping_address_index",shipping_address: @shipping_address %>
-        </div>
-        <div id="comment_table">
-          <%= render "shipping_addresses", shipping_addresses: @shipping_addresses %>
-        </div>
+          <div>
+            <%= render "customer/shipping_addresses/shipping_address_index",shipping_address: @shipping_address %>
+          </div>
+          <div id="comment_table">
+            <%= render "shipping_addresses", shipping_addresses: @shipping_addresses %>
+          </div>
     </div>
 </div>
