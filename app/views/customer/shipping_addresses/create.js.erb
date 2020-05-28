@@ -1,0 +1,11 @@
+<% if @shipping_address.errors.any? %>
+  $('#error').html("<%= j(render 'layouts/error_messages', resource: @shipping_address) %>");
+<% else %>
+  $('#create').html("<%= j(render 'customer/shipping_addresses/ships_index', shipping_addresses: @shipping_addresses) %>");
+  $('#create').show();
+  $('input').val("");
+  $('#error_explanation').hide();
+  $('#flash').html("<%= j(render 'layouts/flash') %>");
+  $('#flash').show();
+  setTimeout("$('#flash').fadeOut('slow')", 2000);
+<% end %>
