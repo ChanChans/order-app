@@ -12,6 +12,8 @@ class Customer::CartItemsController < ApplicationController
     @cart_item.update(quantity: params[:cart_item][:quantity].to_i)
     flash.now[:success] = "#{@cart_item.product.name}の数量を変更しました"
     @price = sub_price(@cart_item).to_s(:delimited)
+    @cart_items = current_cart
+    @total = total_price(@cart_items).to_s(:delimited)
     # redirect_to customers_cart_items_path
 	end
 
@@ -47,6 +49,7 @@ class Customer::CartItemsController < ApplicationController
     @cart_item.destroy
     flash.now[:alert] = "#{@cart_item.product.name}を削除しました"
     @cart_items = current_cart
+    @total = total_price(@cart_items).to_s(:delimited)
     # respond_to do |format|
     #   format.html{ redirect_to customers_cart_items_path }
     #   format.js
@@ -59,5 +62,4 @@ class Customer::CartItemsController < ApplicationController
   def params_cart_item
     params.require(:cart_item).permit(:quantity, :product_id)
   end
-
 end

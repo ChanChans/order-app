@@ -1,4 +1,5 @@
 $('#sub_price-<%= @cart_item.id %>').html("¥<%= @price %>");
+$('#total_price').html("¥<%= @total %>");
 $('#flash').html("<%= j(render 'layouts/flash') %>");
 $('#flash').show();
 setTimeout("$('#flash').fadeOut('slow')", 2000);
