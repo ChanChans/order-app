@@ -1,7 +1,8 @@
 <% if @cart_items.present? %>
   $('#cart-<%= @cart_item.id %>').remove();
+  $('#total_price').html("¥<%= @total %>");
 <% else %>
-  $('#no_cart').html("<%= j(render 'customer/cart_items/no_cart') %>")
+  $('#no_cart').html("<%= j(render 'customer/cart_items/no_cart') %>");
 <% end %>
 $('#flash').html("<%= j(render 'layouts/flash') %>");
 $('#flash').show();
