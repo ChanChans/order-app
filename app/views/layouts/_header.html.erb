@@ -37,7 +37,7 @@
 		        </ul>
           </li>
           <li>
-            <%= link_to customers_cart_items_path,
+            <%= link_to customers_cart_items_path, data: {"turbolinks" => false},
              class: "header_btn glyphicon glyphicon-shopping-cart" do %>カート(<%= current_customer.cart_items.count %>個)
             <% end %>
           </li>

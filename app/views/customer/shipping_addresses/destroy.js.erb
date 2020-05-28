@@ -1,0 +1,9 @@
+<% if @shipping_addresses.present? %>
+  $('#destroy-<%= @shipping_address.id %>').remove();
+<% else %>
+  $('#create').hide();
+<% end %>
+$('#flash').html("<%= j(render 'layouts/flash') %>");
+$('#flash').show();
+setTimeout("$('#flash').fadeOut('slow')", 2000);
+$('#error_explanation').hide();

@@ -1,7 +1,7 @@
 <% provide(:title, "カート") %>
 <h2 class="head-line title_h2 text-center">ショッピングカート</h2>
 <div calss="row">
-  <div class="col-xs-11">
+  <div class="col-xs-11" id="no_cart">
 
     <% if @cart_items.present? %>
     <div class="pull-right margin-bottom">
@@ -19,27 +19,9 @@
       </thead>
 
       <tbody>
-        <% @cart_items.each do |cart| %>
-  			  <tr>
-            <td class="text-left">
-              <%= attachment_image_tag( cart.product, :image, size: "55x43", fallback: "no_image.jpg") %>
-              <%= cart.product.name %>
-            </td>
-            <td class="text-right">
-      				¥<%= tax_price(cart.product.tax_out_price).to_s(:delimited) %>
-            </td>
-            <td>
-              <%= form_for(cart, url: customers_cart_item_path(cart), method: :patch) do |f| %>
-                <%= f.number_field :quantity, class: "quantity", size: 10, min: 1, id: "quantity_cart" %>
-                <%= f.submit "変更", class: "btn btn-info" %>
-              <% end %>
-            </td>
-            <td class="text-right">
-              ¥<%= sub_price(cart).to_s(:delimited) %>
-            </td>
-            <td>
-              <%= link_to " 削除する", customers_cart_item_path(cart), method: :delete, data: {confirm: "#{cart.product.name}を削除してよろしいですか？"}, class: "glyphicon glyphicon-trash btn btn-danger" %>
-            </td>
+        <% @cart_items.each do |cart_item| %>
+  			  <tr id="cart-<%= cart_item.id %>">
+            <%= render "quantity_form", cart_item: cart_item %>
           </tr>
         <% end %>
       </tbody>
@@ -66,9 +48,7 @@
       <%= link_to " 情報入力に進む", new_customers_order_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-pencil btn btn-success center-block" %>
     </div>
     <% else %>
-    <!-- if カートアイテムがない時 -->
-    <p>お客様のショッピングカートに商品はありません。</p>
-    <p><%= link_to "商品一覧", products_path %>から商品をお探し下さい。</p>
+      <%= render "no_cart" %>
     <% end %>
   </div>
 </div>

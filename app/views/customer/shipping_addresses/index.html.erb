@@ -2,10 +2,10 @@
 <div class="row">
     <div class="col-xs-12">
         <h2 class="head-line text-center title_h2">配送先登録/一覧</h2>
-
-        <%= render "layouts/error_messages", resource: @shipping_address %>
-
-        <%= form_with(model: @shipping_address, :url => {:controller => "customer/shipping_addresses"}, local: true) do |f| %>
+        <div id="error">
+          <%= render "layouts/error_messages", resource: @shipping_address %>
+        </div>
+        <%= form_with(model: @shipping_address, :url => {:controller => "customer/shipping_addresses"}) do |f| %>
             <div class="shipping_addres col-xs-10">
                 <div class="form-group col-xs-12">
                     <%= f.label :"郵便番号(ハイフンなし)" ,class: "col-xs-3 control-label" %>
@@ -23,41 +23,10 @@
                 </div>
                 <%= f.submit '登録する' ,class: "col-xs-2 pull-right btn-lg btn-success " %>
             </div>
-
         <% end %>
 
-
-        <table class="table table-hover table-bordered">
-            <thead>
-                <tr class="info">
-                    <th>郵便番号</th>
-                    <th>住所</th>
-                    <th>宛名</th>
-                    <th colspan="2"></th>
-                </tr>
-            </thead>
-
-            <tbody>
-              <% @shipping_addresses.each do |shipping_address| %>
-                <tr class="shipping-tr">
-                    <td>
-                        <%= shipping_address.postal_code %>
-                    </td>
-                    <td class="text-left">
-                        <%= shipping_address.address %>
-                    </td>
-                    <td class="text-left">
-                        <%= shipping_address.name %>
-                    </td>
-                    <td>
-                        <%= link_to "編集する",edit_customers_shipping_address_path(shipping_address), class: "glyphicon glyphicon-pencil btn-sm btn-primary" %>
-                    </td>
-                    <td>
-                        <%= link_to "削除する",customers_shipping_address_path(shipping_address), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "glyphicon glyphicon-trash btn-sm btn-danger destroy_book_#{shipping_address.id}" %>
-                    </td>
-                </tr>
-              <% end %>
-            </tbody>
-        </table>
+        <div id="create">
+          <%= render "ships_index", shipping_addresses: @shipping_addresses %>
+        </div>
     </div>
 </div>

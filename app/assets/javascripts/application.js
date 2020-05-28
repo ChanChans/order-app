@@ -25,7 +25,8 @@ $(function() {
     $('form input:file').uploadThumbs();
 
     // サクセスメッセージを秒数で消す
-    setTimeout("$('.flash').fadeOut('slow')", 2000);
+    
+    setTimeout("$('#flash').fadeOut('slow')", 2000);
 });
 
 // 住所の自動入力
