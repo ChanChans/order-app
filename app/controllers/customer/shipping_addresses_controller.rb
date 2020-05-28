@@ -10,9 +10,9 @@ class Customer::ShippingAddressesController < ApplicationController
 	def create
 	  @shipping_address = ShippingAddress.new(shipping_address_params)
 	  @shipping_address.customer_id = current_customer.id
-	  if @shipping_address.save
+	  if @shipping_address.save!
 	  	 flash[:notice] = "新規配送先を登録しました"
-	     redirect_to customers_shipping_addresses_path
+	     # redirect_to customers_shipping_addresses_path
 	  else
 	  	 @shipping_addresses = current_customer.shipping_address
 	     render 'index'
@@ -37,7 +37,7 @@ class Customer::ShippingAddressesController < ApplicationController
 	  @shipping_address = ShippingAddress.find(params[:id])
 	  @shipping_address.destroy
     flash[:alert] = "配送先を削除しました"
-	  redirect_to customers_shipping_addresses_path
+	  # redirect_to customers_shipping_addresses_path
 	end
 
 	private
