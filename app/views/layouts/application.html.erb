@@ -13,11 +13,10 @@
   </head>
 
   <body id="wrapper">
-    <%= render "layouts/header" %>
+    <div id="header">
+      <%= render "layouts/header" %>
+    </div>
     <div class="container">
-      <%# <% flash.each do |key, value| %>
-        <%# <%= content_tag(:div, value, class: "#{key}") %>
-      <%# <% end %>
       <div id="flash">
         <%= render "layouts/flash" %>
       </div>
